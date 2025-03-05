@@ -6,7 +6,7 @@ project:
 # These variables define the book contents - adjust them as necessary
 book:
   # [A] BOOK TITLE
-  title: "THE TITLE OF THE BOOK"
+  title: "pyANI-plus"
   reader-mode: true
   
   # The cover image and favicon; these may not need to be changed
@@ -17,7 +17,7 @@ book:
   # [B] FOOTER TEXT
   page-footer:
     left: |
-      THIS IS A SHORT PIECE OF FOOTER TEXT NAMING THE BOOK/AUTHORS
+      pyANI-plus documentation
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 
@@ -36,7 +36,7 @@ book:
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
-    - intro.qmd
+    - installation.qmd
 
     - part: early-section.qmd
       chapters: 
