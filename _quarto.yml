@@ -29,13 +29,14 @@ book:
 
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
-  author: "AUTHOR NAME"
-  date: "DD/MM/YY"
+  author: "Leighton Pritchard"
+  date: "10/03/2025"
 
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
+    - requirements.qmd
     - installation.qmd
 
     - part: early-section.qmd
@@ -47,6 +48,7 @@ book:
         - webr-example.qmd
     
     - references.qmd
+    - licensing.qmd
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib

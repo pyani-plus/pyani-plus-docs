@@ -7,3 +7,12 @@
 - fastANI (average nucleotide identity using fastANI)
 - sourmash (average nucleotide identity using sourmash)
 - extenral-alignment (average nucletide identity using multiple-sequence-alignment)
+
+In addition to calculating ANI for a given set of genomes, `pyANI-plus` also includes the following features:
+
+- Plotting heatmaps and distributions for individual runs.
+- Comparing multiple runs through visualization.
+- Exporting any single run from the pyANI-plus SQLite3 database in tabular format.
+- Classifying genomes into clusters based on ANI results.
+- Resuming partial runs already logged in the database.
+- Deleting any single run from the pyANI-plus SQLite3 database.
