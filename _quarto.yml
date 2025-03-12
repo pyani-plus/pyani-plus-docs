@@ -47,8 +47,12 @@ book:
       chapters: 
         - webr-example.qmd
     
-    - references.qmd
-    - licensing.qmd
+    - testing.qmd
+    - part: licensing.qmd
+      chapters: 
+        - pyani_licence.qmd
+        - doc_licence.qmd
+
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib
