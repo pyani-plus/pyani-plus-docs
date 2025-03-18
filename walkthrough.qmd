@@ -233,9 +233,14 @@ Optionally, you can label genomes using `md5` and `filename` using the `--label`
 
 `plot-run` subcommand generates the following heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database:
 
-- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`)
+- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`, @fig-anim-heatmap)
 
-![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png)
+::: {.column-margin}
+
+![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-heatmap .lightbox }
+
+:::
+
 
 In the above heatmap, each cell represents a pairwise comparision between the genomes shown in the rows and columns, showing the pairwise identity of aligned regions. The dendrograms are single-linkage clustering trees generated from the matrix of pairwise identity results. The default color scheme assigns red to cells with identity $\geq 0.95$, blue to those with identity $ < 0.95$, and orange to cells representing comparisons with no alignment found (e.g., NULLs). This division corresponds to a widely-used convention for bacterial species boundaries.
 
