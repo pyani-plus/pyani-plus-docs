@@ -1,0 +1,9 @@
+# pyANI-plus subcommands
+
+`pyANI-plus` follows a subcommand-based approach, where the primary command is followed by a subcommand that defines the operation to be performed. The format is: `pyani-plus <subcommand>`. For example, to obtain the list of runs in a give `pyANI-plus` SQLite3 database, you would use `list-runs` subcommand:
+
+```bash
+pyani-plus list-runs <path_to_database>
+```
+
+This section lists all available subcommands for `pyANI-plus`, describing their usage and functionality within the software.

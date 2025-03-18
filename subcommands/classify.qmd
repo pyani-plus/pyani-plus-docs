@@ -1,0 +1,37 @@
+# `classify` {#classify-subcommand .unnambered}
+
+The `classify` subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy. The output, including classify plots (`JPG`, `PDF`, `PNG`, `SVGZ`) and tabular data, is written to `outdir` directory.
+
+
+::: { .callout-tip}
+## `pyani-plus classify` Usage
+
+```bash
+pyani-plus classify [OPTIONS]
+```
+:::
+
+## Options
+
+`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+
+`--outdir`:  Output directory. (<span style="color:green;">DIRECTORY</span>)  [<span style="color:red;">REQUIRED</span>]
+
+`--run-id`: Which run from the database. [<span style="color:grey;">Defaults to latest.</span>] (<span style="color:green;">INTEGER</span>) 
+
+`--label`: How to label the genomes. [<span style="color:grey;">Default: stem.</span>] (<span style="color:green;">md5|filename|stem</span>)
+
+`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+
+## Method parameters
+`--mode`:  Classify mode intended to identify cliques within a set of genomes. [<span style="color:grey;">Default: identity</span>] (<span style="color:green;">identity|tANI</span>)
+
+`--score-edges`: How to resolve asymmetrical ANI identity/tANI results for edges in the graph (min, max or mean). [<span style="color:grey;">Default: min</span>] (<span style="color:green;">TEXT</span>)
+
+`--coverage-edges`: How to resolve asymmetrical ANI coverage results for edges in the graph (min, max or mean). [<span style="color:grey;">Default: min</span>] (<span style="color:green;">TEXT</span>)
+
+`--cov-min`: Minimum %coverage for an edge. [<span style="color:grey;">Default: 0.5</span>] (<span style="color:green;">$0.0 \leq x \leq 1.0$
+</span>)
+
+`--vertical-line`: Threshold for red vertical line at identity/tANI. The default is set to 0.95 if `--mode` is `identity` and -0.323 if `--mode` is `tANI`. (<span style="color:green;">TEXT</span>)
+

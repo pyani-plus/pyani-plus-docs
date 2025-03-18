@@ -1,0 +1,39 @@
+# `sourmash` {#sourmash-subcommand .unnambered}
+
+The `sourmash` subcommand processes genome files from the `indir` directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.
+
+::: { .callout-tip collapse="true}
+## `pyani-plus sourmash` Usage
+
+```bash
+pyani-plus sourmash [OPTIONS] FASTA 
+```
+:::
+
+## Arguments {.unnambered}
+
+__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
+
+## Options {.unnambered}
+
+`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+
+`--create-db`: Create database if does not exist.
+
+`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
+
+`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
+
+`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+
+## Method parameters {.unnambered}
+
+`--scaled`:  Sets the compression ratio. [<span style="color:grey;">Default: 1000</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
+
+`--kmersize`:   Comparison method k-mer size. [<span style="color:grey;">Default: 31</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
+
+## Debugging {.unnambered}
+
+`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
+
+`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)

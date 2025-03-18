@@ -6,7 +6,7 @@ project:
 # These variables define the book contents - adjust them as necessary
 book:
   # [A] BOOK TITLE
-  title: "THE TITLE OF THE BOOK"
+  title: "pyANI-plus"
   reader-mode: true
   
   # The cover image and favicon; these may not need to be changed
@@ -17,7 +17,7 @@ book:
   # [B] FOOTER TEXT
   page-footer:
     left: |
-      THIS IS A SHORT PIECE OF FOOTER TEXT NAMING THE BOOK/AUTHORS
+      pyANI-plus documentation
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 
@@ -29,24 +29,38 @@ book:
 
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
-  author: "AUTHOR NAME"
-  date: "DD/MM/YY"
+  author: "Leighton Pritchard"
+  date: "03/10/2025"
 
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
-    - intro.qmd
+    - requirements.qmd
+    - installation.qmd
+    - walkthrough.qmd
 
-    - part: early-section.qmd
+    - part: subcommands/subcommands.qmd
       chapters: 
-        - early-section-topic.qmd
-    
-    - part: late-section.qmd
+        - subcommands/anib.qmd
+        - subcommands/anim.qmd
+        - subcommands/dnadiff.qmd
+        - subcommands/external_alignment.qmd
+        - subcommands/fastani.qmd
+        - subcommands/sourmash.qmd
+        - subcommands/plot_run.qmd
+        - subcommands/plot_run_comp.qmd
+        - subcommands/list_runs.qmd
+        - subcommands/export_run.qmd
+        - subcommands/resume.qmd
+        - subcommands/delete_run.qmd
+        - subcommands/classify.qmd
+    - testing.qmd
+    - part: licensing.qmd
       chapters: 
-        - webr-example.qmd
-    
-    - references.qmd
+        - pyani_licence.qmd
+        - doc_licence.qmd
+
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib
