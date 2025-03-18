@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Leighton Pritchard">
-<meta name="dcterms.date" content="2025-03-10">
 
-<title>pyANI-plus</title>
+<title>Testing – pyANI-plus</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./requirements.html" rel="next">
+<link href="./licensing.html" rel="next">
+<link href="./subcommands/classify.html" rel="prev">
 <link href="./icon_32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">About pyANI-plus</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing.html">Testing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -118,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About pyANI-plus</span></a>
   </div>
 </li>
@@ -231,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testing.html" class="sidebar-item-text sidebar-link">
+  <a href="./testing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
@@ -268,35 +302,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about-pyani-plus" id="toc-about-pyani-plus" class="nav-link active" data-scroll-target="#about-pyani-plus">About pyANI-plus</a></li>
+  <li><a href="#test-directory-structure" id="toc-test-directory-structure" class="nav-link active" data-scroll-target="#test-directory-structure">Test directory structure</a></li>
+  <li><a href="#running-tests" id="toc-running-tests" class="nav-link" data-scroll-target="#running-tests">Running tests</a>
+  <ul class="collapse">
+  <li><a href="#run-all-tests-locally" id="toc-run-all-tests-locally" class="nav-link" data-scroll-target="#run-all-tests-locally">Run all tests locally</a></li>
+  <li><a href="#run-individual-tests" id="toc-run-individual-tests" class="nav-link" data-scroll-target="#run-individual-tests">Run individual tests</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/testing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">pyANI-plus</h1>
+<h1 class="title"><span id="testing" class="quarto-section-identifier">Testing</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Leighton Pritchard </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 10, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -306,29 +333,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="about-pyani-plus" class="level1 unnumbered">
-<h1 class="unnumbered">About pyANI-plus</h1><p><img src="sipbs_compbio_800.png" title="pyANI-plus" class="quarto-cover-image img-fluid"></p>
-<p><code>pyANI-plus</code> is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:</p>
+<p><code>pyANI-plus</code> is currently tested using the <code>pytest</code> package to ensure that it functions correctly and remains stable across updates.</p>
+<section id="test-directory-structure" class="level2">
+<h2 class="anchored" data-anchor-id="test-directory-structure">Test directory structure</h2>
+<p>The <code>tests/</code> subdirectory in the <code>pyANI-plus</code> repository contains all test files, including input data, expected results, and test outputs.</p>
 <ul>
-<li>ANIb (average nucleotide identity using BLAST+)</li>
-<li>ANIm (average nucleotide identity using MUMmer)</li>
-<li>dnadiff (average nucleotide identity using dnadiff)</li>
-<li>fastANI (average nucleotide identity using fastANI)</li>
-<li>sourmash (average nucleotide identity using sourmash)</li>
-<li>extenral-alignment (average nucletide identity using multiple-sequence-alignment)</li>
-</ul>
-<p>In addition to calculating ANI for a given set of genomes, <code>pyANI-plus</code> also includes the following features:</p>
+<li>Input data for tests are provided in <code>tests/fixtures</code> directory. This <code>fixtures</code> directory contains a variety of test sets, including sequence data and intermediate files, intended for use and testing with pyANI-plus. The current test sets include:
 <ul>
-<li>Plotting heatmaps and distributions for individual runs.</li>
-<li>Comparing multiple runs through visualization.</li>
-<li>Exporting any single run from the pyANI-plus SQLite3 database in tabular format.</li>
-<li>Classifying genomes into clusters based on ANI results.</li>
-<li>Resuming partial runs already logged in the database.</li>
-<li>Deleting any single run from the pyANI-plus SQLite3 database.</li>
+<li><code>viral_example</code>: Three phage genomes that share similar regions, resulting in aligned regions. These viral genomes are the main test set due to the short runtime of the methods.</li>
+<li><code>bacterial_example</code>: Four bacterial genomes previously used for testing the legacy <code>pyANI</code>. This test set only being used in the test suite for the faster methods like fastANI and sourmash.</li>
+<li><code>bad_alignments</code>: Two highly divergent phage genomes with no shared regions, resulting in no alignments. This test set ensures that <code>pyANI-plus</code> correctly detects and handles such comparisons, which are recorded in the database as <code>NULL</code>.</li>
+<li><code>tools</code>: Mock tools designed for version testing of third-party tools. It also includes examples of faulty tools that are either not executable or do not provide version information.</li>
+</ul></li>
 </ul>
+<p>Each test set (apart from <code>tools</code>) includes the follwoing subdirectories: - <code>intermediates</code>: Contains intermediate files expected to be generated by the ANI methods (e.g., <code>.filter</code> and <code>.delta</code> files for <code>ANIm</code>). - <code>matrices</code>: Includes the expected TSV matrix outputs for each ANI method implemented.</p>
+<ul>
+<li>Test output is written to temporary files that are automatically deleted after execution.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contributing and Writing Tests
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We welcome contributions from the community! If you would like to write new tests for <code>pyANI-plus</code>, please ensure your test data and operations follow this structure.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="running-tests" class="level2">
+<h2 class="anchored" data-anchor-id="running-tests">Running tests</h2>
+<p>To run tests with <code>pyest</code>, change directory to the root of the <code>pyANI-plus</code> repository, and invoke a <code>pyest</code> command.</p>
+<section id="run-all-tests-locally" class="level3">
+<h3 class="anchored" data-anchor-id="run-all-tests-locally">Run all tests locally</h3>
+<p>To run all tests locally on your machine, issue the following command from the repository root:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, if you wish to run tests and generate a coverage report, you can do so with the following command from the repository root:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest <span class="at">-n</span> auto <span class="at">--cov-report</span><span class="op">=</span>html <span class="at">--cov</span><span class="op">=</span>pyani_plus <span class="at">-v</span> <span class="kw">&amp;&amp;</span> <span class="ex">open</span> htmlcov/index.html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-individual-tests" class="level3">
+<h3 class="anchored" data-anchor-id="run-individual-tests">Run individual tests</h3>
+<p>Tests are organised in files with filenames matching the patter <code>test_*.py</code>. We write tests using functions, following the pytest style, as descibed in the <a href="https://docs.pytest.org/en/stable/">pytest</a> documentation.</p>
+<p>For example, to run all ANIm-related tests, we can run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> tests/test_anim.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To run a specific test, such as the one that checks if the .delta files are parsed correctly, we can use the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> tests/test_anim.py::test_delta_parsing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -751,10 +809,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./subcommands/classify.html" class="pagination-link" aria-label="`classify`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><code>classify</code></span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./requirements.html" class="pagination-link" aria-label="Requirements">
-        <span class="nav-page-text">Requirements</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./licensing.html" class="pagination-link" aria-label="Licensing">
+        <span class="nav-page-text">Licensing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -766,7 +827,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/testing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

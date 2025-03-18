@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Leighton Pritchard">
 
-<title>1&nbsp; Introduction – THE TITLE OF THE BOOK</title>
+<title>Requirements – pyANI-plus</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,61 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,7 +31,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./early-section.html" rel="next">
+<link href="./installation.html" rel="next">
 <link href="./index.html" rel="prev">
 <link href="./icon_32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -93,10 +39,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2ce9fc9ac8b614e7ffef13962cc12eaf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a34d670291f06f286357e447776a572a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -137,7 +83,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./requirements.html">Requirements</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +98,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">THE TITLE OF THE BOOK</a> 
+      <a href="./">pyANI-plus</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/sipbs-compbiol/REPOSITORY" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -173,19 +119,31 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">About pyANI-plus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./requirements.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Requirements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walkthrough.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pyANI-plus walkthrough</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./early-section.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Early Section</span></a>
+            <a href="./subcommands/subcommands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pyANI-plus subcommands</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -193,16 +151,94 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./early-section-topic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Early Section Topic</span></span></a>
+  <a href="./subcommands/anib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><code>anib</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/anim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>anim</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/dnadiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><code>dnadiff</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/external_alignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><code>external-alignment</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/fastani.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><code>fastani</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/sourmash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><code>sourmash</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/plot_run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title"><code>plot-run</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/plot_run_comp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title"><code>plot-run-comp</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/list_runs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><code>list-runs</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/export_run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title"><code>export-run</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/resume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>resume</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/delete_run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>delete-run</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subcommands/classify.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><code>classify</code></span></span></a>
   </div>
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testing</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./late-section.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Late Section</span></a>
+            <a href="./licensing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Licensing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -210,32 +246,46 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><code>R</code> Playground</span></span></a>
+  <a href="./pyani_licence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">pyANI-plus</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doc_licence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">pyANI-plus documentation</span></span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#python3" id="toc-python3" class="nav-link active" data-scroll-target="#python3">Python3</a></li>
+  <li><a href="#ncbi-blast" id="toc-ncbi-blast" class="nav-link" data-scroll-target="#ncbi-blast">NCBI-BLAST+</a></li>
+  <li><a href="#mumer" id="toc-mumer" class="nav-link" data-scroll-target="#mumer">MUMer</a></li>
+  <li><a href="#sourmash" id="toc-sourmash" class="nav-link" data-scroll-target="#sourmash">sourmash</a></li>
+  <li><a href="#fastani" id="toc-fastani" class="nav-link" data-scroll-target="#fastani">fastANI</a></li>
+  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3">SQLite3</a></li>
+  <li><a href="#snakemake" id="toc-snakemake" class="nav-link" data-scroll-target="#snakemake">snakemake</a></li>
+  <li><a href="#python-packages" id="toc-python-packages" class="nav-link" data-scroll-target="#python-packages">Python Packages</a></li>
+  <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/requirements.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">Requirements</h1>
 </div>
 
 
@@ -252,27 +302,64 @@ div.csl-indent {
 </header>
 
 
-<p>The Introduction page is intended as a short introduction to the book.</p>
-<p>Like most Quarto books, this is a book created from markdown and executable code.</p>
-<p>This kind of book is an example of literate programming - the intertwining of nicely-formatted text and images, and executable code. For example, the <code>R</code> code cell below executes and produces output when the book is compiled:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>But the <code>R</code> code cell below does not:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+<p><code>pyANI-plus</code> relies on several other programs, packages, and tools for both running and development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.</p>
+<section id="python3" class="level2">
+<h2 class="anchored" data-anchor-id="python3">Python3</h2>
+<p><code>pyANI-plus</code> is designed to run on <a href="https://www.python.org/">Python3</a>, taking advantage of its latest features and improvements. It is not compatible with Python2, so using Python3 is required for installation and development.</p>
+</section>
+<section id="ncbi-blast" class="level2">
+<h2 class="anchored" data-anchor-id="ncbi-blast">NCBI-BLAST+</h2>
+<p>ANIb analysis, which calculates Average Nucleotide Identity using <a href="https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata">BLAST</a>, involves comparing genome sequences through the BLAST tool provided by NCBI.</p>
+</section>
+<section id="mumer" class="level2">
+<h2 class="anchored" data-anchor-id="mumer">MUMer</h2>
+<p>For ANIm (Average Nucleotide Identity using MUMmer) analysis, genome sequences are compared using the nucmer tool from the <a href="https://mummer.sourceforge.net/">MUMmer</a> package. The same tool is applied in the dnadiff command to compare and analyze genome sequences. The key difference between the two methods lies in how the intermediate alignments are generated. <code>dnadiff</code> uses the <code>--maxmatch</code> (all anchor matches regardless of their uniqueness) parameter and <code>-m</code> (many-to-many) alignments to replicate the results reported by the <code>dnadiff</code> wrapper. In contrast, ANIm uses the <code>--mum</code> (anchor matches that are unique in both the reference and query) parameter by default, with the possibility of using the –maxmatch and -1 parameters in the delta.filter wrapper to generate 1-to-1 alignments.</p>
+</section>
+<section id="sourmash" class="level2">
+<h2 class="anchored" data-anchor-id="sourmash">sourmash</h2>
+<p>For sourmash (Average Nucletide Identity using sourmash) analysis, genome sequences are compared using the <a href="https://sourmash.readthedocs.io/en/latest/">sourmash</a> tool.</p>
+</section>
+<section id="fastani" class="level2">
+<h2 class="anchored" data-anchor-id="fastani">fastANI</h2>
+<p>For fastANI (Average Nucletide Identity using FastANI) analysis, genome sequences are compared using the <a href="https://github.com/ParBLiSS/FastANI">fastANI</a> tool.</p>
+</section>
+<section id="sqlite3" class="level2">
+<h2 class="anchored" data-anchor-id="sqlite3">SQLite3</h2>
+<p>The output generated by pyani analyses is stored in a local database, provided by SQLite3, for rapid querying and recovery. This allows for persistent storage of results without the need to keep the original alignment files, and for incremental addition of new analyses. SQLite is installed with Python</p>
+</section>
+<section id="snakemake" class="level2">
+<h2 class="anchored" data-anchor-id="snakemake">snakemake</h2>
+<p>By integrating <a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a>, we maintain a single interface for defining and managing workflows. This allows us to standardize job execution across different environments without needing separate scheduling logic for local, cluster, or cloud execution.</p>
+</section>
+<section id="python-packages" class="level2">
+<h2 class="anchored" data-anchor-id="python-packages">Python Packages</h2>
+<p><code>pyANI-plus</code> depends on several other Python packages, and we gratefully acknowledge their contribution:</p>
+<ul>
+<li><a href="https://matplotlib.org/">Matplotlib</a>: for graphical output</li>
+<li><a href="https://github.com/chaimleib/intervaltree">intervaltree</a>: for identification of overlaps</li>
+<li><a href="https://seaborn.pydata.org/index.html">Seaborn</a>: for graphical output</li>
+<li><a href="https://networkx.org/">NetworkX</a>: for graph calculations and representation</li>
+<li><a href="https://numpy.org/">Numpy</a>: for matrix calculations</li>
+<li><a href="https://pandas.pydata.org/">Pandas</a>: for dataframe operations</li>
+<li><a href="https://www.sqlalchemy.org/">SQLAlchemy</a>: for interaction with SQLite3</li>
+<li><a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a>: provides progress bars for user interaction</li>
+</ul>
+</section>
+<section id="development" class="level2">
+<h2 class="anchored" data-anchor-id="development">Development</h2>
+<p>We rely on a number of additional packages to aid pyani development, and if you set up a development environment as recommended in Contributing to <code>pyANI-plus</code>, then the following Python packages will be installed or expected to be present:</p>
+<ul>
+<li><a href="https://pypi.org/project/coverage/">coverage</a>: to generate code coverage output for the codecov.io service</li>
+<li><a href="https://pre-commit.com/">pre-commit</a>: Manages and runs pre-commit hooks to enforce code quality and formatting before commits</li>
+<li><a href="https://pytest.org/en/latest/">pytest</a>: to manage and run automated testing</li>
+<li><a href="https://pypi.org/project/pytest-cov/">pytest-cov</a>: to integrate <code>pytest</code> with <code>codecov</code> and <code>coverage</code></li>
+<li><a href="https://pypi.org/project/pytest-xdist/">pytest-xdist</a>: Enables parallel test execution with <code>pytest</code>, improving test runtime efficiency.</li>
+<li><a href="https://docs.astral.sh/ruff/">Ruff</a>: Python linter that enforces coding style and helps catch potential issues.</li>
+<li><a href="https://pypi.org/project/types-tqdm/">types-tqdm</a>: Provides type hints for tqdm, improving type checking and IDE support.</li>
+</ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -694,13 +781,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./index.html" class="pagination-link" aria-label="About pyANI-plus">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About pyANI-plus</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./early-section.html" class="pagination-link" aria-label="Early Section">
-        <span class="nav-page-text">Early Section</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./installation.html" class="pagination-link" aria-label="Installation">
+        <span class="nav-page-text">Installation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -708,11 +795,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>THIS IS A SHORT PIECE OF FOOTER TEXT NAMING THE BOOK/AUTHORS</p>
+<p>pyANI-plus documentation</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/edit/main/requirements.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/REPOSITORY/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
