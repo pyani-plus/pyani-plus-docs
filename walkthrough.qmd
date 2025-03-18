@@ -12,16 +12,11 @@ This section walks you through how `pyANI-plus` can be applied to calculate Aver
 Before using `pyANI-plus`, make sure to install it on a local machine like a laptop, desktop, server, or cluster. Please see section [installation](installation.qmd#installation) for installation instructions.
 :::
 
-To view the avaliable options for `pyANI-plus`, use the `-h` (help) option.
+To view the avaliable options for `pyANI-plus`, use the `-h` (help) option. For example:
 
-```bash
-pyani-plus -h
-```
-
-This should display a list of avaliable commands and options for `pyANI-plus`. For example:
-
-```bash
- Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            
+```shell
+$ pyani-plus -h
+Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            
                                                                                                                                                           
 ╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ --install-completion            Install completion for the current shell.                                                                              │
