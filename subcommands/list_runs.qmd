@@ -1,0 +1,17 @@
+# `list-runs` {#list-runs-subcommand.unnambered}
+
+The `list-runs` subcommand lists the runs defined in a given pyANI-plus SQLite3 database.
+
+::: { .callout-tip}
+## `pyani-plus list-runs` Usage
+
+```bash
+pyani-plus list-runs [OPTIONS]
+```
+:::
+
+## Options
+
+`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+
+`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.

@@ -1,0 +1,31 @@
+# `export-run` {#export-run-subcommand .unnambered}
+
+The `export-run` subcommand exports ANI results in a tabular format for a specified `--run_id`, using data stored in a local SQLite3 database. 
+
+
+::: { .callout-important}
+ The output directory must already exist. Any pre-existing files will be overwitten. Incomplete runs will return an error. There will be no output for empty run. For partial runs the long form table will be exported, but not the matrices.
+ 
+The matrix output files will be named `<method>_<property>.tsv` while the long form is named `<method>_run_<run-id>.tsv` and will include the query and subject genomes and all the comparison properties as columns. 
+:::
+
+::: { .callout-tip}
+## `pyani-plus export-run` Usage
+
+```bash
+pyani-plus export-run [OPTIONS]
+```
+:::
+
+## Options
+
+`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+
+`--outdir`:  Output directory. (<span style="color:green;">DIRECTORY</span>)  [<span style="color:red;">REQUIRED</span>]
+
+`--run-id`: Which run from the database. [<span style="color:grey;">Defaults to latest.</span>] (<span style="color:green;">INTEGER</span>) 
+
+`--label`: How to label the genomes. [<span style="color:grey;">Default: stem.</span>] (<span style="color:green;">md5|filename|stem</span>)
+
+`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+

@@ -38,15 +38,23 @@ book:
     - index.qmd
     - requirements.qmd
     - installation.qmd
+    - walkthrough.qmd
 
-    - part: early-section.qmd
+    - part: subcommands/subcommands.qmd
       chapters: 
-        - early-section-topic.qmd
-    
-    - part: late-section.qmd
-      chapters: 
-        - webr-example.qmd
-    
+        - subcommands/anib.qmd
+        - subcommands/anim.qmd
+        - subcommands/dnadiff.qmd
+        - subcommands/external_alignment.qmd
+        - subcommands/fastani.qmd
+        - subcommands/sourmash.qmd
+        - subcommands/plot_run.qmd
+        - subcommands/plot_run_comp.qmd
+        - subcommands/list_runs.qmd
+        - subcommands/export_run.qmd
+        - subcommands/resume.qmd
+        - subcommands/delete_run.qmd
+        - subcommands/classify.qmd
     - testing.qmd
     - part: licensing.qmd
       chapters: 

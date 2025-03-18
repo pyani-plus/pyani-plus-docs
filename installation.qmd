@@ -1,4 +1,4 @@
-# Installation
+# Installation {#installation .unnumbered}
 
 This section describes different ways to install pyANI-plus on the most common operative systems sich as Unix/Linux and macOS. 
 

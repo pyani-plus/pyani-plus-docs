@@ -1,4 +1,4 @@
-# Requirements
+# Requirements {.unnumbered}
 
 `pyANI-plus` relies on several other programs, packages, and tools for both running and development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.
 
@@ -14,7 +14,6 @@ For ANIm (Average Nucleotide Identity using MUMmer) analysis, genome sequences a
 
 ## sourmash
 For sourmash (Average Nucletide Identity using sourmash) analysis, genome sequences are compared using the [sourmash](https://sourmash.readthedocs.io/en/latest/) tool. 
-
 
 ## fastANI
 For fastANI (Average Nucletide Identity using FastANI) analysis, genome sequences are compared using the [fastANI](https://github.com/ParBLiSS/FastANI) tool. 
