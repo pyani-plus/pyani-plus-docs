@@ -16,68 +16,98 @@ To view the avaliable options for `pyANI-plus`, use the `-h` (help) option. For 
 
 ```shell
 $ pyani-plus -h
-Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            
-                                                                                                                                                          
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --install-completion            Install completion for the current shell.                                                                              │
-│ --show-completion               Show completion for the current shell, to copy it or customize the installation.                                       │
-│ --help                -h        Show this message and exit.                                                                                            │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ classify             Classify genomes into clusters based on ANI results.                                                                              │
-│ delete-run           Delete any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ export-run           Export any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ list-runs            List the runs defined in a given pyANI-plus SQLite3 database.                                                                     │
-│ plot-run             Plot heatmaps and distributions for any single run.                                                                               │
-│ plot-run-comp        Plot comparisons between multiple runs.                                                                                           │
-│ resume               Resume any (partial) run already logged in the database.                                                                          │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ ANI methods ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3 database.                                                │
-│ external-alignment   Compute pairwise ANI from given multiple-sequence-alignment (MSA) file.                                                           │
-│ fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.                                                            │
-│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus SQLite3 database.                                    │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                           
+                                                                         
+╭─ Options ─────────────────────────────────────────────────────────────╮
+│ --install-completion            Install completion for the current    │
+│                                 shell.                                │
+│ --show-completion               Show completion for the current       │
+│                                 shell, to copy it or customize the    │
+│                                 installation.                         │
+│ --help                -h        Show this message and exit.           │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────╮
+│ classify             Classify genomes into clusters based on ANI      │
+│                      results.                                         │
+│ delete-run           Delete any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ export-run           Export any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ list-runs            List the runs defined in a given pyANI-plus      │
+│                      SQLite3 database.                                │
+│ plot-run             Plot heatmaps and distributions for any single   │
+│                      run.                                             │
+│ plot-run-comp        Plot comparisons between multiple runs.          │
+│ resume               Resume any (partial) run already logged in the   │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ ANI methods ─────────────────────────────────────────────────────────╮
+│ anib                 Execute ANIb calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ anim                 Execute ANIm calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ dnadiff              Execute mumer-based dnadiff calculations, logged │
+│                      to a pyANI-plus SQLite3 database.                │
+│ external-alignment   Compute pairwise ANI from given                  │
+│                      multiple-sequence-alignment (MSA) file.          │
+│ fastani              Execute fastANI calculations, logged to a        │
+│                      pyANI-plus SQLite3 database.                     │
+│ sourmash             Execute sourmash-plugin-branchwater ANI          │
+│                      calculations, logged to a pyANI-plus SQLite3     │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
 
 ```
 
 To see the options for a specific subcommand, use `pyani-plus <subcommand> -h`. For example, to view options for the ANIb method:
 
-```bash
-pyani-plus anib -h
-```
-
-You should see the following output:
-
-```bash
-Usage: pyani-plus anib [OPTIONS] FASTA                                                                                                                               
-                                                                                                                                                                      
- Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                                                                  
-                                                                                                                                                                      
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta, .fna) [required]                                                                          │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *  --database           FILE           Path to pyANI-plus SQLite3 database [required]                                                                              │
-│    --name               TEXT           Run name. Default is 'N genomes using METHOD'.                                                                              │
-│    --create-db                         Create database if does not exist                                                                                           │
-│    --executor           [local|slurm]  How should the internal tools be run? [default: local]                                                                      │
-│    --help       -h                     Show this message and exit.                                                                                                 │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Method parameters ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --fragsize        INTEGER RANGE [x>=1]  Comparison method fragment size [default: 1020]                                                                            │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Debugging ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --temp         DIRECTORY  Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive.  │
-│                           Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this   │
-│                           afterwards.                                                                                                                              │
-│ --wtemp        DIRECTORY  Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be  │
-│                           on a shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory  │
-│                           under the present direct (for clusters), and remove this afterwards.                                                                     │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
+```shell
+$ pyani-plus anib -h
+ Usage: pyani-plus anib [OPTIONS] FASTA                                  
+                                                                         
+ Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.     
+                                                                         
+╭─ Arguments ───────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas,      │
+│                       .fasta, .fna)                                   │
+│                       [required]                                      │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────╮
+│ *  --database           FILE           Path to pyANI-plus SQLite3     │
+│                                        database                       │
+│                                        [required]                     │
+│    --name               TEXT           Run name. Default is 'N        │
+│                                        genomes using METHOD'.         │
+│    --create-db                         Create database if does not    │
+│                                        exist                          │
+│    --executor           [local|slurm]  How should the internal tools  │
+│                                        be run?                        │
+│                                        [default: local]               │
+│    --help       -h                     Show this message and exit.    │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ───────────────────────────────────────────────────╮
+│ --fragsize        INTEGER RANGE [x>=1]  Comparison method fragment    │
+│                                         size                          │
+│                                         [default: 1020]               │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ───────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files,    │
+│                           which for debugging purposes will not be    │
+│                           deleted. For clusters this must be on a     │
+│                           shared drive. Default behaviour is to use a │
+│                           system specified temporary directory        │
+│                           (specific to the compute-node when using a  │
+│                           cluster) and remove this afterwards.        │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow     │
+│                           coordination files, which for debugging     │
+│                           purposes will not be deleted. For clusters  │
+│                           this must be on a shared drive. Default     │
+│                           behaviour is to use a system specified      │
+│                           temporary directory (for the local          │
+│                           executor) or a temporary directory under    │
+│                           the present direct (for clusters), and      │
+│                           remove this afterwards.                     │
+╰───────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Collect genomes for analysis
@@ -165,16 +195,21 @@ pyani-plus list-runs --database walkthrough.db
 You will see the following table, or something similar, depending on the analyses contained within the database, displayed on your screen:
 
 ```
-                              5 analysis runs in walkthrough.db                              
-┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ID ┃ Date       ┃ Method   ┃ Done ┃ Null ┃ Miss ┃ Total   ┃ Status ┃ Name                 ┃
-┡━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━┩
-│  1 │ 2025-03-17 │ ANIb     │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough ANIb     │
-│  2 │ 2025-03-17 │ ANIm     │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough ANIm     │
-│  3 │ 2025-03-17 │ dnadiff  │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough dnadiff  │
-│  4 │ 2025-03-17 │ fastANI  │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough fastani  │
-│  5 │ 2025-03-17 │ sourmash │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough sourmash │
-└────┴────────────┴──────────┴──────┴──────┴──────┴─────────┴────────┴──────────────────────┘
+                         5 analysis runs in walkthrough.db                          
+┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ ID ┃ Date       ┃ Method   ┃ Done ┃ Null ┃ Miss ┃ Total   ┃ Status ┃ Name        ┃
+┡━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━┩
+│  1 │ 2025-03-17 │ ANIb     │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ ANIb        │
+│  2 │ 2025-03-17 │ ANIm     │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ ANIm        │
+│  3 │ 2025-03-17 │ dnadiff  │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ dnadiff     │
+│  4 │ 2025-03-17 │ fastANI  │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ fastani     │
+│  5 │ 2025-03-17 │ sourmash │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ sourmash    │
+└────┴────────────┴──────────┴──────┴──────┴──────┴─────────┴────────┴─────────────┘
 ```
 
 In this table, each row represents a single run, and the columns provide the following details:
@@ -202,7 +237,7 @@ If `--run-id` is not specified the latest run will be exported. To export runs f
 
 This will report the relevant information to new files in the `output` directory. The matrix output files are named `<method>_<property>.tsv` while the long form is named `<method>_run_<run-id>.tsv` and will include the query and subject genomes and all the comparison properties as columns:
 
-```
+```shell
 .
 ├── ANIb_aln_lengths.tsv
 ├── ANIb_hadamard.tsv
@@ -233,32 +268,40 @@ Optionally, you can label genomes using `md5` and `filename` using the `--label`
 
 `plot-run` subcommand generates the following heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database:
 
-- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`, @fig-anim-heatmap)
+- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`, @fig-anim-identity-heatmap)
 
 ::: {.column-margin}
 
-![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-heatmap .lightbox }
+![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-identity-heatmap .lightbox }
 
 :::
-
 
 In the above heatmap, each cell represents a pairwise comparision between the genomes shown in the rows and columns, showing the pairwise identity of aligned regions. The dendrograms are single-linkage clustering trees generated from the matrix of pairwise identity results. The default color scheme assigns red to cells with identity $\geq 0.95$, blue to those with identity $<0.95$, and orange to cells representing comparisons with no alignment found (e.g., NULLs). This division corresponds to a widely-used convention for bacterial species boundaries.
 
 
-- percentage coverage of each query genome by aligned regions (`<method>_query_cov_heatmap.<extension>`, `<method>_query_cov_dist.<extension>`, `<method>_query_cov_scatter.<extension>` and `<method>_query_cov.tsv`)
+- percentage coverage of each query genome by aligned regions (`<method>_query_cov_heatmap.<extension>`, `<method>_query_cov_dist.<extension>`, `<method>_query_cov_scatter.<extension>` and `<method>_query_cov.tsv`, @fig-anim-cov-heatmap)
 
-![ANIm percentage coverage heatmap for walkthrough_data](walkthrough_plots/ANIm_query_cov_heatmap.png)
+
+::: {.column-margin}
+![ANIm percentage coverage heatmap for walkthrough_data](walkthrough_plots/ANIm_query_cov_heatmap.png){#fig-anim-cov-heatmap .lightbox }
+:::
 
 In the above heatmap, each cell represents a pairwise comparision between the genomes shown in the rows and columns, showing the pairwise coverage of each genome by aligned regions in the comparison. The dendrograms are single-linkage clustering trees generated from the matrix of pairwise coverage results. The default color scheme assigns red to cells with coverage $\geq 0.50$, blue to those with coverage $<0.50$, and orange to cells representing comparisons with no alignment found (e.g., NULLs). This division corresponds to a strict majority of each genome in the comparison being alignable (a plausible minimum requirement for two sequences being considered “the same thing”).
 
 
-- a Hadamard matrix of percentage identity multiplied by percentage coverage for each comparison (`<method>_hadamard_heatmap.<extension>`, `<method>_hadamard_dist.<extension>` and `<method>_hadamard.tsv`)
+- a Hadamard matrix of percentage identity multiplied by percentage coverage for each comparison (`<method>_hadamard_heatmap.<extension>`, `<method>_hadamard_dist.<extension>` and `<method>_hadamard.tsv`, @fig-anim-hadamard-heatmap)
 
-![ANIm hadamard heatmap for walkthrough_data](walkthrough_plots/ANIm_hadamard_heatmap.png)
+::: {.column-margin}
+![ANIm hadamard heatmap for walkthrough_data](walkthrough_plots/ANIm_hadamard_heatmap.png){#fig-anim-hadamard-heatmap .lightbox }
+:::
 
-- a total Avenarge Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity (`<method>_tANI_heatmap.<extension>`, `<method>_tANI_dist.<extension>`, `<method>_tANI_scatter.<extension>` and `<method>_tANI.tsv`)
 
-![ANIm tANI heatmap for walkthrough_data](walkthrough_plots/ANIm_tANI_heatmap.png)
+- a total Avenarge Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity (`<method>_tANI_heatmap.<extension>`, `<method>_tANI_dist.<extension>`, `<method>_tANI_scatter.<extension>` and `<method>_tANI.tsv`, @fig-anim-tani-heatmap)
+
+::: {.column-margin}
+![ANIm tANI heatmap for walkthrough_data](walkthrough_plots/ANIm_tANI_heatmap.png){#fig-anim-tani-heatmap .lightbox }
+:::
+
 
 - number of “similarity errors” on each genome (`<method>_sim_errors.tsv`)
 - Long form of ANI results which include the query and subject genomes and all the comparison properties as columns (`<method>_run_<ID>.tsv`)
@@ -278,10 +321,11 @@ pyani-plus plot-run-comp --database walkthrough.db --outdir output --run-ids 1,2
 
 This command generates the following outputs:
 
-- A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`).
+- A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`, @fig-compare-scatter).
 
-
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_scatter_vs_others.png)
+::: {.column-margin}
+![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_scatter_vs_others.png){#fig-compare-scatter .lightbox }
+:::
 
 
 ::: { .callout-tip}
@@ -289,9 +333,12 @@ The red vertical line serves as a reference, indicating where data points should
 :::
 
 
-- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs.
+- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs (`<reference_method>_identity_<run_ID>_diff_vs_others.<extension>`, @fig-compare-dist).
 
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_diff_vs_others.png)
+::: {.column-margin}
+![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_diff_vs_others.png){#fig-compare-dist .lightbox }
+:::
+
 
 ::: { .callout-tip}
 The red horizontal line at 0 indicates no difference between the pairwise comparison results across methods.
