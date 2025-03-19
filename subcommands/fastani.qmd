@@ -2,42 +2,50 @@
 
 The `fastani` subcommand processes genome files from the `indir` directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus fastani` Usage
 
-```bash
-pyani-plus fastani [OPTIONS] FASTA 
+```shell
+$ pyani-plus fastani -h
+                                                                                     
+ Usage: pyani-plus fastani [OPTIONS] FASTA                                           
+                                                                                     
+ Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.              
+                                                                                     
+╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta, .fna)    │
+│                       [required]                                                  │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────╮
+│ *  --database           FILE           Path to pyANI-plus SQLite3 database        │
+│                                        [required]                                 │
+│    --name               TEXT           Run name. Default is 'N genomes using      │
+│                                        METHOD'.                                   │
+│    --create-db                         Create database if does not exist          │
+│    --executor           [local|slurm]  How should the internal tools be run?      │
+│                                        [default: local]                           │
+│    --help       -h                     Show this message and exit.                │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ───────────────────────────────────────────────────────────────╮
+│ --fragsize        INTEGER RANGE [x>=1]       Comparison method fragment size      │
+│                                              [default: 3000]                      │
+│ --kmersize        INTEGER RANGE [1<=x<=16]   Comparison method k-mer size         │
+│                                              [default: 16]                        │
+│ --minmatch        FLOAT RANGE [0.0<=x<=1.0]  Comparison method min-match          │
+│                                              [default: 0.2]                       │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ───────────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for      │
+│                           debugging purposes will not be deleted. For clusters    │
+│                           this must be on a shared drive. Default behaviour is to │
+│                           use a system specified temporary directory (specific to │
+│                           the compute-node when using a cluster) and remove this  │
+│                           afterwards.                                             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow coordination    │
+│                           files, which for debugging purposes will not be         │
+│                           deleted. For clusters this must be on a shared drive.   │
+│                           Default behaviour is to use a system specified          │
+│                           temporary directory (for the local executor) or a       │
+│                           temporary directory under the present direct (for       │
+│                           clusters), and remove this afterwards.                  │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+
 ```
-:::
-
-## Arguments {.unnambered}
-
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
-
-## Options {.unnambered}
-
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--create-db`: Create database if does not exist.
-
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
-
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
-
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
-
-## Method parameters {.unnambered}
-
-`--fragsize`: Comparison method fragment size. [<span style="color:grey;">Default: 1020</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
-
-`--kmersize`: Comparison method k-mer size. [<span style="color:grey;">Default: 16</span>] (<span style="color:green;">$1 \leq x \leq 16$
-</span>)
-
-`--minmatch`: Comparison method min-match. [<span style="color:grey;">Default: 0.2</span>] (<span style="color:green;">$0.0 \leq x \leq 1.0$
-</span>)
-
-## Debugging {.unnambered}
-
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
-
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)

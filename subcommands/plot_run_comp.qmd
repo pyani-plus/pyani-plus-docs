@@ -2,26 +2,31 @@
 
 The `plot-run-comp` subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the `outdir` directory.
 
-::: { .callout-important}
- The output directory must already exist. The scatter plots will be named `<method>_<property>_<run-id>_vs_*.<extension>` and any pre-existing files will be overwritten.
-:::
-
-::: { .callout-tip}
-## `pyani-plus plot-run-comp` Usage
-
-```bash
-pyani-plus plot-run [OPTIONS]
+```shell
+$ pyani-plus plot-run-comp -h
+                                                                                     
+ Usage: pyani-plus plot-run-comp [OPTIONS]                                           
+                                                                                     
+ Plot comparisons between multiple runs.                                             
+ The output directory must already exist. The scatter plots will be named            
+ <method>_<property>_<run-id>_vs_*.<extension> and any pre-existing files will be    
+ overwritten.                                                                        
+                                                                                     
+╭─ Options ─────────────────────────────────────────────────────────────────────────╮
+│ *  --database          FILE                  Path to pyANI-plus SQLite3 database  │
+│                                              [required]                           │
+│ *  --outdir            DIRECTORY             Output directory. If it does not     │
+│                                              exist, it will be created.           │
+│                                              [required]                           │
+│ *  --run-ids           TEXT                  Which runs (comma separated list,    │
+│                                              reference first)?                    │
+│                                              [default: None]                      │
+│                                              [required]                           │
+│    --columns           INTEGER RANGE [x>=0]  How many columns to use when tiling  │
+│                                              plots of multiple runs. Default 0    │
+│                                              means automatically tries for square │
+│                                              tiling.                              │
+│                                              [default: 0]                         │
+│    --help      -h                            Show this message and exit.          │
+╰───────────────────────────────────────────────────────────────────────────────────╯
 ```
-:::
-
-## Options
-
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--outdir`:  Output directory. (<span style="color:green;">DIRECTORY</span>)  [<span style="color:red;">REQUIRED</span>]
-
-`--run-ids`: Which runs (comma separated list, reference first)? (<span style="color:green;">TEXT</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--columns`: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [<span style="color:grey;">Default: 0</span>] (<span style="color:green;">Integer range: $x\geq0$</span>)
-
-`--help`, `-h`: Display usage information for `pyani-plus plot-run` and exit.

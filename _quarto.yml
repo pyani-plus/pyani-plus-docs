@@ -29,7 +29,7 @@ book:
 
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
-  author: "Leighton Pritchard"
+  author: "Angelika Kiepas, Peter Cock and Leighton Pritchard"
   date: "03/10/2025"
 
   # Define chapters and sections here
@@ -57,6 +57,7 @@ book:
         - subcommands/delete_run.qmd
         - subcommands/classify.qmd
     - testing.qmd
+    - contributing.qmd
     - part: licensing.qmd
       chapters: 
         - pyani_licence.qmd

@@ -2,26 +2,28 @@
 
 The `plot-run` subcommand generates heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the `outdir` directory.
 
-::: { .callout-important}
- The output directory must already exist. The heatmap files will be named `<method>_<property>.<extension>` and any pre-existing files will be overwritten. 
-:::
 
-::: { .callout-tip}
-## `pyani-plus plot-run` Usage
+```shell
+$ pyani-plus plot-run -h     
+                                                                                     
+ Usage: pyani-plus plot-run [OPTIONS]                                                
+                                                                                     
+ Plot heatmaps and distributions for any single run.                                 
+ The output directory must already exist. The heatmap files will be named            
+ <method>_<property>.<extension> and any pre-existing files will be overwritten.     
+                                                                                     
+╭─ Options ─────────────────────────────────────────────────────────────────────────╮
+│ *  --database          FILE                 Path to pyANI-plus SQLite3 database   │
+│                                             [required]                            │
+│ *  --outdir            DIRECTORY            Output directory. If it does not      │
+│                                             exist, it will be created.            │
+│                                             [required]                            │
+│    --run-id            INTEGER              Which run from the database (defaults │
+│                                             to latest)                            │
+│                                             [default: None]                       │
+│    --label             [md5|filename|stem]  How to label the genomes              │
+│                                             [default: stem]                       │
+│    --help      -h                           Show this message and exit.           │
+╰───────────────────────────────────────────────────────────────────────────────────╯
 
-```bash
-pyani-plus plot-run [OPTIONS]
 ```
-:::
-
-## Options
-
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--outdir`:  Output directory. (<span style="color:green;">DIRECTORY</span>)  [<span style="color:red;">REQUIRED</span>]
-
-`--run-id`: Which run from the database. [<span style="color:grey;">Defaults to latest.</span>] (<span style="color:green;">INTEGER</span>) 
-
-`--label`: How to label the genomes. [<span style="color:grey;">Default: stem.</span>] (<span style="color:green;">md5|filename|stem</span>)
-
-`--help`, `-h`: Display usage information for `pyani-plus plot-run` and exit.
