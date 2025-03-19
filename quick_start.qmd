@@ -1,0 +1,39 @@
+# QuickStart {.unnumbered}
+
+This section is a quick overview of how to use `pyANI-plus` for calculation of whole-genome similarity measures. For a more detailed tutorial, please refer to section [pyANI-plus walkthrough](walkthrough.qmd#walthrough). 
+
+## Installation
+To start using `pyANI-plus`, you'll first need to install it on a local system, such as a laptop, desktop, server, or cluster. The latest version can be easily installed using one of the two most common Python package managers:
+
+1. `conda`
+
+You can install `pyANI-plus` through the `Bioconda` channel on [Anaconda](https://www.anaconda.com/):
+
+```bash
+conda install pyani-plus
+```
+
+2. `PyPI`
+`pyANI-plus` is available via the [PyPI](https://pypi.org/) package manager for Python:
+
+```bash
+pip install pyani-plus
+```
+
+::: { .callout-tip}
+You can also install pyANI-plus directly from the source. For detailed and alternative installation methods, see the [Installation Guide](installation.qmd#installation) page.
+:::
+
+## Basic usage
+{{< include includes/_basic_usage.qmd >}}
+
+## Input
+{{< include includes/_input.qmd >}}
+
+## Output files
+The expected outputs in `pyANI-plus` can vary depending on the specific command used. At present, the software generates both graphical and tabular outputs:
+
+- __Graphical Outputs__: These include plots such as heatmaps, distributions, and scatter plots, which are available in popular formats like `PDF`, `PNG`, `JPG` and `SVGZ`.
+- __Tabular Outputs__: `pyANI-plus` also produces matrices that display ANI (Average Nucleotide Identity) results, along with classification data,  provided in tab-separated .tsv format.
+
+For more detailed information on the specific outputs of each subcommand, please refer to the respective [subcommand](subcommands/subcommands.qmd#subcommands) sections.

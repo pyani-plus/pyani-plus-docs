@@ -1,4 +1,4 @@
-# pyANI-plus walkthrough {.unnumbered}
+# pyANI-plus walkthrough {#walkthrough .unnumbered}
 
 This section walks you through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedue for any `pyANI-plus` analysis is:
 

@@ -38,6 +38,7 @@ book:
     - index.qmd
     - requirements.qmd
     - installation.qmd
+    - quick_start.qmd
     - walkthrough.qmd
 
     - part: subcommands/subcommands.qmd

@@ -1,5 +1,5 @@
 # About pyANI-plus {.unnumbered}
-`pyANI-plus` is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
+`pyANI-plus` is a Python package and software package that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
 
 - ANIb (average nucleotide identity using BLAST+)
 - ANIm (average nucleotide identity using MUMmer)
