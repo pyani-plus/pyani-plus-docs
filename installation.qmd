@@ -1,8 +1,8 @@
 # Installation {#installation .unnumbered}
 
-This section describes different ways to install pyANI-plus on the most common operative systems sich as Unix/Linux and macOS. 
+This section describes different ways to install pyANI-plus on the most common operative systems such as Unix/Linux and macOS. 
 
-. Currently, we support three ways to install `pyANI-plus` on your system:
+Currently, we support three ways to install `pyANI-plus` on your system:
 
 1. Installation from source (i.e. download from GitHub)
 2. Installation with Anaconda
@@ -67,3 +67,5 @@ If the installation was completed correctly, this should display a list of avali
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
+
+{{< include includes/_requirements.qmd >}}

@@ -36,7 +36,6 @@ book:
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
-    - requirements.qmd
     - installation.qmd
     - quick_start.qmd
     - walkthrough.qmd
