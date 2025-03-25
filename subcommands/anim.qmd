@@ -1,5 +1,6 @@
 # `anim` {#anim-subcommand .unnambered}
 
+## Usage
 The `anim` subcommand processes genome files from the `indir` directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.
 
 ```shell
@@ -46,3 +47,37 @@ $ pyani-plus anim -h
 │                           [default: pyani-plus.log]                          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## What does `aniM` method do?
+`pyani-plus` implements Average Nucleotide Identity using [MUMmer](https://mummer.sourceforge.net/) (ANIm) as described in @richter2009shifting.
+
+
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
+
+- __Sequence Alignment__: MUMmer3's `NUCmer` (NUCleotide MUMmer) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating .delta files. By default, `.delta` files are created using the `--mum` parameter, which restricts anchor matches to those that are unique in both the reference and query genomes. However, users can opt for the `--maxmatch` parameter instead, which includes all anchor matches, regardless of their uniqueness.
+
+- __Alignment filtering__: `.delta` alignment files are filtered with the `delta-filter` program to retain 1-to-1 alignments, producing `.filter` files.
+
+- __Result Parsing and Calculation__: The `.filter` file is parsed, and the following metrics are computed:
+
+    - __Aligned bases__: Total aligned bases for each genome
+
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned
+
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
+
+    - __Similarity errors__: The number of unaligned or non-identical bases
+
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+
+    - __tANI score__: The negative natural log of coverage multiplied by identity
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+For a more in-depth understanding of how MUMmer works, please refer to [MUMmer's documentation](https://mummer.sourceforge.net/).
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
+
+## References {.unnumbered}

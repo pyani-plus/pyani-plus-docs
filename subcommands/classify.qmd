@@ -1,6 +1,6 @@
 # `classify` {#classify-subcommand .unnambered}
 
-The `classify` subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy. The output, including classify plots (`JPG`, `PDF`, `PNG`, `SVGZ`) and tabular data, is written to `outdir` directory.
+The `classify` subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy.
 
 ```shell
 $ pyani-plus classify -h
@@ -53,3 +53,19 @@ $ pyani-plus classify -h
 
 
 ```
+
+## Classifying genomes into clusters based on ANI results
+
+The `pyani-plus classify` subcommand identifies cliques (_k-complete_ graphs) within a set of genomes in the following steps:
+
+1. __Building the initial graph__: First, an initial graph is built using [NetworkX](https://networkx.org/) where nodes represent genomes and edges correspond to pairwise comparisons. Since some ANI methods may be asymmetric, users can specify which values to use via `--coverage-edges` for coverage and `--score-edges` for identity or tANI (e.g., `min`, `max`, or `mean`). By default, the `min` is used for coverage, while the `mean` is used for identity and tANI. Edges are not drawn between two genomes/nodes if:
+ - No alignment is found between them.
+ - Genome coverage falls below a certain threshold (50% by default, but this can be adjusted using the `--cov-min` parameter).
+d
+2. __Identification of initial cliques__: The initial graph is checked for the presence of cliques, as it may split into smaller subgraphs depending on shared genome coverage and the set `--cov-min` parameter.
+
+3. __Removal of lowest identity edges__: Edges with the lowest identity are removed one by one, checking for cliques after each removal. This process continues until all nodes become singletons.
+
+
+# Output
+The output, including classify plots (`JPG`, `PDF`, `PNG`, `SVGZ`) and tabular data, is written to `outdir` directory.

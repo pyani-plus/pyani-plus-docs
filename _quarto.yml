@@ -65,6 +65,7 @@ book:
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib
+reference-location: section
 
 # Formatting and theme; may not need to be changed
 format:

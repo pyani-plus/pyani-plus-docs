@@ -1,5 +1,6 @@
 # `anib` {#anib-subcommand .unnambered}
 
+## Usage
 The `anib` subcommand processes genome files from the `indir` directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.
 
 ```shell
@@ -48,3 +49,34 @@ $ pyani-plus anib -h
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
+
+## What does `aniB` method do?
+`pyani-plus` implements Average Nucleotide Identity using [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata) (ANIb) as described in @goris2007dna.
+
+
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
+
+- __Genome Fragmentation__: Query genomes are fragmented into 1020bp segments. Fragments shorter than 1020 bp are retained.
+
+- __Sequence Alignment__: The fragmented query sequences are aligned against the intact subject sequences using [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata).
+- __Result Parsing and Calculation__: The [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata) output (tab-separated plain text format) is parsed, and the following metrics are computed:
+
+    - __Aligned bases__: Total aligned bases for each genome
+
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned
+
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
+
+    - __Similarity errors__: The number of unaligned or non-identical bases
+
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+
+    - __tANI score__: The negative natural log of coverage multiplied by identity
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
+
+## References {.unnumbered}
