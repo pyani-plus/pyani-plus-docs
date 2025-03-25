@@ -5,28 +5,33 @@ The `plot-run-comp` subcommand compares ANI results from multiple runs, generati
 ```shell
 $ pyani-plus plot-run-comp -h
                                                                                      
- Usage: pyani-plus plot-run-comp [OPTIONS]                                           
-                                                                                     
- Plot comparisons between multiple runs.                                             
- The output directory must already exist. The scatter plots will be named            
- <method>_<property>_<run-id>_vs_*.<extension> and any pre-existing files will be    
- overwritten.                                                                        
-                                                                                     
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database          FILE                  Path to pyANI-plus SQLite3 database  │
-│                                              [required]                           │
-│ *  --outdir            DIRECTORY             Output directory. If it does not     │
-│                                              exist, it will be created.           │
-│                                              [required]                           │
-│ *  --run-ids           TEXT                  Which runs (comma separated list,    │
-│                                              reference first)?                    │
-│                                              [default: None]                      │
-│                                              [required]                           │
-│    --columns           INTEGER RANGE [x>=0]  How many columns to use when tiling  │
-│                                              plots of multiple runs. Default 0    │
-│                                              means automatically tries for square │
-│                                              tiling.                              │
-│                                              [default: 0]                         │
-│    --help      -h                            Show this message and exit.          │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus plot-run-comp [OPTIONS]                                      
+                                                                                
+ Plot comparisons between multiple runs.                                        
+ The output directory must already exist. The scatter plots will be named       
+ <method>_<property>_<run-id>_vs_*.<extension> and any pre-existing files will  
+ be overwritten.                                                                
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE                  Path to pyANI-plus SQLite3      │
+│                                              database.                       │
+│                                              [required]                      │
+│ *  --outdir    -o      DIRECTORY             Output directory. Created if    │
+│                                              does not already exist.         │
+│                                              [required]                      │
+│ *  --run-ids           TEXT                  Which runs (comma separated     │
+│                                              list, reference first)?         │
+│                                              [default: None]                 │
+│                                              [required]                      │
+│    --columns           INTEGER RANGE [x>=0]  How many columns to use when    │
+│                                              tiling plots of multiple runs.  │
+│                                              Default 0 means automatically   │
+│                                              tries for square tiling.        │
+│                                              [default: 0]                    │
+│    --help      -h                            Show this message and exit.     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --log        FILE  Where to record log(s). Use '-' for no logging.           │
+│                    [default: pyani-plus.log]                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```

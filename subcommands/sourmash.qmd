@@ -5,48 +5,52 @@ The `sourmash` subcommand processes genome files from the `indir` directory to p
 ```shell
 $ pyani-plus sourmash -h
                                                                                      
- Usage: pyani-plus sourmash [OPTIONS] FASTA                                          
-                                                                                     
- Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus        
- SQLite3 database.                                                                   
-                                                                                     
-╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
-│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta, .fna)    │
-│                       [required]                                                  │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database           FILE           Path to pyANI-plus SQLite3 database        │
-│                                        [required]                                 │
-│    --name               TEXT           Run name. Default is 'N genomes using      │
-│                                        METHOD'.                                   │
-│    --create-db                         Create database if does not exist          │
-│    --executor           [local|slurm]  How should the internal tools be run?      │
-│                                        [default: local]                           │
-│    --cache              DIRECTORY      Cache location if required for a method    │
-│                                        (must be visible to cluster workers).      │
-│                                        Default to .cache in the current           │
-│                                        directory.                                 │
-│    --help       -h                     Show this message and exit.                │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Debugging ───────────────────────────────────────────────────────────────────────╮
-│ --temp         DIRECTORY  Directory to use for intermediate files, which for      │
-│                           debugging purposes will not be deleted. For clusters    │
-│                           this must be on a shared drive. Default behaviour is to │
-│                           use a system specified temporary directory (specific to │
-│                           the compute-node when using a cluster) and remove this  │
-│                           afterwards.                                             │
-│ --wtemp        DIRECTORY  Directory to use for temporary workflow coordination    │
-│                           files, which for debugging purposes will not be         │
-│                           deleted. For clusters this must be on a shared drive.   │
-│                           Default behaviour is to use a system specified          │
-│                           temporary directory (for the local executor) or a       │
-│                           temporary directory under the present direct (for       │
-│                           clusters), and remove this afterwards.                  │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Method parameters ───────────────────────────────────────────────────────────────╮
-│ --scaled          INTEGER RANGE [x>=1]  Sets the compression ratio                │
-│                                         [default: 1000]                           │
-│ --kmersize        INTEGER RANGE [x>=1]  Comparison method k-mer size              │
-│                                         [default: 31]                             │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus sourmash [OPTIONS] FASTA                                     
+                                                                                
+ Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus   
+ SQLite3 database.                                                              
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --cache              DIRECTORY      Cache location if required for a      │
+│                                        method (must be visible to cluster    │
+│                                        workers). Defaults to .cache in the   │
+│                                        current directory.                    │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ --scaled          INTEGER RANGE [x>=1]  Sets the compression scaling ratio.  │
+│                                         [default: 1000]                      │
+│ --kmersize        INTEGER RANGE [x>=1]  Comparison method k-mer size.        │
+│                                         [default: 31]                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```

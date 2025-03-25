@@ -6,21 +6,26 @@ The `delete-run` subcommand deletes any single run stored in the database. This 
 ```shell
  $ pyani-plus delete-run -h
                                                                                      
- Usage: pyani-plus delete-run [OPTIONS]                                              
-                                                                                     
- Delete any single run from the given pyANI-plus SQLite3 database.                   
- This will prompt the user for confirmation if the run has comparisons, or if the    
- run status is "Running", but that can be overridden.                                
- Currently this will *not* delete any linked comparisons, even if they are not       
- currently linked to another run. They will be reused should you start a new run     
- using an overlapping set of input FASTA files.                                      
-                                                                                     
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database          FILE     Path to pyANI-plus SQLite3 database [required]    │
-│    --run-id            INTEGER  Which run from the database (defaults to latest)  │
-│                                 [default: None]                                   │
-│    --force     -f               Delete without confirmation                       │
-│    --help      -h               Show this message and exit.                       │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus delete-run [OPTIONS]                                         
+                                                                                
+ Delete any single run from the given pyANI-plus SQLite3 database.              
+ This will prompt the user for confirmation if the run has comparisons, or if   
+ the run status is "Running", but that can be overridden.                       
+ Currently this will *not* delete any linked comparisons, even if they are not  
+ currently linked to another run. They will be reused should you start a new    
+ run using an overlapping set of input FASTA files.                             
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE     Path to pyANI-plus SQLite3 database.         │
+│                                 [required]                                   │
+│    --run-id    -r      INTEGER  Which run from the database (defaults to     │
+│                                 latest).                                     │
+│    --force     -f               Delete without confirmation                  │
+│    --help      -h               Show this message and exit.                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --log        FILE  Where to record log(s). Use '-' for no logging.           │
+│                    [default: pyani-plus.log]                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```

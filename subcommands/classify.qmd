@@ -5,44 +5,51 @@ The `classify` subcommand classifies genomes into cliques (k-complete) graphs ba
 ```shell
 $ pyani-plus classify -h
                                                                                      
- Usage: pyani-plus classify [OPTIONS]                                                
-                                                                                     
- Classify genomes into clusters based on ANI results.                                
-                                                                                     
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database          FILE                 Path to pyANI-plus SQLite3 database   │
-│                                             [required]                            │
-│ *  --outdir            DIRECTORY            Output directory. If it does not      │
-│                                             exist, it will be created.            │
-│                                             [required]                            │
-│    --run-id            INTEGER              Which run from the database (defaults │
-│                                             to latest)                            │
-│                                             [default: None]                       │
-│    --label             [md5|filename|stem]  How to label the genomes              │
-│                                             [default: stem]                       │
-│    --help      -h                           Show this message and exit.           │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Method parameters ───────────────────────────────────────────────────────────────╮
-│ --coverage-edges        TEXT                       How to resolve asymmetrical    │
-│                                                    ANI coverage results for edges │
-│                                                    in the graph (min, max or      │
-│                                                    mean).                         │
-│                                                    [default: min]                 │
-│ --score-edges           TEXT                       How to resolve asymmetrical    │
-│                                                    ANI identity/tANI results for  │
-│                                                    edges in the graph (min, max   │
-│                                                    or mean).                      │
-│                                                    [default: mean]                │
-│ --vertical-line         FLOAT RANGE [x<=1.0]       Threshold for red vertical     │
-│                                                    line at identity/tANI.         │
-│                                                    [default: 0.95]                │
-│ --cov-min               FLOAT RANGE [0.0<=x<=1.0]  minimum %coverage for an edge  │
-│                                                    [default: 0.5]                 │
-│ --mode                  [identity|tANI]            Classify mode intended to      │
-│                                                    identify cliques within a set  │
-│                                                    of genomes                     │
-│                                                    [default: identity]            │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus classify [OPTIONS]                                           
+                                                                                
+ Classify genomes into clusters based on ANI results.                           
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE                 Path to pyANI-plus SQLite3       │
+│                                             database.                        │
+│                                             [required]                       │
+│ *  --outdir    -o      DIRECTORY            Output directory. Created if     │
+│                                             does not already exist.          │
+│                                             [required]                       │
+│    --run-id    -r      INTEGER              Which run from the database      │
+│                                             (defaults to latest).            │
+│    --label             [md5|filename|stem]  How to label the genomes.        │
+│                                             [default: stem]                  │
+│    --help      -h                           Show this message and exit.      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ --coverage-edges        TEXT                       How to resolve            │
+│                                                    asymmetrical ANI coverage │
+│                                                    results for edges in the  │
+│                                                    graph (min, max or mean). │
+│                                                    [default: min]            │
+│ --score-edges           TEXT                       How to resolve            │
+│                                                    asymmetrical ANI          │
+│                                                    identity/tANI results for │
+│                                                    edges in the graph (min,  │
+│                                                    max or mean).             │
+│                                                    [default: mean]           │
+│ --vertical-line         FLOAT RANGE [x<=1.0]       Threshold for red         │
+│                                                    vertical line at          │
+│                                                    identity/tANI.            │
+│                                                    [default: 0.95]           │
+│ --cov-min               FLOAT RANGE [0.0<=x<=1.0]  minimum %coverage for an  │
+│                                                    edge                      │
+│                                                    [default: 0.5]            │
+│ --mode                  [identity|tANI]            Classify mode intended to │
+│                                                    identify cliques within a │
+│                                                    set of genomes.           │
+│                                                    [default: identity]       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --log        FILE  Where to record log(s). Use '-' for no logging.           │
+│                    [default: pyani-plus.log]                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
 
 ```

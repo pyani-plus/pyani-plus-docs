@@ -5,38 +5,43 @@ The `dnadiff` subcommand processes genome files from the `indir` directory to pe
 ```shell
 $ pyani-plus dnadiff -h
                                                                                      
- Usage: pyani-plus dnadiff [OPTIONS] FASTA                                           
-                                                                                     
- Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3 database.  
-                                                                                     
-╭─ Arguments ───────────────────────────────────────────────────────────────────────╮
-│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta, .fna)    │
-│                       [required]                                                  │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database           FILE           Path to pyANI-plus SQLite3 database        │
-│                                        [required]                                 │
-│    --name               TEXT           Run name. Default is 'N genomes using      │
-│                                        METHOD'.                                   │
-│    --create-db                         Create database if does not exist          │
-│    --executor           [local|slurm]  How should the internal tools be run?      │
-│                                        [default: local]                           │
-│    --help       -h                     Show this message and exit.                │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Debugging ───────────────────────────────────────────────────────────────────────╮
-│ --temp         DIRECTORY  Directory to use for intermediate files, which for      │
-│                           debugging purposes will not be deleted. For clusters    │
-│                           this must be on a shared drive. Default behaviour is to │
-│                           use a system specified temporary directory (specific to │
-│                           the compute-node when using a cluster) and remove this  │
-│                           afterwards.                                             │
-│ --wtemp        DIRECTORY  Directory to use for temporary workflow coordination    │
-│                           files, which for debugging purposes will not be         │
-│                           deleted. For clusters this must be on a shared drive.   │
-│                           Default behaviour is to use a system specified          │
-│                           temporary directory (for the local executor) or a       │
-│                           temporary directory under the present direct (for       │
-│                           clusters), and remove this afterwards.                  │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus dnadiff [OPTIONS] FASTA                                      
+                                                                                
+ Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3       
+ database.                                                                      
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```

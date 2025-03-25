@@ -7,30 +7,34 @@ The `export-run` subcommand exports ANI results in a tabular format for a specif
 
 $ pyani-plus export-run -h
                                                                                      
- Usage: pyani-plus export-run [OPTIONS]                                              
-                                                                                     
- Export any single run from the given pyANI-plus SQLite3 database.                   
- The output directory must already exist. Any pre-existing files will be             
- overwritten.                                                                        
- The matrix output files are named <method>_<property>.tsv while the long form is    
- named <method>_run_<run-id>.tsv and will include the query and subject genomes and  
- all the comparison properties as columns.                                           
- Incomplete runs will return an error. There will be no output for empty run. For    
- partial runs the long form table will be exported, but not the matrices.            
-                                                                                     
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database          FILE                 Path to pyANI-plus SQLite3 database   │
-│                                             [required]                            │
-│ *  --outdir            DIRECTORY            Output directory. If it does not      │
-│                                             exist, it will be created.            │
-│                                             [required]                            │
-│    --run-id            INTEGER              Which run from the database (defaults │
-│                                             to latest)                            │
-│                                             [default: None]                       │
-│    --label             [md5|filename|stem]  How to label the genomes              │
-│                                             [default: stem]                       │
-│    --help      -h                           Show this message and exit.           │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus export-run [OPTIONS]                                         
+                                                                                
+ Export any single run from the given pyANI-plus SQLite3 database.              
+ The output directory must already exist. Any pre-existing files will be        
+ overwritten.                                                                   
+ The matrix output files are named <method>_<property>.tsv while the long form  
+ is named <method>_run_<run-id>.tsv and will include the query and subject      
+ genomes and all the comparison properties as columns.                          
+ Incomplete runs will return an error. There will be no output for empty run.   
+ For partial runs the long form table will be exported, but not the matrices.   
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE                 Path to pyANI-plus SQLite3       │
+│                                             database.                        │
+│                                             [required]                       │
+│ *  --outdir    -o      DIRECTORY            Output directory. Created if     │
+│                                             does not already exist.          │
+│                                             [required]                       │
+│    --run-id    -r      INTEGER              Which run from the database      │
+│                                             (defaults to latest).            │
+│    --label             [md5|filename|stem]  How to label the genomes.        │
+│                                             [default: stem]                  │
+│    --help      -h                           Show this message and exit.      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --log        FILE  Where to record log(s). Use '-' for no logging.           │
+│                    [default: pyani-plus.log]                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
 

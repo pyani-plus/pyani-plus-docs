@@ -5,41 +5,44 @@ The `resume` subcommand restarts any partially completed run stored in the datab
 ```shell
 $ pyani-plus resume -h
                                                                                      
- Usage: pyani-plus resume [OPTIONS]                                                  
-                                                                                     
- Resume any (partial) run already logged in the database.                            
- If the run was already complete, this should have no effect.                        
- Any missing pairwise comparisons will be computed, and the the old run will be      
- marked as complete.                                                                 
- If the version of the underlying tool has changed, this will abort as the original  
- run cannot be completed.                                                            
-                                                                                     
-╭─ Options ─────────────────────────────────────────────────────────────────────────╮
-│ *  --database          FILE           Path to pyANI-plus SQLite3 database         │
-│                                       [required]                                  │
-│    --run-id            INTEGER        Which run from the database (defaults to    │
-│                                       latest)                                     │
-│                                       [default: None]                             │
-│    --executor          [local|slurm]  How should the internal tools be run?       │
-│                                       [default: local]                            │
-│    --cache             DIRECTORY      Cache location if required for a method     │
-│                                       (must be visible to cluster workers).       │
-│                                       Default to .cache in the current directory. │
-│    --help      -h                     Show this message and exit.                 │
-╰───────────────────────────────────────────────────────────────────────────────────╯
-╭─ Debugging ───────────────────────────────────────────────────────────────────────╮
-│ --temp         DIRECTORY  Directory to use for intermediate files, which for      │
-│                           debugging purposes will not be deleted. For clusters    │
-│                           this must be on a shared drive. Default behaviour is to │
-│                           use a system specified temporary directory (specific to │
-│                           the compute-node when using a cluster) and remove this  │
-│                           afterwards.                                             │
-│ --wtemp        DIRECTORY  Directory to use for temporary workflow coordination    │
-│                           files, which for debugging purposes will not be         │
-│                           deleted. For clusters this must be on a shared drive.   │
-│                           Default behaviour is to use a system specified          │
-│                           temporary directory (for the local executor) or a       │
-│                           temporary directory under the present direct (for       │
-│                           clusters), and remove this afterwards.                  │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+ Usage: pyani-plus resume [OPTIONS]                                             
+                                                                                
+ Resume any (partial) run already logged in the database.                       
+ If the run was already complete, this should have no effect.                   
+ Any missing pairwise comparisons will be computed, and the the old run will be 
+ marked as complete.                                                            
+ If the version of the underlying tool has changed, this will abort as the      
+ original run cannot be completed.                                              
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE           Path to pyANI-plus SQLite3 database.   │
+│                                       [required]                             │
+│    --run-id    -r      INTEGER        Which run from the database (defaults  │
+│                                       to latest).                            │
+│    --executor          [local|slurm]  How should the internal tools be run?  │
+│                                       [default: local]                       │
+│    --cache             DIRECTORY      Cache location if required for a       │
+│                                       method (must be visible to cluster     │
+│                                       workers). Defaults to .cache in the    │
+│                                       current directory.                     │
+│    --help      -h                     Show this message and exit.            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```
