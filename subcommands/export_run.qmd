@@ -1,5 +1,6 @@
 # `export-run` {#export-run-subcommand .unnambered}
 
+## Usage
 The `export-run` subcommand exports ANI results in a tabular format for a specified `--run_id`, using data stored in a local SQLite3 database. 
 
 
@@ -38,3 +39,28 @@ $ pyani-plus export-run -h
 
 ```
 
+## Output
+The `pyani-plus export-run` subcommand exports ANI results to the directory specified by the `--output` parameter. It generates six matrix files named `<method>_<property>.tsv` and a long-form version named `<method>_run_<run-id>.tsv`.
+
+::: { .callout-important}
+Incomplete runs will return an error. There will be no output for empty run. For partial runs the long form table will be exported, but not the matrices.
+:::
+
+The six matrices contain the query and subject genomes along with all comparison properties as columns. They include the following:
+
+- `<method>_aln_lengths.tsv`: Total aligned bases for given genome of genomes
+- `<method>_hadamard.tsv`: The percentage identity multiplied by percentage coverage
+- `<method>_identity.tsv`: The proportion of aligned regions that are identical
+- `<method>_query_cov.tsv`: The fraction of query genome that is aligned
+- `<method>_sim_errors.tsv`: The number of unaligned or non-identical bases
+- `<method>_tANI.tsv`: The natural log of coverage multiplied by identity
+
+In the long-form version (`<method>_run_<run-id>.tsv`), each row represents a single pairwise comparison and includes the following information:
+
+- `Query`: The query genome, which defaults to the `stem` file format but can be changed to `md5` or `filename` using the `--label` parameter.
+- `Subject`: The subject genome, which defaults to the `stem` file format but can be changed to `md5` or `filename` using the `--label` parameter.
+- `Identity`: The proportion of aligned regions that are identical
+- `Query-Cov`: The fraction of query genome that is aligned
+- `Subject-Cov`: The fraction of subject genome that is aligned
+- `Hadamard`: The percentage identity multiplied by percentage coverage
+- `tANI`: The natural log of coverage multiplied by identity
