@@ -1,5 +1,6 @@
 # `sourmash` {#sourmash-subcommand .unnambered}
 
+## Usage
 The `sourmash` subcommand processes genome files from the `indir` directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.
 
 ```shell
@@ -54,3 +55,28 @@ $ pyani-plus sourmash -h
 │                                         [default: 31]                        │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## What does `sourmash` method do?
+`pyani-plus` implements Average Nucleotide Identity using [sourmash](https://sourmash.readthedocs.io/en/latest/) (sourmash) as described in @pierce2019large.
+
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
+
+- __Building signature files__: `sourmash compare` is used to build singatures for each genome genearting `.sig` files. By default, `.sig` fileas are created with  a k-mer size of 31 (`--kmer`) and compression scaling ratio of 1000 (`--scaled`). These parameters can be adjusted by users as needed.
+
+- __Sequence Alignment__: [sourmash-plugin-branchwater](https://github.com/sourmash-bio/sourmash_plugin_branchwater) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating `manysearch.csv` files.
+
+- __Result Parsing and Calculation__: The `manysearch.csv` files are parsed, and the following metrics are computed:
+
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`query_containment`)
+
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical (`max_containment`)
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+For more details on how `sourmash` works, please refer to [sourmash's documentation](https://sourmash.readthedocs.io/en/latest/).
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
+
+## References {.unnumbered}

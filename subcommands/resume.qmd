@@ -1,5 +1,6 @@
 # `resume` {#plot-resume.unnambered}
 
+## Usage
 The `resume` subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed, and the the old run will be marked as complete. This should have no effect on completed comparisons.
 
 ```shell
