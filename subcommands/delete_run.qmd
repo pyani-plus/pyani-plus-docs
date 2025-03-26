@@ -1,5 +1,6 @@
 # `delete-run` {#delete-run-subcommand.unnambered}
 
+## Usage
 The `delete-run` subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is "Running", but that can be overridden.
 
 
@@ -29,3 +30,10 @@ The `delete-run` subcommand deletes any single run stored in the database. This 
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
+
+## Output
+The `pyani-plus delete-run` command does not produce direct output. Instead, it modifies the provided [SQLite3](https://www.sqlite.org/) database by removing the specified run.
+
+::: { .callout-note}
+Deleting a run from the database will not adjust the numbering of the remaining runs.
+:::
