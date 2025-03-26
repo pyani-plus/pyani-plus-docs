@@ -1,6 +1,7 @@
 # `classify` {#classify-subcommand .unnambered}
 
-The `classify` subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy.
+## Usage
+The `classify` subcommand classifies genomes into cliques (k-complete) graphs based on ANI results. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy.
 
 ```shell
 $ pyani-plus classify -h
@@ -54,18 +55,41 @@ $ pyani-plus classify -h
 
 ```
 
-## Classifying genomes into clusters based on ANI results
+## Classifying genomes into clusters based on ANI results {#classify-method .unnambered}
 
 The `pyani-plus classify` subcommand identifies cliques (_k-complete_ graphs) within a set of genomes in the following steps:
 
 1. __Building the initial graph__: First, an initial graph is built using [NetworkX](https://networkx.org/) where nodes represent genomes and edges correspond to pairwise comparisons. Since some ANI methods may be asymmetric, users can specify which values to use via `--coverage-edges` for coverage and `--score-edges` for identity or tANI (e.g., `min`, `max`, or `mean`). By default, the `min` is used for coverage, while the `mean` is used for identity and tANI. Edges are not drawn between two genomes/nodes if:
  - No alignment is found between them.
  - Genome coverage falls below a certain threshold (50% by default, but this can be adjusted using the `--cov-min` parameter).
-d
 2. __Identification of initial cliques__: The initial graph is checked for the presence of cliques, as it may split into smaller subgraphs depending on shared genome coverage and the set `--cov-min` parameter.
 
 3. __Removal of lowest identity edges__: Edges with the lowest identity are removed one by one, checking for cliques after each removal. This process continues until all nodes become singletons.
 
 
-# Output
-The output, including classify plots (`JPG`, `PDF`, `PNG`, `SVGZ`) and tabular data, is written to `outdir` directory.
+## Output
+The `pyani-plus classify` subcommand generates classify plots (`JPG`, `PDF`, `PNG`, `SVGZ`) and tabular summaries which are written to specified `--outdir` directory. In the tabular output, each row corresponds to a single clique (_k-complete_ graph), and the columns provide the following details:
+
+- `n_nodes`: The number of genomes (nodes) present within a clique.
+- `max_cov`: The maximum coverage shared between any pair of genomes in a clique.
+- `min_identity` / `min_-tANI`: The minimum identity or -tANI threshold (depending on the `--mode` parameter, default is `identity`) required for a clique to be formed.
+- `max_identity` / `max_-tANI`: The maximum identity or -tANI (depending on the `--mode` parameter, default is `identity`) that can be shared between any two genomes in a clique for the clique to exist.
+- `members`: The genomes that constitute the clique. The format of the genome identifiers can be either `md5`, `filename`, or `stem`, based on the `--label` parameter (default is `stem`).
+
+
+The tabular output is used to generate the classify plot (@fig-classify), which consists of three subplots:
+
+1. The number of genomes found in either singletons or cliques at a given % identity.
+
+2. The percentage of genomes classified as singletons or cliques at a given % identity.
+
+3. A heatmap illustrating the lifespan of cliques. Each cell represents a clique, indicating the % identity at which it first appears and when it ceases to exist. Singletons are represented by a grey dashed line.
+
+::: {.column-margin}
+![Classify plot for `pyani-plus classify` subcommand](../walkthrough_plots/ANIb_classify_plot.png){#fig-classify .lightbox }
+:::
+
+
+::: { .callout-note}
+If a clique is identified during the initial graph construction (see [how classify works](classify.qmd#classify-method) for details), its min_identity is defined as the lowest identity value observed across the entire graph.
+:::
