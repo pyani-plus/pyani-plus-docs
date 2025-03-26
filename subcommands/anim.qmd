@@ -60,13 +60,13 @@ In brief, the analysis proceeds as follows for a set of input prokaryotic genome
 
 - __Result Parsing and Calculation__: The `.filter` file is parsed, and the following metrics are computed:
 
-    - __Aligned bases__: Total aligned bases for each genome
+    - __Aligned bases__: Total aligned bases for each genome (`reference_positions_in_alignment + insertions - deletions`)
 
-    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / genome_length`)
 
     - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
 
-    - __Similarity errors__: The number of unaligned or non-identical bases
+    - __Similarity errors__: The number of unaligned or non-identical bases (`non-identities + insertions + deletions`)
 
     - __Hadamard score__: The percentage identity multiplied by percentage coverage
 

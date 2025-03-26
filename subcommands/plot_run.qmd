@@ -1,7 +1,19 @@
 # `plot-run` {#plot-run-subcommand .unnambered}
 
+## Usage
 The `plot-run` subcommand generates heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the `outdir` directory.
 
+::: {.column-margin}
+
+![Example ANIm percentage identity heatmap](../walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-identity-heatmap .lightbox }
+
+:::
+
+::: {.column-margin}
+
+![Example ANIm percentage identity distribution](../walkthrough_plots/ANIm_identity_dist.png){#fig-anim-identity-dist .lightbox }
+
+:::
 
 ```shell
 $ pyani-plus plot-run -h     
@@ -32,3 +44,50 @@ $ pyani-plus plot-run -h
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 ```
+::: {.column-margin}
+![Example ANIm percentage coverage heatmap](../walkthrough_plots/ANIm_query_cov_heatmap.png){#fig-anim-cov-heatmap .lightbox }
+:::
+
+::: {.column-margin}
+![Example ANIm percentage coverage heatmap](../walkthrough_plots/ANIm_query_cov_dist.png){#fig-anim-cov-dist .lightbox }
+:::
+
+::: {.column-margin}
+![Example ANIm %query coverage vs identity](../walkthrough_plots/ANIm_query_cov_scatter.png){#fig-anim-cov_vs_id .lightbox }
+:::
+
+## Output
+The `pyani-plus plot-run` subcommand generates the following heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database:
+
+- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>` (@fig-anim-identity-heatmap),   `<method>_identity_dist.<extension>` (@fig-anim-identity-dist) and `<method>_identity.tsv`, @fig-anim-identity-heatmap)
+
+
+- percentage coverage of each query genome by aligned regions (`<method>_query_cov_heatmap.<extension>` (@fig-anim-cov-heatmap), `<method>_query_cov_dist.<extension>` (@fig-anim-cov-dist), `<method>_query_cov_scatter.<extension>` (@fig-anim-cov_vs_id) and `<method>_query_cov.tsv`)
+
+
+- a Hadamard matrix of percentage identity multiplied by percentage coverage for each comparison (`<method>_hadamard_heatmap.<extension>` (@fig-anim-hadamard-heatmap), `<method>_hadamard_dist.<extension>` (@fig-anim-hadamard-dist) and `<method>_hadamard.tsv`)
+
+::: {.column-margin}
+![Example ANIm hadamard heatmap](../walkthrough_plots/ANIm_hadamard_heatmap.png){#fig-anim-hadamard-heatmap .lightbox }
+:::
+
+::: {.column-margin}
+![Example ANIm hadamard distribution plot](../walkthrough_plots/ANIm_hadamard_dist.png){#fig-anim-hadamard-dist .lightbox }
+:::
+
+- a total Avenarge Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity (`<method>_tANI_heatmap.<extension>` (@fig-anim-tani-heatmap), `<method>_tANI_dist.<extension>` (@fig-anim-tani-dist), `<method>_tANI_scatter.<extension>` (@fig-anim-tani-scatter) and `<method>_tANI.tsv`)
+
+::: {.column-margin}
+![Example ANIm tANI heatmap](../walkthrough_plots/ANIm_tANI_heatmap.png){#fig-anim-tani-heatmap .lightbox }
+:::
+
+::: {.column-margin}
+![Example ANIm tANI distribution plot](../walkthrough_plots/ANIm_tANI_dist.png){#fig-anim-tani-dist .lightbox }
+:::
+
+::: {.column-margin}
+![Example ANIm scatter plot (tANI vs %identity)](../walkthrough_plots/ANIm_tANI_scatter.png){#fig-anim-tani-scatter .lightbox }
+:::
+
+- number of “similarity errors” on each genome (`<method>_sim_errors.tsv`)
+- Long form of ANI results which include the query and subject genomes and all the comparison properties as columns (`<method>_run_<ID>.tsv`)

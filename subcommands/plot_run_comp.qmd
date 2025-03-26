@@ -1,6 +1,8 @@
 # `plot-run-comp` {#plot-run-comp-subcommand .unnambered}
 
-The `plot-run-comp` subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the `outdir` directory.
+## Usage
+The `plot-run-comp` subcommand compares ANI results from multiple runs.
+
 
 ```shell
 $ pyani-plus plot-run-comp -h
@@ -35,3 +37,31 @@ $ pyani-plus plot-run-comp -h
 │                    [default: pyani-plus.log]                                 │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Output
+The `pyani-plus plot-run-comp` generates scatterplots and tabular summaries. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the directpry specified by `--outdir` parameters. The genearated plots are:
+
+- A set of scatterplots where the X-axis represents genome identity from the reference method, and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`, @fig-compare-scatter).
+
+::: {.column-margin}
+![Exmaple scatterplot output for `pyani-plus plot-run-comp` subcommand](../walkthrough_plots/ANIb_identity_1_scatter_vs_others.png){#fig-compare-scatter .lightbox }
+:::
+
+
+::: { .callout-note}
+The red vertical line serves as a reference, indicating where data points should align on the scatterplot if the pairwise comparison results match between methods.
+:::
+
+
+- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method and the Y-axis showing the difference in genome identity for the compared methods/runs (`<reference_method>_identity_<run_ID>_diff_vs_others.<extension>`, @fig-compare-dist).
+
+::: {.column-margin}
+![Example scatterplot output for `pyani-plus plot-run-comp` subcommand](../walkthrough_plots/ANIb_identity_1_diff_vs_others.png){#fig-compare-dist .lightbox }
+:::
+
+
+::: { .callout-note}
+The red horizontal line at 0 indicates no difference between the pairwise comparison results across methods.
+:::
+
+- Tabular summary of the comparison output (`<reference_method>_identity_<run_ID>_vs_<run_ID>.tsv`).

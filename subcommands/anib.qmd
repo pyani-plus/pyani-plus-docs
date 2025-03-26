@@ -61,15 +61,15 @@ In brief, the analysis proceeds as follows for a set of input prokaryotic genome
 - __Sequence Alignment__: The fragmented query sequences are aligned against the intact subject sequences using [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata).
 - __Result Parsing and Calculation__: The [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata) output (tab-separated plain text format) is parsed, and the following metrics are computed:
 
-    - __Aligned bases__: Total aligned bases for each genome
+    - __Aligned bases__: Total aligned bases for each genome (`alignment_length - gaps`)
 
-    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / query_genome_length`)
 
     - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
 
-    - __Similarity errors__: The number of unaligned or non-identical bases
+    - __Similarity errors__: The number of unaligned or non-identical bases (`gaps + mismatches`)
 
-    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage (`ANI * coverage`)
 
     - __tANI score__: The negative natural log of coverage multiplied by identity
 

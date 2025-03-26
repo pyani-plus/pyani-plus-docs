@@ -1,5 +1,6 @@
 # `list-runs` {#list-runs-subcommand.unnambered}
 
+## Usage
 The `list-runs` subcommand lists the runs defined in a given pyANI-plus SQLite3 database.
 
 ```shell
@@ -18,3 +19,35 @@ The `list-runs` subcommand lists the runs defined in a given pyANI-plus SQLite3 
 │                    [default: pyani-plus.log]                                 │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Output
+The `pyani-plus list-runs` command does not produce direct output. Instead, it will display the following table, or something similar, depending on the analyses contained within the database in your terminal:
+
+```
+                         5 analysis runs in walkthrough.db                          
+┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ ID ┃ Date       ┃ Method   ┃ Done ┃ Null ┃ Miss ┃ Total   ┃ Status ┃ Name        ┃
+┡━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━┩
+│  1 │ 2025-03-17 │ ANIb     │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ ANIb        │
+│  2 │ 2025-03-17 │ ANIm     │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ ANIm        │
+│  3 │ 2025-03-17 │ dnadiff  │  100 │    0 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ dnadiff     │
+│  4 │ 2025-03-17 │ fastANI  │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ fastani     │
+│  5 │ 2025-03-17 │ sourmash │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough │
+│    │            │          │      │      │      │         │        │ sourmash    │
+└────┴────────────┴──────────┴──────┴──────┴──────┴─────────┴────────┴─────────────┘
+```
+
+In this table, each row represents a single run, and the columns provide the following details:
+
+- `ID`: Unique ID for the run
+- `Date`: Date when the analysis was executed
+- `Method`: ANI method used
+- `Done`: Number of completed ANI comparisons
+- `Null`: Number of analyses where no alignment was found (e.g., comparisons between highly divergent genomes)
+- `Miss`: Number of comparisons that were not completed
+- `Status`: Current status of the analysis—e.g., Done for completed analyses, Running for comparisons that have started but are still in progress
+- `Name`: Run name
