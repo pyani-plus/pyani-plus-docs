@@ -79,7 +79,8 @@ format:
 #    documentclass: scrreprt
 
 custom-callout:
-  todo:
+  callout-todo:
+    title: "TODO"
     icon-symbol: "📝"
     color: "pink"
 filters:
