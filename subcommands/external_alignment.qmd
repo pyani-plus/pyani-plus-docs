@@ -1,5 +1,6 @@
 # `external-alignment` {#external-alignment-subcommand .unnambered}
 
+## Usage
 The `external-alignment` subcommand compute pairwise ANI from given multiple-sequence-alignment (MSA) file and genome files from the `indir` directory, and logs comparison and run data in a local SQLite3 database.
 
 
@@ -53,4 +54,39 @@ $ pyani-plus external-alignment -h
 │                                            [default: stem]                   │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Input
+
+`pyANI-plus external-alignment` accepts as input a multiple sequence alignment (MSA) in the FASTA format.
+
+::: { .callout-important}
+Each sequence in the MSA must represent a different organism, with only one sequence allowed per genome/organism.
+:::
+
+
+
+## What does `external-alignment` method do?
+
+In the context of `pyani-plus external-alignment`, ANI is computed from the given multiple sequence alignment (MSA). This subcommand is designed for estimating ANI values for synthetic sequences, individual genes, and concatenated set of sequence.
+
+- __Estimation of ANI__: A custom Python script performs pairwise comparisons between sequences in the provided MSA, checking each pair for identical bases, mismatches and gaps. The following metrics are computed:
+
+    - __Aligned bases__: Total aligned bases for each genome (`reference_positions_in_alignment + insertions - deletions`)
+
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / genome_length`)
+
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
+
+    - __Similarity errors__: The number of unaligned or non-identical bases (`non-identities + insertions + deletions`)
+
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+
+    - __tANI score__: The negative natural log of coverage multiplied by identity
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
 
