@@ -1,3 +1,3 @@
 ::: { .callout-note}
-In the context of `pyani-plus anib` subcommand, comparisons are performed in both directions (e.g., genome A vs. genome B and genome B vs. genome A), along with self-comparisons (e.g., genome A vs. itself).
+In the context of `pyani-plus` ANI method's subcommand, comparisons are performed in both directions (e.g., genome A vs. genome B and genome B vs. genome A), along with self-comparisons (e.g., genome A vs. itself).
 :::
