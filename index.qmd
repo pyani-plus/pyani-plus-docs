@@ -1,12 +1,12 @@
 # About pyANI-plus {.unnumbered}
 `pyANI-plus` is a Python package and software package that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
 
-- [`ANIb`](anib.qmd) (average nucleotide identity calculation using BLAST+)
-- [`ANIm`](anim.qmd) (average nucleotide identity calculation using MUMmer)
-- [`dnadiff`](dnadiff.qmd) (average nucleotide identity calculation using dnadiff)
-- [`fastANI`](fastani.qmd) (average nucleotide identity estimation using fastANI)
-- [`sourmash`](sourmash.qmd) (average nucleotide identity estiation using sourmash)
-- [external-alignment](external_alignment.qmd) (average nucleotide identity using multiple-sequence-alignment)
+- [`ANIb`](subcommands/anib.qmd) (average nucleotide identity calculation using BLAST+)
+- [`ANIm`](subcommands/anim.qmd) (average nucleotide identity calculation using MUMmer)
+- [`dnadiff`](subcommands/dnadiff.qmd) (average nucleotide identity calculation using dnadiff)
+- [`fastANI`](subcommands/fastani.qmd) (average nucleotide identity estimation using fastANI)
+- [`sourmash`](subcommands/sourmash.qmd) (average nucleotide identity estiation using sourmash)
+- [external-alignment](subcommands/external_alignment.qmd) (average nucleotide identity using multiple-sequence-alignment)
 
 In addition to calculating ANI for a given set of genomes, `pyANI-plus` also includes the following features:
 
