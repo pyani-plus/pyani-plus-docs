@@ -1,9 +1,9 @@
 # pyANI-plus walkthrough {#walkthrough .unnumbered}
 
-This section walks you through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedue for any `pyANI-plus` analysis is:
+This section walks you through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons, using a specific example input genome set. The general procedure for any `pyANI-plus` analysis is:
 
 1. Collect genomes for analysis
-2. Perform ANI analysis using diffrent methods such as ANIb, ANIm etc.
+2. Perform ANI analysis using different methods such as ANIb, ANIm etc.
 3. Report and visualise analysis report
 4. Use the analysis results to classify input genomes and generate species hypotheses
 

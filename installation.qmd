@@ -18,9 +18,9 @@ To get the latest version with Git, run the follwong command in a terminal:
 git clone https://github.com/pyani-plus/pyani-plus
 ```
 
-Alternatively you can visit the [Relase](https://github.com/pyani-plus/pyani-plus/releases) page and click on one of the avaliable versions to get the source code. 
+Alternatively you can visit the [Release](https://github.com/pyani-plus/pyani-plus/releases) page and click on one of the available versions to get the source code. 
 
-Once the download is complete, navigat to the repository:
+Once the download is complete, navigate to the repository:
 
 ```bash
 cd pyani-plus
