@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-a34d670291f06f286357e447776a572a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -397,59 +397,93 @@ Tip
 </div>
 <p>To view the avaliable options for <code>pyANI-plus</code>, use the <code>-h</code> (help) option. For example:</p>
 <pre class="shell"><code>$ pyani-plus -h
-Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            
-                                                                                                                                                          
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --install-completion            Install completion for the current shell.                                                                              │
-│ --show-completion               Show completion for the current shell, to copy it or customize the installation.                                       │
-│ --help                -h        Show this message and exit.                                                                                            │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ classify             Classify genomes into clusters based on ANI results.                                                                              │
-│ delete-run           Delete any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ export-run           Export any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ list-runs            List the runs defined in a given pyANI-plus SQLite3 database.                                                                     │
-│ plot-run             Plot heatmaps and distributions for any single run.                                                                               │
-│ plot-run-comp        Plot comparisons between multiple runs.                                                                                           │
-│ resume               Resume any (partial) run already logged in the database.                                                                          │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ ANI methods ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3 database.                                                │
-│ external-alignment   Compute pairwise ANI from given multiple-sequence-alignment (MSA) file.                                                           │
-│ fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.                                                            │
-│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus SQLite3 database.                                    │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-</code></pre>
+
+ Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...
+
+ Typer callback adding version to the base command.
+
+╭─ Options ──────────────────────────────────────────────────────────────────╮
+│ --version             -v        Show tool version (on stdout) and quit.    │
+│ --install-completion            Install completion for the current shell.  │
+│ --show-completion               Show completion for the current shell, to  │
+│                                 copy it or customize the installation.     │
+│ --help                -h        Show this message and exit.                │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ─────────────────────────────────────────────────────────────────╮
+│ resume               Resume any (partial) run already logged in the        │
+│                      database.                                             │
+│ list-runs            List the runs defined in a given pyANI-plus SQLite3   │
+│                      database.                                             │
+│ delete-run           Delete any single run from the given pyANI-plus       │
+│                      SQLite3 database.                                     │
+│ export-run           Export any single run from the given pyANI-plus       │
+│                      SQLite3 database.                                     │
+│ plot-run             Plot heatmaps and distributions for any single run.   │
+│ plot-run-comp        Plot comparisons between multiple runs.               │
+│ classify             Classify genomes into clusters based on ANI results.  │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ ANI methods ──────────────────────────────────────────────────────────────╮
+│ anim                 Execute ANIm calculations, logged to a pyANI-plus     │
+│                      SQLite3 database.                                     │
+│ dnadiff              Execute mumer-based dnadiff calculations, logged to a │
+│                      pyANI-plus SQLite3 database.                          │
+│ anib                 Execute ANIb calculations, logged to a pyANI-plus     │
+│                      SQLite3 database.                                     │
+│ fastani              Execute fastANI calculations, logged to a pyANI-plus  │
+│                      SQLite3 database.                                     │
+│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, │
+│                      logged to a pyANI-plus SQLite3 database.              │
+│ external-alignment   Compute pairwise ANI from given                       │
+│                      multiple-sequence-alignment (MSA) file.               │
+╰────────────────────────────────────────────────────────────────────────────╯</code></pre>
 <p>To see the options for a specific subcommand, use <code>pyani-plus &lt;subcommand&gt; -h</code>. For example, to view options for the ANIb method:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anib <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You should see the following output:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> pyani-plus anib <span class="pp">[</span><span class="ss">OPTIONS</span><span class="pp">]</span> FASTA                                                                                                                               </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                                                                                                                                                      </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">Execute</span> ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                                                                  </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                                                                                                                                                      </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="pp">*</span>    fasta      PATH  Directory of FASTA files <span class="er">(</span><span class="ex">extensions</span> .fas, .fasta, .fna<span class="kw">)</span> <span class="ex">[required]</span>                                                                          │</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="pp">*</span>  <span class="at">--database</span>           FILE           Path to pyANI-plus SQLite3 database <span class="pp">[</span><span class="ss">required</span><span class="pp">]</span>                                                                              │</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    <span class="at">--name</span>               TEXT           Run name. Default is <span class="st">'N genomes using METHOD'</span>.                                                                              │</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    <span class="at">--create-db</span>                         Create database if does not exist                                                                                           │</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    <span class="at">--executor</span>           [local<span class="kw">|</span><span class="ex">slurm]</span>  How should the internal tools be run<span class="pp">?</span> [default: local]                                                                      │</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    <span class="at">--help</span>       <span class="at">-h</span>                     Show this message and exit.                                                                                                 │</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Method parameters ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--fragsize</span>        INTEGER RANGE [x<span class="op">&gt;</span>=1]  Comparison method fragment size [default: 1020]                                                                            │</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Debugging ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--temp</span>         DIRECTORY  Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive.  │</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                           Default behaviour is to use a system specified temporary directory <span class="er">(</span><span class="ex">specific</span> to the compute-node when using a cluster<span class="kw">)</span> <span class="ex">and</span> remove this   │</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                           afterwards.                                                                                                                              │</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--wtemp</span>        DIRECTORY  Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be  │</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                           on a shared drive. Default behaviour is to use a system specified temporary directory <span class="er">(</span><span class="cf">for</span> the <span class="bu">local</span> <span class="va">executor</span><span class="kw">)</span> <span class="ex">or</span> a temporary directory  │</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                           under the present direct <span class="er">(</span><span class="cf">for</span> clusters<span class="kw">)</span><span class="ex">,</span> and remove this afterwards.                                                                     │</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>$ pyani-plus anib -h
+
+ Usage: pyani-plus anib [OPTIONS] FASTA
+
+ Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.
+
+╭─ Arguments ────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,   │
+│                       .fna).                                               │
+│                       [required]                                           │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3          │
+│                                        database.                           │
+│                                        [required]                          │
+│    --name               TEXT           Run name. Default is 'N genomes     │
+│                                        using METHOD'.                      │
+│    --create-db                         Create database if does not exist.  │
+│    --executor           [local|slurm]  How should the internal tools be    │
+│                                        run?                                │
+│                                        [default: local]                    │
+│    --help       -h                     Show this message and exit.         │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ────────────────────────────────────────────────────────╮
+│ --fragsize        INTEGER RANGE [x&gt;=1]  Comparison method fragment size.   │
+│                                         [default: 1020]                    │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which   │
+│                           for debugging purposes will not be deleted. For  │
+│                           clusters this must be on a shared drive. Default │
+│                           behaviour is to use a system specified temporary │
+│                           directory (specific to the compute-node when     │
+│                           using a cluster) and remove this afterwards.     │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow          │
+│                           coordination files, which for debugging purposes │
+│                           will not be deleted. For clusters this must be   │
+│                           on a shared drive. Default behaviour is to use a │
+│                           system specified temporary directory (for the    │
+│                           local executor) or a temporary directory under   │
+│                           the present direct (for clusters), and remove    │
+│                           this afterwards.                                 │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.  │
+│                           [default: pyani-plus.log]                        │
+│ --debug                   Show debugging level logging at the terminal (in │
+│                           addition to the log file).                       │
+╰────────────────────────────────────────────────────────────────────────────╯</code></pre>
 <section id="collect-genomes-for-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="collect-genomes-for-analysis">Collect genomes for analysis</h2>
 <p>While you can work with genomes placed in a local directory with <code>pyANI-plus</code>, we suggest using the genomes provided here in this walkthrough to ensure the output matches the expected results.</p>
@@ -470,31 +504,31 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>If this is your first analysis and the SQLite3 database does not yet exist, you must use the <code>--create-db</code> option; otherwise, you’ll encounter the following error:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> Database walkthrough.db does not exist, but not using <span class="at">--create-db</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> Database walkthrough.db does not exist, but not using <span class="at">--create-db</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Optionally, you can provide a custom name for the analysis with the <code>--name</code> option for easier reference, and if you want to run the ANI analysis on Slurm, simply set the execution method with the <code>--executor</code> option to <code>slurm</code> (default: <code>local</code>).</p>
 <section id="conduct-anib-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-anib-analysis">Conduct ANIb analysis</h3>
 <p>In this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anib walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--create-db</span> <span class="at">--name</span> <span class="st">"walkthrough ANIb"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anib walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--create-db</span> <span class="at">--name</span> <span class="st">"walkthrough ANIb"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you wish you can select a different fragment size for the comparison method using the <code>--fragsize</code> option. The default size is 1020bp, which is typically used for ANIb.</p>
 </section>
 <section id="conduct-anim-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-anim-analysis">Conduct ANIm analysis</h3>
 <p>Next, we will run the ANIm analysis on the same genomes using the following command line:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anim walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough ANIm"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anim walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough ANIm"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (<code>--mode mum</code>). You can change this to include all anchor matches, regardless of their uniqueness, by setting the <code>--mode</code> option to <code>maxmatch</code>.</p>
 </section>
 <section id="conduct-dnadiff-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-dnadiff-analysis">Conduct dnadiff analysis</h3>
 <p>To compare genomes in the input <code>walkthrough_data</code> directory using <code>dnadiff</code> method use the following command line:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> dnadiff walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough dnadiff"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> dnadiff walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough dnadiff"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conduct-fastani-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-fastani-analysis">Conduct fastani analysis</h3>
 <p>To run fastani analysis on the genomes in the input <code>walkthrough_data</code> directory use the following command line:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> fastani walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough fastani"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> fastani walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough fastani"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In <code>fastani</code> analysis, additional method parameters can be changed by the user. These include:</p>
 <ul>
 <li><code>--fragsize</code>: Fragment length used in the analysis (default: <code>3000</code>).</li>
@@ -505,7 +539,7 @@ Important
 <section id="conduct-sourmash-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-sourmash-analysis">Conduct sourmash analysis</h3>
 <p>Lastly, we can run sourmash analysis with the following command line:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> sourmash walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough sourmash"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> sourmash walkthrough_data <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough sourmash"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For <code>sourmash</code> analysis, additional method parameters can be changed by the user. These include: - <code>--scaled</code>: Compression ration (defult: <code>1000</code>) - <code>--kmersize</code>: K-mer size (default: <code>31</code>)</p>
 </section>
 </section>
@@ -514,7 +548,7 @@ Important
 <section id="list-runs" class="level3">
 <h3 class="anchored" data-anchor-id="list-runs">List all runs in the database</h3>
 <p><code>pyANI-plus</code> enables you to view all runs defined in a SQLite3 database. To display all runs from the database (eg. <code>walkthrough.db</code> for this walkthrough), use this command:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> list-runs <span class="at">--database</span> walkthrough.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> list-runs <span class="at">--database</span> walkthrough.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You will see the following table, or something similar, depending on the analyses contained within the database, displayed on your screen:</p>
 <pre><code>                              5 analysis runs in walkthrough.db                              
 ┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓
@@ -541,8 +575,8 @@ Important
 <section id="exporting-ani-results-in-a-tabular-format" class="level3">
 <h3 class="anchored" data-anchor-id="exporting-ani-results-in-a-tabular-format">Exporting ANI results in a tabular format</h3>
 <p><code>pyANI-plus</code> allows ANI results to be exported in a tabular format, but the output directory must already be present. In this example, we create an <code>output</code> directory and use the following command to export results for the ANIb analysis:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> output <span class="co"># create directory called output</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> export-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-id</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> output <span class="co"># create directory called output</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> export-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-id</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -582,7 +616,7 @@ Important
 <section id="graphical-output" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="graphical-output">Graphical output</h3>
 <p>Graphical output (<code>JPG</code>, <code>PDF</code>, <code>PNG</code> and <code>SVGZ</code> formats) is obtanined by executing the <code>pyani-plus plot-run</code> subcommand, specifying the database and ouput directory:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-id</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-id</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -665,7 +699,7 @@ Important
 <p>In this example, we use ANIb as the reference method, with other methods compared against it.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-ids</span> 1,2,3,4,5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> output <span class="at">--run-ids</span> 1,2,3,4,5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command generates the following outputs:</p>
 <ul>
 <li>A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (<code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_scatter_vs_others.&lt;extension&gt;</code>).</li>
