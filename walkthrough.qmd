@@ -247,18 +247,18 @@ In this table, each row represents a single run, and the columns provide the fol
 - `Name`: Run name.
 
 ### Exporting ANI results in a tabular format
-`pyANI-plus` allows ANI results to be exported in a tabular format, but the output directory must already be present. In this example, we create an `output` directory and use the following command to export results for the ANIb analysis:
+`pyANI-plus` allows ANI results to be exported in a tabular format, but the output directory must already be present. In this example, we create a `walkthrough_output/` directory and use the following command to export results for the ANIb analysis:
 
 ```bash
 mkdir output # create directory called output
-pyani-plus export-run --database walkthrough.db --outdir output --run-id 1
+pyani-plus export-run --database walkthrough.db --outdir walkthrough_output/ --run-id 1
 ```
 
 ::: { .callout-tip}
 If `--run-id` is not specified the latest run will be exported. To export runs for other analyses, you can specify the `--run-id` by matching the ID number provided in the table provided by [list-runs subcommand](walkthrough.qmd#list-runs).
 :::
 
-This will report the relevant information to new files in the `output` directory. The matrix output files are named `<method>_<property>.tsv` while the long form is named `<method>_run_<run-id>.tsv` and will include the query and subject genomes and all the comparison properties as columns:
+This will report the relevant information to new files in the `walkthrough_output/` directory. The matrix output files are named `<method>_<property>.tsv` while the long form is named `<method>_run_<run-id>.tsv` and will include the query and subject genomes and all the comparison properties as columns:
 
 ```
 .
@@ -280,7 +280,7 @@ Incomplete runs will return an error. There will be no output for empty run. For
 Graphical output (`JPG`, `PDF`, `PNG` and `SVGZ` formats) is obtanined by executing the `pyani-plus plot-run` subcommand, specifying the database and ouput directory:
 
 ```bash
-pyani-plus plot-run --database walkthrough.db --outdir output --run-id 2
+pyani-plus plot-run --database walkthrough.db --outdir walkthrough_output/ --run-id 2
 ```
 
 ::: { .callout-tip}
@@ -322,7 +322,7 @@ In the above heatmap, each cell represents a pairwise comparision between the ge
 - Long form of ANI results which include the query and subject genomes and all the comparison properties as columns (`<method>_run_<ID>.tsv`)
 
 ## Plotting comparisons between runs
-ANI results can vary depending on the method used. `pyANI-plus` allows you to compare the ANI results from multiple runs. In this example, we show how to use the `pyani-plus plot-run-comp` subcommand to visualise and compare these results. Running `pyani-plus plot-run-comp` requires specifying the output directory (e.g., `output`), the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough), and a comma-separated list of run IDs for comparison.
+ANI results can vary depending on the method used. `pyANI-plus` allows you to compare the ANI results from multiple runs. In this example, we show how to use the `pyani-plus plot-run-comp` subcommand to visualise and compare these results. Running `pyani-plus plot-run-comp` requires specifying the output directory (e.g., `walkthrough_output/`), the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough), and a comma-separated list of run IDs for comparison.
 
 ::: { .callout-important}
 The first run ID will be treated as the reference, and all subsequent runs will be compared to it.
@@ -331,7 +331,7 @@ In this example, we use ANIb as the reference method, with other methods compare
 :::
 
 ```bash
-pyani-plus plot-run-comp --database walkthrough.db --outdir output --run-ids 1,2,3,4,5
+pyani-plus plot-run-comp --database walkthrough.db --outdir walkthrough_output/ --run-ids 1,2,3,4,5
 ```
 
 This command generates the following outputs:
