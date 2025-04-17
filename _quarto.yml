@@ -23,7 +23,7 @@ book:
 
   # Sets the URL for the repository
   # [C] GITHUB REPOSITORY URL
-  repo-url: https://github.com/sipbs-compbiol/REPOSITORY
+  repo-url: https://github.com/pyani-plus/pyani-plus-docs
   repo-branch: main
   repo-actions: [edit, issue]
 
