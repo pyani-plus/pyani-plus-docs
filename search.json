@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "pyANI-plus",
     "section": "",
-    "text": "About pyANI-plus\npyANI-plus is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:\n\nANIb (average nucleotide identity using BLAST+)\nANIm (average nucleotide identity using MUMmer)\ndnadiff (average nucleotide identity using dnadiff)\nfastANI (average nucleotide identity using fastANI)\nsourmash (average nucleotide identity using sourmash)\nextenral-alignment (average nucletide identity using multiple-sequence-alignment)\n\nIn addition to calculating ANI for a given set of genomes, pyANI-plus also includes the following features:\n\nPlotting heatmaps and distributions for individual runs.\nComparing multiple runs through visualization.\nExporting any single run from the pyANI-plus SQLite3 database in tabular format.\nClassifying genomes into clusters based on ANI results.\nResuming partial runs already logged in the database.\nDeleting any single run from the pyANI-plus SQLite3 database.",
+    "text": "About pyANI-plus\npyANI-plus is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:\n\nANIb (average nucleotide identity using BLAST+)\nANIm (average nucleotide identity using MUMmer)\ndnadiff (average nucleotide identity using [dnadiff)\nfastANI (average nucleotide identity using fastANI)\nsourmash (average nucleotide identity using sourmash)\nexternal-alignment (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)\n\nIn addition to calculating ANI for a given set of genomes, pyANI-plus also includes the following features:\n\nPlotting heatmaps and distributions for individual runs.\nComparing and visualising multiple runs.\nExporting any single run from the pyANI-plus SQLite3 database in tabular format.\nClassifying genomes into clusters based on ANI results.\nResuming partial runs already logged in the database.\nDeleting any single run from the pyANI-plus SQLite3 database.",
     "crumbs": [
       "About pyANI-plus"
     ]
@@ -14,7 +14,7 @@
     "href": "requirements.html",
     "title": "Requirements",
     "section": "",
-    "text": "Python3\npyANI-plus relies on several other programs, packages, and tools for both running and development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.\npyANI-plus is designed to run on Python3, taking advantage of its latest features and improvements. It is not compatible with Python2, so using Python3 is required for installation and development.",
+    "text": "Python3\npyANI-plus relies on several other programs, packages, and tools for normal running and for development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.\npyANI-plus is designed to run on Python3, taking advantage of its latest features and improvements. It is not compatible with Python2. Python3 is required for installation and development.",
     "crumbs": [
       "Requirements"
     ]
@@ -24,17 +24,17 @@
     "href": "requirements.html#ncbi-blast",
     "title": "Requirements",
     "section": "NCBI-BLAST+",
-    "text": "NCBI-BLAST+\nANIb analysis, which calculates Average Nucleotide Identity using BLAST, involves comparing genome sequences through the BLAST tool provided by NCBI.",
+    "text": "NCBI-BLAST+\nANIb analysis, which calculates Average Nucleotide Identity using BLASTn+, involves comparing genome sequences through the BLAST+ tool provided by NCBI.",
     "crumbs": [
       "Requirements"
     ]
   },
   {
-    "objectID": "requirements.html#mumer",
-    "href": "requirements.html#mumer",
+    "objectID": "requirements.html#mummer",
+    "href": "requirements.html#mummer",
     "title": "Requirements",
-    "section": "MUMer",
-    "text": "MUMer\nFor ANIm (Average Nucleotide Identity using MUMmer) analysis, genome sequences are compared using the nucmer tool from the MUMmer package. The same tool is applied in the dnadiff command to compare and analyze genome sequences. The key difference between the two methods lies in how the intermediate alignments are generated. dnadiff uses the --maxmatch (all anchor matches regardless of their uniqueness) parameter and -m (many-to-many) alignments to replicate the results reported by the dnadiff wrapper. In contrast, ANIm uses the --mum (anchor matches that are unique in both the reference and query) parameter by default, with the possibility of using the –maxmatch and -1 parameters in the delta.filter wrapper to generate 1-to-1 alignments.",
+    "section": "MUMmer",
+    "text": "MUMmer\nFor ANIm (Average Nucleotide Identity using MUMmer) analysis, genome sequences are compared using the nucmer tool from the MUMmer package. The same tool provides the dnadiff command to compare and analyze genome sequences.\nA key difference between nucmer and dnadiff methods lies in how intermediate alignments are generated. dnadiff uses the --maxmatch (all anchor matches regardless of their uniqueness) parameter and -m (many-to-many) alignments to replicate the results reported by the dnadiff wrapper. In contrast, ANIm uses the --mum (anchor matches that are unique in both the reference and query) parameter by default, with the possibility of using the --maxmatch and -1 parameters in the delta.filter wrapper to generate 1-to-1 alignments. A further difference is that dnadiff uses intermediate processed output from mummer that identifies a golden path through the alignment; nucmer does not use this golden path.",
     "crumbs": [
       "Requirements"
     ]
@@ -64,7 +64,7 @@
     "href": "requirements.html#sqlite3",
     "title": "Requirements",
     "section": "SQLite3",
-    "text": "SQLite3\nThe output generated by pyani analyses is stored in a local database, provided by SQLite3, for rapid querying and recovery. This allows for persistent storage of results without the need to keep the original alignment files, and for incremental addition of new analyses. SQLite is installed with Python",
+    "text": "SQLite3\nThe output generated by pyani-plus analyses is stored in a local database using SQLite3, for rapid querying and recovery. This allows for persistent storage of results without the need to keep the original alignment files, and for incremental addition of new analyses. SQLite3 is installed with Python",
     "crumbs": [
       "Requirements"
     ]
@@ -74,7 +74,7 @@
     "href": "requirements.html#snakemake",
     "title": "Requirements",
     "section": "snakemake",
-    "text": "snakemake\nBy integrating snakemake, we maintain a single interface for defining and managing workflows. This allows us to standardize job execution across different environments without needing separate scheduling logic for local, cluster, or cloud execution.",
+    "text": "snakemake\nBy building on snakemake, we maintain a single interface for defining and managing workflows. This allows us to standardize job execution across different environments without needing separate scheduling logic for local, cluster, or cloud execution.",
     "crumbs": [
       "Requirements"
     ]
@@ -84,7 +84,7 @@
     "href": "requirements.html#python-packages",
     "title": "Requirements",
     "section": "Python Packages",
-    "text": "Python Packages\npyANI-plus depends on several other Python packages, and we gratefully acknowledge their contribution:\n\nMatplotlib: for graphical output\nintervaltree: for identification of overlaps\nSeaborn: for graphical output\nNetworkX: for graph calculations and representation\nNumpy: for matrix calculations\nPandas: for dataframe operations\nSQLAlchemy: for interaction with SQLite3\nRich: provides progress bars for user interaction",
+    "text": "Python Packages\npyANI-plus depends on several other Python packages, and we gratefully acknowledge their contribution:\n\nMatplotlib: for graphical output\nintervaltree: for identification of overlaps\nSeaborn: for graphical output\nNetworkX: for graph calculations and representation\nNumpy: for matrix calculations\nPandas: for dataframe operations\nSQLAlchemy: for interaction with SQLite3\nrich: provides progress bars for user interaction and other CLI elements",
     "crumbs": [
       "Requirements"
     ]
@@ -94,7 +94,7 @@
     "href": "requirements.html#development",
     "title": "Requirements",
     "section": "Development",
-    "text": "Development\nWe rely on a number of additional packages to aid pyani development, and if you set up a development environment as recommended in Contributing to pyANI-plus, then the following Python packages will be installed or expected to be present:\n\ncoverage: to generate code coverage output for the codecov.io service\npre-commit: Manages and runs pre-commit hooks to enforce code quality and formatting before commits\npytest: to manage and run automated testing\npytest-cov: to integrate pytest with codecov and coverage\npytest-xdist: Enables parallel test execution with pytest, improving test runtime efficiency.\nRuff: Python linter that enforces coding style and helps catch potential issues.\ntypes-tqdm: Provides type hints for tqdm, improving type checking and IDE support.",
+    "text": "Development\nWe rely on a number of additional packages to aid pyani-plus development. If you set up a development environment as recommended in the contributing page, then the following Python packages will be installed, or expected to be present:\n\ncoverage: to generate code coverage output for the codecov.io service\npre-commit: Manages and runs pre-commit hooks to enforce code quality and formatting before commits\npytest: to manage and run automated testing\npytest-cov: to integrate pytest with codecov and coverage\npytest-xdist: Enables parallel test execution with pytest, improving test runtime efficiency.\nRuff: Python linter that enforces coding style and helps catch potential issues.\ntypes-tqdm: Provides type hints for tqdm, improving type checking and IDE support.",
     "crumbs": [
       "Requirements"
     ]
@@ -104,7 +104,7 @@
     "href": "installation.html",
     "title": "Installation",
     "section": "",
-    "text": "Installation from source\nThis section describes different ways to install pyANI-plus on the most common operative systems sich as Unix/Linux and macOS.\n. Currently, we support three ways to install pyANI-plus on your system:\nTo install pyANI-plus from source, you can either download it from the Releases page or clone the repository using Git.\nTo get the latest version with Git, run the follwong command in a terminal:\nAlternatively you can visit the Relase page and click on one of the avaliable versions to get the source code.\nOnce the download is complete, navigat to the repository:\nThen, install pyANI-plus by running the appropriate script for you operating system:\nTo check if the installation was sucessful, run the following command:\nIf the installation was completed correctly, this should display a list of avaliable commands and options, similar to this:",
+    "text": "Installation from source\nThis section describes different ways to install pyANI-plus on the most common operating systems such as Unix/Linux and macOS.\nCurrently, we support three ways to install pyANI-plus on your system:\nTo install pyANI-plus from source, you can either download it from the Releases page or clone the repository using git.\nTo get the latest version with git, run the following command in a terminal:\nAlternatively you can visit the Release page and click on one of the avaliable versions to get the source code in compressed form.\nOnce the download is complete (and uncompressed, if required), navigate to the repository:\nThen install pyANI-plus by running the appropriate script for your operating system:",
     "crumbs": [
       "Installation"
     ]
@@ -114,7 +114,37 @@
     "href": "installation.html#installation-from-source",
     "title": "Installation",
     "section": "",
-    "text": "git clone https://github.com/pyani-plus/pyani-plus\n\n\ncd pyani-plus\n\nmake install_linux # For Linux\nmake install_macos # For macOS\n\npyani-plus --help\n\n Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            \n                                                                                                                                                          \n╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ --install-completion            Install completion for the current shell.                                                                              │\n│ --show-completion               Show completion for the current shell, to copy it or customize the installation.                                       │\n│ --help                -h        Show this message and exit.                                                                                            │\n╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ classify             Classify genomes into clusters based on ANI results.                                                                              │\n│ delete-run           Delete any single run from the given pyANI-plus SQLite3 database.                                                                 │\n│ export-run           Export any single run from the given pyANI-plus SQLite3 database.                                                                 │\n│ list-runs            List the runs defined in a given pyANI-plus SQLite3 database.                                                                     │\n│ plot-run             Plot heatmaps and distributions for any single run.                                                                               │\n│ plot-run-comp        Plot comparisons between multiple runs.                                                                                           │\n│ resume               Resume any (partial) run already logged in the database.                                                                          │\n╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯\n╭─ ANI methods ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮\n│ anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                               │\n│ anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3 database.                                                               │\n│ dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3 database.                                                │\n│ external-alignment   Compute pairwise ANI from given multiple-sequence-alignment (MSA) file.                                                           │\n│ fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.                                                            │\n│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus SQLite3 database.                                    │\n╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯",
+    "text": "git clone https://github.com/pyani-plus/pyani-plus\n\n\ncd pyani-plus\n\nmake install_linux # For Linux\nmake install_macos # For macOS",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#installation-with-minicondaanacondabioconda",
+    "href": "installation.html#installation-with-minicondaanacondabioconda",
+    "title": "Installation",
+    "section": "Installation with Miniconda/Anaconda/Bioconda",
+    "text": "Installation with Miniconda/Anaconda/Bioconda\nWith a working Miniconda/Anacodna installation that has Bioconda available, install using the command\nconda install pyani-plus",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#installation-via-pippypi",
+    "href": "installation.html#installation-via-pippypi",
+    "title": "Installation",
+    "section": "Installation via pip/PyPI",
+    "text": "Installation via pip/PyPI\nPyani-plus can be installed using the command\npip install pyani-plus",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#check-the-installation",
+    "href": "installation.html#check-the-installation",
+    "title": "Installation",
+    "section": "Check the installation",
+    "text": "Check the installation\nTo check if the installation was sucessful, run the following command:\npyani-plus --help\nIf the installation was completed correctly, this should display a list of available commands and options, similar to this:\n% pyani-plus -h\n\n Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...\n\n╭─ Options ──────────────────────────────────────────────────────────────────────────────╮\n│ --version             -v        Show tool version (on stdout) and quit.                │\n│ --install-completion            Install completion for the current shell.              │\n│ --show-completion               Show completion for the current shell, to copy it or   │\n│                                 customize the installation.                            │\n│ --help                -h        Show this message and exit.                            │\n╰────────────────────────────────────────────────────────────────────────────────────────╯\n╭─ Commands ─────────────────────────────────────────────────────────────────────────────╮\n│ resume               Resume any (partial) run already logged in the database.          │\n│ list-runs            List the runs defined in a given pyANI-plus SQLite3 database.     │\n│ delete-run           Delete any single run from the given pyANI-plus SQLite3 database. │\n│ export-run           Export any single run from the given pyANI-plus SQLite3 database. │\n│ plot-run             Plot heatmaps and distributions for any single run.               │\n│ plot-run-comp        Plot comparisons between multiple runs.                           │\n│ classify             Classify genomes into clusters based on ANI results.              │\n╰────────────────────────────────────────────────────────────────────────────────────────╯\n╭─ ANI methods ──────────────────────────────────────────────────────────────────────────╮\n│ anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3         │\n│                      database.                                                         │\n│ dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus  │\n│                      SQLite3 database.                                                 │\n│ anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3         │\n│                      database.                                                         │\n│ fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3      │\n│                      database.                                                         │\n│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a │\n│                      pyANI-plus SQLite3 database.                                      │\n│ external-alignment   Compute pairwise ANI from given multiple-sequence-alignment (MSA) │\n│                      file.                                                             │\n╰────────────────────────────────────────────────────────────────────────────────────────╯",
     "crumbs": [
       "Installation"
     ]
@@ -124,7 +154,17 @@
     "href": "walkthrough.html",
     "title": "pyANI-plus walkthrough",
     "section": "",
-    "text": "Collect genomes for analysis\nThis section walks you through how pyANI-plus can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedue for any pyANI-plus analysis is:\nThis is a command-line tool, meaning you type commands into a terminal window to run it. To view the avaliable options we type pyani-plus (in lower case), space, then -h (minus lower-case H) for the help option, and finally enter or return to run the command:\nThis should output the following - hopefully in colour depending on your terminal setup:\nTo see the options for a specific subcommand, use pyani-plus &lt;subcommand&gt; -h. For example, to view options for the ANIb method:\nExpected output:\nWhile you can work with your choice of genomes as FASTA files placed in a local directory, we suggest using the ten genomes provided when first following this walkthrough to ensure the output matches the expected results.\npyANI-plus accepts FASTA files with the extensions .fasta, .fas, and .fna, along with gzip compressed versions like .fasta.gz, .fas.gz, and .fna.gz. Please make sure that your input files match these extensions to ensure that pyANI-plus works.",
+    "text": "Collect genomes for analysis\nThis section walks through how pyANI-plus can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedure for any pyANI-plus analysis is:\nUse the command below to generate the help message for pyani-plus:\nThis should output the following (or similar) - hopefully in colour depending on your terminal setup:\nTo see the options for a specific subcommand, use pyani-plus &lt;subcommand&gt; -h. For example, to view options for the ANIb method:\nExpected output:\nWhile you can work with your choice of genomes as FASTA files placed in a local directory, we suggest using the ten genomes provided in the compressed folder linked below when first following this walkthrough, to ensure the output matches the expected results.\npyANI-plus accepts FASTA files with the extensions .fasta, .fas, and .fna, and gzip compressed formats like .fasta.gz, .fas.gz, and .fna.gz. Please make sure that your input files match these extensions to ensure that pyANI-plus works.",
+    "crumbs": [
+      "pyANI-plus walkthrough"
+    ]
+  },
+  {
+    "objectID": "walkthrough.html#collect-genomes-for-analysis",
+    "href": "walkthrough.html#collect-genomes-for-analysis",
+    "title": "pyANI-plus walkthrough",
+    "section": "",
+    "text": "Walkthrough genome files (compressed) walkthrough_data.zip\n\n\n\n\n\n\n\nNote\n\n\n\nTo uncompress this folder, either use your operating system’s built-in tools in the file explorer, or use a command like:\nunzip walkthrough_data.zip",
     "crumbs": [
       "pyANI-plus walkthrough"
     ]
@@ -134,7 +174,7 @@
     "href": "walkthrough.html#conducting-ani-analysis",
     "title": "pyANI-plus walkthrough",
     "section": "Conducting ANI analysis",
-    "text": "Conducting ANI analysis\npyANI-plus enables genome comparison using various ANI methods. In this walkthrough, we will demonstrate methods such as ANIm, ANIb, dnadiff, FastANI, and Sourmash. While running all methods is not mandatory, we recommend doing so, as we will later compare their results using the plot-run-comp command.\nRunning any ANI method on requires you specify the directory containing the genome data (e.g., walkthrough_data/), and the path to the pyANI-plus SQLite3 database (walkthrough.db for this walkthrough).\n\n\n\n\n\n\nImportant\n\n\n\nIf this is your first analysis and the SQLite3 database does not yet exist, you must use the --create-db option; otherwise, you’ll encounter the following error:\nERROR: Database walkthrough.db does not exist, but not using --create-db\n\n\nOptionally, you can provide a custom name for the analysis with the --name option for easier reference.\nIf you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using --executor slurm (the default is local, see later).\n\nConduct ANIb analysis\nIn this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:\npyani-plus anib walkthrough_data/ --database walkthrough.db --create-db --name \"walkthrough ANIb\"\nWith the suggested ten genomes this takes about 5 minutes on a recent multi-core desktop computer. The other methods should all be faster.\nIf you wish you can select a different fragment size for the comparison method using the --fragsize option. The default size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.\n\n\nConduct ANIm analysis\nNext, we will run the ANIm analysis on the same genomes using the following command line:\npyani-plus anim walkthrough_data/ --database walkthrough.db --name \"walkthrough ANIm\"\nIn ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (--mode mum). You can change this to include all anchor matches, regardless of their uniqueness, by setting the --mode option to maxmatch.\n\n\nConduct dnadiff analysis\nTo compare genomes in the input walkthrough_data directory using dnadiff method use the following command line:\npyani-plus dnadiff walkthrough_data/ --database walkthrough.db --name \"walkthrough dnadiff\"\n\n\nConduct fastani analysis\nTo run fastani analysis on the genomes in the input walkthrough_data directory use the following command line:\npyani-plus fastani walkthrough_data/ --database walkthrough.db --name \"walkthrough fastani\"\nIn fastani analysis, additional method parameters can be changed by the user. These include:\n\n--fragsize: Fragment length used in the analysis (default: 3000).\n--kmersize: K-mer size, set to 16 by default. It can be set to any value smaller than 16.\n--minmatch: Minimum fraction of the genome that must be shared for ANI to be considered reliable. If the reference and query genome sizes differ, the smaller genome is used. (Default: 0.2).\n\n\n\nConduct sourmash analysis\nLastly, we can run sourmash analysis with the following command line:\npyani-plus sourmash walkthrough_data/ --database walkthrough.db --name \"walkthrough sourmash\"\nFor sourmash analysis, additional method parameters can be changed by the user. These include: - --scaled: Compression ration (defult: 1000) - --kmersize: K-mer size (default: 31)",
+    "text": "Conducting ANI analysis\npyANI-plus enables genome comparison using various ANI methods.\nIn this walkthrough, we will demonstrate methods including ANIm, ANIb, dnadiff, fastANI, and sourmash. We recommend trying several of these methods on the walkthrough dataset, so their results can be compared using the plot-run-comp command.\nRunning any ANI method on requires that you specify the directory containing the genome data (e.g., walkthrough_data/), and the path to the pyANI-plus SQLite3 database (walkthrough.db for this walkthrough).\n\n\n\n\n\n\nImportant\n\n\n\nIf this is your first analysis and the SQLite3 database does not yet exist, you must use the --create-db option; otherwise, you will encounter the following error:\nERROR: Database walkthrough.db does not exist, but not using --create-db\n\n\nOptionally, you can provide a custom name for the analysis with the --name option for easier reference.\nIf you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using --executor slurm (the default is --executor local).\n\nConduct ANIb analysis\nIn this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:\npyani-plus anib walkthrough_data/ --database walkthrough.db --create-db --name \"walkthrough ANIb\"\nWith the suggested ten genomes this takes about 5 minutes on a recent multi-core desktop computer. The other methods should all be faster.\nIf you wish you can select a different fragment size for the comparison method using the --fragsize option. The default size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.\n\n\nConduct ANIm analysis\nNext, we will run the ANIm analysis on the same genomes using the following command line:\npyani-plus anim walkthrough_data/ --database walkthrough.db --name \"walkthrough ANIm\"\nIn ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (--mode mum). You can change this to include all anchor matches, regardless of their uniqueness, by setting the --mode option to maxmatch.\n\n\nConduct dnadiff analysis\nTo compare genomes in the input walkthrough_data directory using dnadiff method use the following command line:\npyani-plus dnadiff walkthrough_data/ --database walkthrough.db --name \"walkthrough dnadiff\"\n\n\nConduct fastani analysis\nTo run fastani analysis on the genomes in the input walkthrough_data directory use the following command line:\npyani-plus fastani walkthrough_data/ --database walkthrough.db --name \"walkthrough fastani\"\nIn fastani analysis, additional method parameters can be changed by the user. These include:\n\n--fragsize: Fragment length used in the analysis (default: 3000).\n--kmersize: K-mer size, set to 16 by default. It can be set to any value smaller than 16.\n--minmatch: Minimum fraction of the genome that must be shared for ANI to be considered reliable. If the reference and query genome sizes differ, the smaller genome is used. (Default: 0.2).\n\n\n\nConduct sourmash analysis\nLastly, we can run sourmash analysis with the following command line:\npyani-plus sourmash walkthrough_data/ --database walkthrough.db --name \"walkthrough sourmash\"\nFor sourmash analysis, additional method parameters can be changed by the user. These include: - --scaled: Compression ration (defult: 1000) - --kmersize: K-mer size (default: 31)",
     "crumbs": [
       "pyANI-plus walkthrough"
     ]
@@ -519,6 +559,36 @@
     "crumbs": [
       "pyANI-plus subcommands",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>`classify`</span>"
+    ]
+  },
+  {
+    "objectID": "contributing.html",
+    "href": "contributing.html",
+    "title": "Contributing to pyANI-plus",
+    "section": "",
+    "text": "Reporting bugs and errors\nIf you find a bug, or an error in the code or documentation, please report this by raising an issue at the GitHub issue page for pyANI-plus.",
+    "crumbs": [
+      "Contributing to `pyANI-plus`"
+    ]
+  },
+  {
+    "objectID": "contributing.html#contributing-code-or-documentation",
+    "href": "contributing.html#contributing-code-or-documentation",
+    "title": "Contributing to pyANI-plus",
+    "section": "Contributing code or documentation",
+    "text": "Contributing code or documentation\nWe welcome contributions of all kinds! Check out the GitHub contributors link for a list of those who have helped shape the project.\nWhether you’d like to develop pyANI-plus, fix a bug, or improve documentation, your help is appreciated! To help maintain an efficient workflow, please adhere to the developer guidelines below:\n\nMaking changes and pull requests\n\nFork the pyANI-plus repository under your GitHub account.\n\nClone the forked repository to your local development machine.\n\nTo edit pyANI-plus and see changes take effect immediately (without reinstalling), run:\npip install -e .\ninside the cloned repository. This is useful for testing.\n\nCreate a new branch in your forked repository with an informative name such as fix_issue_107, by running:\ngit checkout -b fix_issue_107\nMake the changes you need and commit them to your local branch.\n\nRun the pytests in the respoitory to ensure your changes work and do not intriduce any bugs or errors (see the testing documentation)\nIf the tests all pass, push the changes to your fork, and submit a pull request against the original repository.\nIndicate one of the pyANI-plus developers as an assignee in your pull request. A developer will review your pull request and either merge it or provide feedback for further improvements.",
+    "crumbs": [
+      "Contributing to `pyANI-plus`"
+    ]
+  },
+  {
+    "objectID": "contributing.html#suggestions-for-improvement",
+    "href": "contributing.html#suggestions-for-improvement",
+    "title": "Contributing to pyANI-plus",
+    "section": "Suggestions for improvement",
+    "text": "Suggestions for improvement\nWe appreciate your feedback on pyANI-plus. If you have a specific issue or proposal, please submit it through GitHub Issues. To discuss ideas with the maintainers and community, join the conversation on GitHub Discussions.",
+    "crumbs": [
+      "Contributing to `pyANI-plus`"
     ]
   },
   {
