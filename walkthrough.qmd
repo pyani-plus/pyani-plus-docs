@@ -163,72 +163,81 @@ Optionally, you can provide a custom name for the analysis with the `--name` opt
 
 If you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using `--executor slurm` (the default is `--executor local`).
 
-### Conduct ANIb analysis
-
-In this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:
-
-```bash
-pyani-plus anib walkthrough_data/ --database walkthrough.db --create-db --name "walkthrough ANIb"
-```
-
-With the suggested ten genomes this takes about 5 minutes on a recent multi-core desktop computer.
-The other methods should all be faster.
-
-If you wish you can select a different fragment size for the comparison method using the `--fragsize` option.
-The default size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.
-
-
 ### Conduct ANIm analysis
-Next, we will run the ANIm analysis on the same genomes using the following command line:
+
+We first run ANIm analysis on the downloaded genomes, and creating the local database, using the command line:
 
 ```bash
-pyani-plus anim walkthrough_data/ --database walkthrough.db --name "walkthrough ANIm"
+pyani-plus anim walkthrough_data/ --database walkthrough.db --create-db --name "walkthrough ANIm"
 ```
+
+With the walkthrough dataset this should take about 2-5 minutes on a recent multi-core desktop or laptop computer.
 
 In ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (`--mode mum`). You can change this to include all anchor matches, regardless of their uniqueness, by setting the `--mode` option to `maxmatch`.
 
+### Conduct ANIb analysis
 
-### Conduct dnadiff analysis
-To compare genomes in the input `walkthrough_data` directory using `dnadiff` method use the following command line:
+To run ANIb analysis on the downloaded genomes use the command line:
+
+```bash
+pyani-plus anib walkthrough_data/ --database walkthrough.db --name "walkthrough ANIb"
+```
+
+With the suggested ten genomes this should take about 5-10 minutes on a recent multi-core desktop or laptop computer. The other methods should all be considerably faster.
+
+If you wish you can select a different fragment size for the comparison method using the `--fragsize` option. The default fragment size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.
+
+### Conduct `dnadiff` analysis
+
+To compare genomes in the input `walkthrough_data` directory using the `dnadiff` method use the following command line:
 
 ```bash
 pyani-plus dnadiff walkthrough_data/ --database walkthrough.db --name "walkthrough dnadiff"
 ```
 
-### Conduct fastani analysis
-To run fastani analysis on the genomes in the input `walkthrough_data` directory use the following command line:
+With the walkthrough dataset this should take about 2-5 minutes on a recent multi-core desktop or laptop computer.
+
+### Conduct `fastani` analysis
+
+To run `fastani` analysis on the genomes in the input `walkthrough_data` directory use the following command line:
 
 ```bash
 pyani-plus fastani walkthrough_data/ --database walkthrough.db --name "walkthrough fastani"
 ```
 
+With the walkthrough dataset this should take less than 30 seconds on a recent multi-core desktop or laptop computer.
+
 In `fastani` analysis, additional method parameters can be changed by the user. These include:
 
 - `--fragsize`: Fragment length used in the analysis (default: `3000`).
-- `--kmersize`: K-mer size, set to `16` by default. It can be set to any value smaller than 16.
+- `--kmersize`: _k_-mer size, set to `16` by default. It can be set to any value smaller than 16.
 - `--minmatch`: Minimum fraction of the genome that must be shared for ANI to be considered reliable. If the reference and query genome sizes differ, the smaller genome is used. (Default: `0.2`).
 
-### Conduct sourmash analysis
-Lastly, we can run sourmash analysis with the following command line:
+### Conduct `sourmash` analysis
+
+Lastly, we can run `sourmash` analysis with the following command line:
 
 ```bash
 pyani-plus sourmash walkthrough_data/ --database walkthrough.db --name "walkthrough sourmash"
 ```
 
+With the walkthrough dataset this should take less than 15 seconds on a recent multi-core desktop or laptop computer.
+
 For `sourmash` analysis, additional method parameters can be changed by the user. These include:
 - `--scaled`: Compression ration (defult: `1000`)
-- `--kmersize`: K-mer size (default: `31`)
+- `--kmersize`: _k_-mer size (default: `31`)
 
 ## Reporting Analyses and Analysis Results
 
 ### List all runs in the database {#list-runs}
+
 `pyANI-plus` enables you to view all runs defined in a SQLite3 database. To display all runs from the database (eg. `walkthrough.db` for this walkthrough), use this command:
 
 ```bash
 pyani-plus list-runs --database walkthrough.db
 ```
 
-You will see the following table, or something similar, depending on the analyses contained within the database, displayed on your screen:
+You should see the following table, or something similar, depending on the analyses contained within the database:
 
 ```
                               5 analysis runs in walkthrough.db                              
@@ -243,7 +252,7 @@ You will see the following table, or something similar, depending on the analyse
 └────┴────────────┴──────────┴──────┴──────┴──────┴─────────┴────────┴──────────────────────┘
 ```
 
-In this table, each row represents a single run, and the columns provide the following details:
+In this table, each row represents a single run, and the columns provide the following information:
 
 - `ID`: Unique ID for the run
 - `Date`: Date when the analysis was executed
@@ -251,14 +260,14 @@ In this table, each row represents a single run, and the columns provide the fol
 - `Done`: Number of completed ANI comparisons
 - `Null`: Number of analyses where no alignment was found (e.g., comparisons between highly divergent genomes)
 - `Miss`: Number of comparisons that were not completed
-- `Status`: Current status of the analysis—e.g., Done for completed analyses, Running for comparisons that have started but are still in progress
+- `Status`: Current status of the analysis—e.g., `Done` for completed analyses, `Running` for comparisons that have started but are still in progress
 - `Name`: Run name.
 
-### Exporting ANI results in a tabular format
-`pyANI-plus` allows ANI results to be exported in a tabular format, but the output directory must already be present. In this example, we create a `walkthrough_output/` directory and use the following command to export results for the ANIb analysis:
+### Exporting ANI results in tabular format
+
+`pyANI-plus` allows ANI results to be exported in a tabular format. We use the following command to export results for the ANIb analysis:
 
 ```bash
-mkdir output # create directory called output
 pyani-plus export-run --database walkthrough.db --outdir walkthrough_output/ --run-id 1
 ```
 
@@ -266,7 +275,7 @@ pyani-plus export-run --database walkthrough.db --outdir walkthrough_output/ --r
 If `--run-id` is not specified the latest run will be exported. To export runs for other analyses, you can specify the `--run-id` by matching the ID number provided in the table provided by [list-runs subcommand](walkthrough.qmd#list-runs).
 :::
 
-This will report the relevant information to new files in the `walkthrough_output/` directory. The matrix output files are named `<method>_<property>.tsv` while the long form is named `<method>_run_<run-id>.tsv` and will include the query and subject genomes and all the comparison properties as columns:
+This will report the relevant information to new files in the `walkthrough_output/` directory. The matrix output files are named `<method>_<property>.tsv` while the long (`tidy`) format output is named `<method>_run_<run-id>.tsv`. 
 
 ```
 .
@@ -279,8 +288,17 @@ This will report the relevant information to new files in the `walkthrough_outpu
 └── ANIb_tANI.tsv
 ```
 
+The long format file will include the query and subject genomes and all the comparison properties as columns:
+
+```text
+#Query	Subject	Identity	Query-Cov	Subject-Cov	Hadamard	tANI	Align-Len	Sim-Errors
+GCF_002950395.1_ASM295039v1_genomic	GCF_014836715.1_ASM1483671v1_genomic	0.9154744964243148	0.672804430756021	NA	0.6159352974384161	0.4846133575912978	3359986	284072
+```
+
 ::: { .callout-important}
-Incomplete runs will return an error. There will be no output for empty run. For partial runs the long form table will be exported, but not the matrices.
+- Incomplete runs will return an error.
+- There will be no output for an empty run. 
+- For partial runs the long form table of completed comparisons will be exported, but not the matrices.
 :::
 
 ### Graphical output
@@ -330,6 +348,7 @@ In the above heatmap, each cell represents a pairwise comparision between the ge
 - Long form of ANI results which include the query and subject genomes and all the comparison properties as columns (`<method>_run_<ID>.tsv`)
 
 ## Plotting comparisons between runs
+
 ANI results can vary depending on the method used. `pyANI-plus` allows you to compare the ANI results from multiple runs. In this example, we show how to use the `pyani-plus plot-run-comp` subcommand to visualise and compare these results. Running `pyani-plus plot-run-comp` requires specifying the output directory (e.g., `walkthrough_output/`), the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough), and a comma-separated list of run IDs for comparison.
 
 ::: { .callout-important}
@@ -351,7 +370,7 @@ This command generates the following outputs:
 
 
 ::: { .callout-tip}
-The red diagonal line serves as a reference, indicating where data points should align on the scatterplot if the pairwise comparison results match between methods.
+The red diagonal line serves as a reference (_x_-axis values equal _y_-axis values), indicating where data points would align on the scatterplot if the methods being compared give the same values.
 :::
 
 
@@ -364,3 +383,4 @@ The red horizontal line at 0 indicates no difference between the pairwise compar
 :::
 
 - Tabular summary of the comparison output (`<reference_method>_identity_<run_ID>_vs_<run_ID>.tsv`).
+
