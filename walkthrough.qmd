@@ -163,30 +163,27 @@ Optionally, you can provide a custom name for the analysis with the `--name` opt
 
 If you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using `--executor slurm` (the default is `--executor local`).
 
-### Conduct ANIb analysis
-
-In this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:
-
-```bash
-pyani-plus anib walkthrough_data/ --database walkthrough.db --create-db --name "walkthrough ANIb"
-```
-
-With the suggested ten genomes this takes about 5 minutes on a recent multi-core desktop computer.
-The other methods should all be faster.
-
-If you wish you can select a different fragment size for the comparison method using the `--fragsize` option.
-The default size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.
-
-
 ### Conduct ANIm analysis
-Next, we will run the ANIm analysis on the same genomes using the following command line:
+
+We first run ANIm analysis on the downloaded genomes, and creating the local database, using the command line:
 
 ```bash
-pyani-plus anim walkthrough_data/ --database walkthrough.db --name "walkthrough ANIm"
+pyani-plus anim walkthrough_data/ --database walkthrough.db --create-db --name "walkthrough ANIm"
 ```
 
 In ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (`--mode mum`). You can change this to include all anchor matches, regardless of their uniqueness, by setting the `--mode` option to `maxmatch`.
 
+### Conduct ANIb analysis
+
+To run ANIb analysis on the downloaded genomes use the command line:
+
+```bash
+pyani-plus anib walkthrough_data/ --database walkthrough.db --name "walkthrough ANIb"
+```
+
+With the suggested ten genomes this should take about 5-10 minutes on a recent multi-core desktop or laptop computer. The other methods should all be considerably faster.
+
+If you wish you can select a different fragment size for the comparison method using the `--fragsize` option. The default fragment size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.
 
 ### Conduct dnadiff analysis
 To compare genomes in the input `walkthrough_data` directory using `dnadiff` method use the following command line:
