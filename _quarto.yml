@@ -23,14 +23,14 @@ book:
 
   # Sets the URL for the repository
   # [C] GITHUB REPOSITORY URL
-  repo-url: https://github.com/sipbs-compbiol/REPOSITORY
+  repo-url: https://github.com/pyani-plus/pyani-plus-docs
   repo-branch: main
   repo-actions: [edit, issue]
 
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
-  author: "Leighton Pritchard"
-  date: "03/10/2025"
+  author: "Angelika Kiepas, Peter Cock, and Leighton Pritchard"
+  date: "03/15/2025"
 
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
@@ -55,6 +55,8 @@ book:
         - subcommands/resume.qmd
         - subcommands/delete_run.qmd
         - subcommands/classify.qmd
+        
+    - contributing.qmd
     - testing.qmd
     - part: licensing.qmd
       chapters: 
@@ -71,10 +73,10 @@ format:
     theme: cosmo
     code-link: true
     
-    author-meta: "Leighton Pritchard"
+    author-meta: "Angelika Kiepas, Peter Cock, and Leighton Pritchard"
   
-  pdf:
-    documentclass: scrreprt
+#  pdf:
+#    documentclass: scrreprt
 
 # Freeze output before pushing modifications to the repository when publishing
 # Should not need changing

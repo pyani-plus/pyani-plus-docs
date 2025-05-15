@@ -1,26 +1,28 @@
 # pyANI-plus walkthrough {.unnumbered}
 
-This section walks you through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedue for any `pyANI-plus` analysis is:
+This section walks through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedure for any `pyANI-plus` analysis is:
 
 1. Collect genomes for analysis
-2. Perform ANI analysis using diffrent methods such as ANIb, ANIm etc.
-3. Report and visualise analysis report
+2. Perform ANI analysis using a chosen method such as ANIb, ANIm, etc.
+3. Report as tabular output and/or generate a graphical visualisation
 4. Use the analysis results to classify input genomes and generate species hypotheses
-
 
 ::: { .callout-tip}
 Before using `pyANI-plus`, make sure to install it on a local machine like a laptop, desktop, server, or cluster. Please see section [installation](installation.qmd#installation) for installation instructions.
 :::
 
-This is a command-line tool, meaning you type commands into a terminal window to run it. 
-To view the avaliable options we type `pyani-plus` (in lower case), space, then `-h`
-(minus lower-case H) for the help option, and finally enter or return to run the command:
+Use the command below to generate the help message for `pyani-plus`:
 
 ```bash
 pyani-plus -h
 ```
 
-This should output the following - hopefully in colour depending on your terminal setup:
+::: { .callout-note }
+This is a command-line tool, meaning you type commands into a terminal window to run it. To view avaliable options type `pyani-plus` (in lower case), space, then `-h` (minus lower-case H) for the help option, and finally enter or return to run the command.
+:::
+
+
+This should output the following (or similar) - hopefully in colour depending on your terminal setup:
 
 ```bash
  Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...
@@ -126,25 +128,31 @@ Expected output:
 ```
 
 ## Collect genomes for analysis
-While you can work with your choice of genomes as FASTA files placed in a local directory,
-we suggest using the ten genomes provided when first following this walkthrough to ensure the output matches the expected results.
 
-`pyANI-plus` accepts FASTA files with the extensions `.fasta`, `.fas`, and `.fna`,
-along with gzip compressed versions like `.fasta.gz`, `.fas.gz`, and `.fna.gz`.
-Please make sure that your input files match these extensions to ensure that `pyANI-plus` works.
+While you can work with your choice of genomes as FASTA files placed in a local directory, we suggest using the ten genomes provided in the compressed folder linked below when first following this walkthrough, to ensure the output matches the expected results.
 
+- [Walkthrough genome files (compressed) `walkthrough_data.zip`](./assets/walkthrough_data.zip)
+
+::: { .callout-note }
+To uncompress this folder, either use your operating system's built-in tools in the file explorer, or use a command like:
+
+```bash
+unzip walkthrough_data.zip
+```
+:::
+
+`pyANI-plus` accepts FASTA files with the extensions `.fasta`, `.fas`, and `.fna`, and gzip compressed formats like `.fasta.gz`, `.fas.gz`, and `.fna.gz`. Please make sure that your input files match these extensions to ensure that `pyANI-plus` works.
 
 ## Conducting ANI analysis
-`pyANI-plus` enables genome comparison using various ANI methods.
-In this walkthrough, we will demonstrate methods such as ANIm, ANIb, dnadiff, FastANI, and Sourmash.
-While running all methods is not mandatory, we recommend doing so, as we will later compare their results using the `plot-run-comp` command.
 
-Running any ANI method on requires you specify the directory containing the genome data (e.g., `walkthrough_data/`),
-and the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough).
+`pyANI-plus` enables genome comparison using various ANI methods.
+
+In this walkthrough, we will demonstrate methods including ANIm, ANIb, dnadiff, fastANI, and sourmash. We recommend trying several of these methods on the walkthrough dataset, so their results can be compared using the `plot-run-comp` command.
+
+Running any ANI method on requires that you specify the directory containing the genome data (e.g., `walkthrough_data/`), and the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough).
 
 ::: { .callout-important}
-If this is your first analysis and the SQLite3 database does not yet exist, you must use the `--create-db` option;
-otherwise, you'll encounter the following error:
+If this is your first analysis and the SQLite3 database does not yet exist, you must use the `--create-db` option; otherwise, you will encounter the following error:
 
 ```bash
 ERROR: Database walkthrough.db does not exist, but not using --create-db
@@ -153,10 +161,10 @@ ERROR: Database walkthrough.db does not exist, but not using --create-db
 
 Optionally, you can provide a custom name for the analysis with the `--name` option for easier reference.
 
-If you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using `--executor slurm`
-(the default is `local`, see later).
+If you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using `--executor slurm` (the default is `--executor local`).
 
 ### Conduct ANIb analysis
+
 In this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:
 
 ```bash

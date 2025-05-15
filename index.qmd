@@ -1,18 +1,19 @@
-# About pyANI-plus {.unnumbered}
-`pyANI-plus` is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
+# About pyANI-plus {#sec-about .unnumbered}
 
-- ANIb (average nucleotide identity using BLAST+)
-- ANIm (average nucleotide identity using MUMmer)
-- dnadiff (average nucleotide identity using dnadiff)
-- fastANI (average nucleotide identity using fastANI)
-- sourmash (average nucleotide identity using sourmash)
-- extenral-alignment (average nucletide identity using multiple-sequence-alignment)
+`pyANI-plus` is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
+
+- `ANIb` (average nucleotide identity using [`BLAST+`](https://blast.ncbi.nlm.nih.gov/Blast.cgi))
+- `ANIm` (average nucleotide identity using [`MUMmer`](https://mummer.sourceforge.net/manual/))
+- `dnadiff` (average nucleotide identity using [[`dnadiff`](https://mummer.sourceforge.net/manual/))
+- `fastANI` (average nucleotide identity using [`fastANI`](https://github.com/ParBLiSS/FastANI))
+- `sourmash` (average nucleotide identity using [`sourmash`](https://sourmash.readthedocs.io/en/latest/index.html))
+- `external-alignment` (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)
 
 In addition to calculating ANI for a given set of genomes, `pyANI-plus` also includes the following features:
 
 - Plotting heatmaps and distributions for individual runs.
-- Comparing multiple runs through visualization.
-- Exporting any single run from the pyANI-plus SQLite3 database in tabular format.
+- Comparing and visualising multiple runs.
+- Exporting any single run from the `pyANI-plus` SQLite3 database in tabular format.
 - Classifying genomes into clusters based on ANI results.
 - Resuming partial runs already logged in the database.
 - Deleting any single run from the pyANI-plus SQLite3 database.
