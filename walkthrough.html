@@ -345,16 +345,16 @@ window.Quarto = {
   <li><a href="#collect-genomes-for-analysis" id="toc-collect-genomes-for-analysis" class="nav-link active" data-scroll-target="#collect-genomes-for-analysis">Collect genomes for analysis</a></li>
   <li><a href="#conducting-ani-analysis" id="toc-conducting-ani-analysis" class="nav-link" data-scroll-target="#conducting-ani-analysis">Conducting ANI analysis</a>
   <ul class="collapse">
-  <li><a href="#conduct-anib-analysis" id="toc-conduct-anib-analysis" class="nav-link" data-scroll-target="#conduct-anib-analysis">Conduct ANIb analysis</a></li>
   <li><a href="#conduct-anim-analysis" id="toc-conduct-anim-analysis" class="nav-link" data-scroll-target="#conduct-anim-analysis">Conduct ANIm analysis</a></li>
-  <li><a href="#conduct-dnadiff-analysis" id="toc-conduct-dnadiff-analysis" class="nav-link" data-scroll-target="#conduct-dnadiff-analysis">Conduct dnadiff analysis</a></li>
-  <li><a href="#conduct-fastani-analysis" id="toc-conduct-fastani-analysis" class="nav-link" data-scroll-target="#conduct-fastani-analysis">Conduct fastani analysis</a></li>
-  <li><a href="#conduct-sourmash-analysis" id="toc-conduct-sourmash-analysis" class="nav-link" data-scroll-target="#conduct-sourmash-analysis">Conduct sourmash analysis</a></li>
+  <li><a href="#conduct-anib-analysis" id="toc-conduct-anib-analysis" class="nav-link" data-scroll-target="#conduct-anib-analysis">Conduct ANIb analysis</a></li>
+  <li><a href="#conduct-dnadiff-analysis" id="toc-conduct-dnadiff-analysis" class="nav-link" data-scroll-target="#conduct-dnadiff-analysis">Conduct <code>dnadiff</code> analysis</a></li>
+  <li><a href="#conduct-fastani-analysis" id="toc-conduct-fastani-analysis" class="nav-link" data-scroll-target="#conduct-fastani-analysis">Conduct <code>fastani</code> analysis</a></li>
+  <li><a href="#conduct-sourmash-analysis" id="toc-conduct-sourmash-analysis" class="nav-link" data-scroll-target="#conduct-sourmash-analysis">Conduct <code>sourmash</code> analysis</a></li>
   </ul></li>
   <li><a href="#reporting-analyses-and-analysis-results" id="toc-reporting-analyses-and-analysis-results" class="nav-link" data-scroll-target="#reporting-analyses-and-analysis-results">Reporting Analyses and Analysis Results</a>
   <ul class="collapse">
   <li><a href="#list-runs" id="toc-list-runs" class="nav-link" data-scroll-target="#list-runs">List all runs in the database</a></li>
-  <li><a href="#exporting-ani-results-in-a-tabular-format" id="toc-exporting-ani-results-in-a-tabular-format" class="nav-link" data-scroll-target="#exporting-ani-results-in-a-tabular-format">Exporting ANI results in a tabular format</a></li>
+  <li><a href="#exporting-ani-results-in-tabular-format" id="toc-exporting-ani-results-in-tabular-format" class="nav-link" data-scroll-target="#exporting-ani-results-in-tabular-format">Exporting ANI results in tabular format</a></li>
   <li><a href="#graphical-output" id="toc-graphical-output" class="nav-link" data-scroll-target="#graphical-output">Graphical output</a></li>
   </ul></li>
   <li><a href="#plotting-comparisons-between-runs" id="toc-plotting-comparisons-between-runs" class="nav-link" data-scroll-target="#plotting-comparisons-between-runs">Plotting comparisons between runs</a></li>
@@ -554,40 +554,44 @@ Important
 </div>
 <p>Optionally, you can provide a custom name for the analysis with the <code>--name</code> option for easier reference.</p>
 <p>If you want to run the ANI analysis on a cluster using SLURM, you must set the execution method using <code>--executor slurm</code> (the default is <code>--executor local</code>).</p>
-<section id="conduct-anib-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="conduct-anib-analysis">Conduct ANIb analysis</h3>
-<p>In this walkthrough, we will first run the ANIb analysis on the downloaded genomes using the following command line:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anib walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--create-db</span> <span class="at">--name</span> <span class="st">"walkthrough ANIb"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>With the suggested ten genomes this takes about 5 minutes on a recent multi-core desktop computer. The other methods should all be faster.</p>
-<p>If you wish you can select a different fragment size for the comparison method using the <code>--fragsize</code> option. The default size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.</p>
-</section>
 <section id="conduct-anim-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="conduct-anim-analysis">Conduct ANIm analysis</h3>
-<p>Next, we will run the ANIm analysis on the same genomes using the following command line:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anim walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough ANIm"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We first run ANIm analysis on the downloaded genomes, and creating the local database, using the command line:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anim walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--create-db</span> <span class="at">--name</span> <span class="st">"walkthrough ANIm"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the walkthrough dataset this should take about 2-5 minutes on a recent multi-core desktop or laptop computer.</p>
 <p>In ANIm analysis, the default setting uses anchor matches that are unique in the reference but not necessarily unique in the query (<code>--mode mum</code>). You can change this to include all anchor matches, regardless of their uniqueness, by setting the <code>--mode</code> option to <code>maxmatch</code>.</p>
 </section>
+<section id="conduct-anib-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="conduct-anib-analysis">Conduct ANIb analysis</h3>
+<p>To run ANIb analysis on the downloaded genomes use the command line:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> anib walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough ANIb"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the suggested ten genomes this should take about 5-10 minutes on a recent multi-core desktop or laptop computer. The other methods should all be considerably faster.</p>
+<p>If you wish you can select a different fragment size for the comparison method using the <code>--fragsize</code> option. The default fragment size is 1020bp (listed in the help output shown earlier), which is typically used for ANIb.</p>
+</section>
 <section id="conduct-dnadiff-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="conduct-dnadiff-analysis">Conduct dnadiff analysis</h3>
-<p>To compare genomes in the input <code>walkthrough_data</code> directory using <code>dnadiff</code> method use the following command line:</p>
+<h3 class="anchored" data-anchor-id="conduct-dnadiff-analysis">Conduct <code>dnadiff</code> analysis</h3>
+<p>To compare genomes in the input <code>walkthrough_data</code> directory using the <code>dnadiff</code> method use the following command line:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> dnadiff walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough dnadiff"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the walkthrough dataset this should take about 2-5 minutes on a recent multi-core desktop or laptop computer.</p>
 </section>
 <section id="conduct-fastani-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="conduct-fastani-analysis">Conduct fastani analysis</h3>
-<p>To run fastani analysis on the genomes in the input <code>walkthrough_data</code> directory use the following command line:</p>
+<h3 class="anchored" data-anchor-id="conduct-fastani-analysis">Conduct <code>fastani</code> analysis</h3>
+<p>To run <code>fastani</code> analysis on the genomes in the input <code>walkthrough_data</code> directory use the following command line:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> fastani walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough fastani"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the walkthrough dataset this should take less than 30 seconds on a recent multi-core desktop or laptop computer.</p>
 <p>In <code>fastani</code> analysis, additional method parameters can be changed by the user. These include:</p>
 <ul>
 <li><code>--fragsize</code>: Fragment length used in the analysis (default: <code>3000</code>).</li>
-<li><code>--kmersize</code>: K-mer size, set to <code>16</code> by default. It can be set to any value smaller than 16.</li>
+<li><code>--kmersize</code>: <em>k</em>-mer size, set to <code>16</code> by default. It can be set to any value smaller than 16.</li>
 <li><code>--minmatch</code>: Minimum fraction of the genome that must be shared for ANI to be considered reliable. If the reference and query genome sizes differ, the smaller genome is used. (Default: <code>0.2</code>).</li>
 </ul>
 </section>
 <section id="conduct-sourmash-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="conduct-sourmash-analysis">Conduct sourmash analysis</h3>
-<p>Lastly, we can run sourmash analysis with the following command line:</p>
+<h3 class="anchored" data-anchor-id="conduct-sourmash-analysis">Conduct <code>sourmash</code> analysis</h3>
+<p>Lastly, we can run <code>sourmash</code> analysis with the following command line:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> sourmash walkthrough_data/ <span class="at">--database</span> walkthrough.db <span class="at">--name</span> <span class="st">"walkthrough sourmash"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For <code>sourmash</code> analysis, additional method parameters can be changed by the user. These include: - <code>--scaled</code>: Compression ration (defult: <code>1000</code>) - <code>--kmersize</code>: K-mer size (default: <code>31</code>)</p>
+<p>With the walkthrough dataset this should take less than 15 seconds on a recent multi-core desktop or laptop computer.</p>
+<p>For <code>sourmash</code> analysis, additional method parameters can be changed by the user. These include: - <code>--scaled</code>: Compression ration (defult: <code>1000</code>) - <code>--kmersize</code>: <em>k</em>-mer size (default: <code>31</code>)</p>
 </section>
 </section>
 <section id="reporting-analyses-and-analysis-results" class="level2 page-columns page-full">
@@ -596,7 +600,7 @@ Important
 <h3 class="anchored" data-anchor-id="list-runs">List all runs in the database</h3>
 <p><code>pyANI-plus</code> enables you to view all runs defined in a SQLite3 database. To display all runs from the database (eg. <code>walkthrough.db</code> for this walkthrough), use this command:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> list-runs <span class="at">--database</span> walkthrough.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You will see the following table, or something similar, depending on the analyses contained within the database, displayed on your screen:</p>
+<p>You should see the following table, or something similar, depending on the analyses contained within the database:</p>
 <pre><code>                              5 analysis runs in walkthrough.db                              
 ┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ ID ┃ Date       ┃ Method   ┃ Done ┃ Null ┃ Miss ┃ Total   ┃ Status ┃ Name                 ┃
@@ -607,7 +611,7 @@ Important
 │  4 │ 2025-03-17 │ fastANI  │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough fastani  │
 │  5 │ 2025-03-17 │ sourmash │   68 │   32 │    0 │ 100=10² │ Done   │ walkthrough sourmash │
 └────┴────────────┴──────────┴──────┴──────┴──────┴─────────┴────────┴──────────────────────┘</code></pre>
-<p>In this table, each row represents a single run, and the columns provide the following details:</p>
+<p>In this table, each row represents a single run, and the columns provide the following information:</p>
 <ul>
 <li><code>ID</code>: Unique ID for the run</li>
 <li><code>Date</code>: Date when the analysis was executed</li>
@@ -615,15 +619,14 @@ Important
 <li><code>Done</code>: Number of completed ANI comparisons</li>
 <li><code>Null</code>: Number of analyses where no alignment was found (e.g., comparisons between highly divergent genomes)</li>
 <li><code>Miss</code>: Number of comparisons that were not completed</li>
-<li><code>Status</code>: Current status of the analysis—e.g., Done for completed analyses, Running for comparisons that have started but are still in progress</li>
+<li><code>Status</code>: Current status of the analysis—e.g., <code>Done</code> for completed analyses, <code>Running</code> for comparisons that have started but are still in progress</li>
 <li><code>Name</code>: Run name.</li>
 </ul>
 </section>
-<section id="exporting-ani-results-in-a-tabular-format" class="level3">
-<h3 class="anchored" data-anchor-id="exporting-ani-results-in-a-tabular-format">Exporting ANI results in a tabular format</h3>
-<p><code>pyANI-plus</code> allows ANI results to be exported in a tabular format, but the output directory must already be present. In this example, we create a <code>walkthrough_output/</code> directory and use the following command to export results for the ANIb analysis:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> output <span class="co"># create directory called output</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> export-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-id</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="exporting-ani-results-in-tabular-format" class="level3">
+<h3 class="anchored" data-anchor-id="exporting-ani-results-in-tabular-format">Exporting ANI results in tabular format</h3>
+<p><code>pyANI-plus</code> allows ANI results to be exported in a tabular format. We use the following command to export results for the ANIb analysis:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> export-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-id</span> 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,7 +640,7 @@ Tip
 <p>If <code>--run-id</code> is not specified the latest run will be exported. To export runs for other analyses, you can specify the <code>--run-id</code> by matching the ID number provided in the table provided by <a href="./walkthrough.html#list-runs">list-runs subcommand</a>.</p>
 </div>
 </div>
-<p>This will report the relevant information to new files in the <code>walkthrough_output/</code> directory. The matrix output files are named <code>&lt;method&gt;_&lt;property&gt;.tsv</code> while the long form is named <code>&lt;method&gt;_run_&lt;run-id&gt;.tsv</code> and will include the query and subject genomes and all the comparison properties as columns:</p>
+<p>This will report the relevant information to new files in the <code>walkthrough_output/</code> directory. The matrix output files are named <code>&lt;method&gt;_&lt;property&gt;.tsv</code> while the long (<code>tidy</code>) format output is named <code>&lt;method&gt;_run_&lt;run-id&gt;.tsv</code>.</p>
 <pre><code>.
 ├── ANIb_aln_lengths.tsv
 ├── ANIb_hadamard.tsv
@@ -646,6 +649,9 @@ Tip
 ├── ANIb_run_1.tsv
 ├── ANIb_sim_errors.tsv
 └── ANIb_tANI.tsv</code></pre>
+<p>The long format file will include the query and subject genomes and all the comparison properties as columns:</p>
+<pre class="text"><code>#Query  Subject Identity    Query-Cov   Subject-Cov Hadamard    tANI    Align-Len   Sim-Errors
+GCF_002950395.1_ASM295039v1_genomic GCF_014836715.1_ASM1483671v1_genomic    0.9154744964243148  0.672804430756021   NA  0.6159352974384161  0.4846133575912978  3359986 284072</code></pre>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -656,14 +662,18 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Incomplete runs will return an error. There will be no output for empty run. For partial runs the long form table will be exported, but not the matrices.</p>
+<ul>
+<li>Incomplete runs will return an error.</li>
+<li>There will be no output for an empty run.</li>
+<li>For partial runs the long form table of completed comparisons will be exported, but not the matrices.</li>
+</ul>
 </div>
 </div>
 </section>
 <section id="graphical-output" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="graphical-output">Graphical output</h3>
 <p>Graphical output (<code>JPG</code>, <code>PDF</code>, <code>PNG</code> and <code>SVGZ</code> formats) is obtanined by executing the <code>pyani-plus plot-run</code> subcommand, specifying the database and ouput directory:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-id</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-id</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -746,7 +756,7 @@ Important
 <p>In this example, we use ANIb as the reference method, with other methods compared against it.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-ids</span> 1,2,3,4,5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-ids</span> 1,2,3,4,5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command generates the following outputs:</p>
 <ul>
 <li>A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (<code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_scatter_vs_others.&lt;extension&gt;</code>).</li>
@@ -767,7 +777,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The red diagonal line serves as a reference, indicating where data points should align on the scatterplot if the pairwise comparison results match between methods.</p>
+<p>The red diagonal line serves as a reference (<em>x</em>-axis values equal <em>y</em>-axis values), indicating where data points would align on the scatterplot if the methods being compared give the same values.</p>
 </div>
 </div>
 <ul>
