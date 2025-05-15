@@ -1,6 +1,6 @@
-# Contributing to `pyANI-plus` {.unnumbered}
+# Contributing to `pyANI-plus` {#sec-contributing .unnumbered}
 
-## Reportinf bugs and errors
+## Reporting bugs and errors
 If you find a bug, or an error in the code or documentation, please report this by raising an issue at the [GitHub issue page](https://github.com/pyani-plus/pyani-plus/issues) for `pyANI-plus`. 
 
 
