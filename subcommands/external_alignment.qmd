@@ -56,7 +56,6 @@ $ pyani-plus external-alignment -h
 ```
 
 ## Input
-
 `pyANI-plus external-alignment` accepts as input a multiple sequence alignment (MSA) in the FASTA format.
 
 ::: { .callout-important}

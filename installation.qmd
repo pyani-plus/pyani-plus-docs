@@ -40,31 +40,48 @@ pyani-plus --help
 
 If the installation was completed correctly, this should display a list of avaliable commands and options, similar to this:
 
-```bash
- Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                                                                                                            
-                                                                                                                                                          
-╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --install-completion            Install completion for the current shell.                                                                              │
-│ --show-completion               Show completion for the current shell, to copy it or customize the installation.                                       │
-│ --help                -h        Show this message and exit.                                                                                            │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ classify             Classify genomes into clusters based on ANI results.                                                                              │
-│ delete-run           Delete any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ export-run           Export any single run from the given pyANI-plus SQLite3 database.                                                                 │
-│ list-runs            List the runs defined in a given pyANI-plus SQLite3 database.                                                                     │
-│ plot-run             Plot heatmaps and distributions for any single run.                                                                               │
-│ plot-run-comp        Plot comparisons between multiple runs.                                                                                           │
-│ resume               Resume any (partial) run already logged in the database.                                                                          │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ ANI methods ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3 database.                                                               │
-│ dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3 database.                                                │
-│ external-alignment   Compute pairwise ANI from given multiple-sequence-alignment (MSA) file.                                                           │
-│ fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.                                                            │
-│ sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus SQLite3 database.                                    │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```shell
+$ pyani-plus -h
+ Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                           
+                                                                         
+╭─ Options ─────────────────────────────────────────────────────────────╮
+│ --install-completion            Install completion for the current    │
+│                                 shell.                                │
+│ --show-completion               Show completion for the current       │
+│                                 shell, to copy it or customize the    │
+│                                 installation.                         │
+│ --help                -h        Show this message and exit.           │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────╮
+│ classify             Classify genomes into clusters based on ANI      │
+│                      results.                                         │
+│ delete-run           Delete any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ export-run           Export any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ list-runs            List the runs defined in a given pyANI-plus      │
+│                      SQLite3 database.                                │
+│ plot-run             Plot heatmaps and distributions for any single   │
+│                      run.                                             │
+│ plot-run-comp        Plot comparisons between multiple runs.          │
+│ resume               Resume any (partial) run already logged in the   │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ ANI methods ─────────────────────────────────────────────────────────╮
+│ anib                 Execute ANIb calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ anim                 Execute ANIm calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ dnadiff              Execute mumer-based dnadiff calculations, logged │
+│                      to a pyANI-plus SQLite3 database.                │
+│ external-alignment   Compute pairwise ANI from given                  │
+│                      multiple-sequence-alignment (MSA) file.          │
+│ fastani              Execute fastANI calculations, logged to a        │
+│                      pyANI-plus SQLite3 database.                     │
+│ sourmash             Execute sourmash-plugin-branchwater ANI          │
+│                      calculations, logged to a pyANI-plus SQLite3     │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
 
 ```
 
