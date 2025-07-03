@@ -17,3 +17,4 @@ In addition to calculating ANI for a given set of genomes, `pyANI-plus` also inc
 - Classifying genomes into clusters based on ANI results.
 - Resuming partial runs already logged in the database.
 - Deleting any single run from the pyANI-plus SQLite3 database.
+- Running on a High Performance Compute (HPC) cluster.

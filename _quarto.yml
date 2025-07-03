@@ -55,7 +55,8 @@ book:
         - subcommands/resume.qmd
         - subcommands/delete_run.qmd
         - subcommands/classify.qmd
-        
+
+    - cluster.qmd       
     - contributing.qmd
     - testing.qmd
     - part: licensing.qmd
