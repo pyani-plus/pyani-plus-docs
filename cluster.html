@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#archie-west" id="toc-archie-west" class="nav-link" data-scroll-target="#archie-west">ARCHIE-WeSt</a></li>
   <li><a href="#crop-diversity" id="toc-crop-diversity" class="nav-link" data-scroll-target="#crop-diversity">Crop Diversity</a></li>
   </ul></li>
-  <li><a href="#cluster-groubleshooting" id="toc-cluster-groubleshooting" class="nav-link" data-scroll-target="#cluster-groubleshooting">Cluster groubleshooting</a></li>
+  <li><a href="#cluster-troubleshooting" id="toc-cluster-troubleshooting" class="nav-link" data-scroll-target="#cluster-troubleshooting">Cluster Troubleshooting</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/cluster.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -388,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Snakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM. Here the RAM limit per job (2GB) was implicit via the partition (queue).</p>
 </section>
 </section>
-<section id="cluster-groubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="cluster-groubleshooting">Cluster groubleshooting</h2>
+<section id="cluster-troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="cluster-troubleshooting">Cluster Troubleshooting</h2>
 <p>Start with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool.</p>
 <p>If specfic genomes appear to be a problem, try reducing the number of genomes to work out which.</p>
 <p>If you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N).</p>

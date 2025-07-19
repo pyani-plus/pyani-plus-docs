@@ -582,11 +582,11 @@
     ]
   },
   {
-    "objectID": "cluster.html#cluster-groubleshooting",
-    "href": "cluster.html#cluster-groubleshooting",
+    "objectID": "cluster.html#cluster-troubleshooting",
+    "href": "cluster.html#cluster-troubleshooting",
     "title": "Cluster",
-    "section": "Cluster groubleshooting",
-    "text": "Cluster groubleshooting\nStart with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool.\nIf specfic genomes appear to be a problem, try reducing the number of genomes to work out which.\nIf you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N).",
+    "section": "Cluster Troubleshooting",
+    "text": "Cluster Troubleshooting\nStart with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool.\nIf specfic genomes appear to be a problem, try reducing the number of genomes to work out which.\nIf you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N).",
     "crumbs": [
       "Cluster"
     ]
