@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "pyANI-plus",
     "section": "",
-    "text": "About pyANI-plus\npyANI-plus is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:\n\nANIb (average nucleotide identity using BLAST+)\nANIm (average nucleotide identity using MUMmer)\ndnadiff (average nucleotide identity using [dnadiff)\nfastANI (average nucleotide identity using fastANI)\nsourmash (average nucleotide identity using sourmash)\nexternal-alignment (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)\n\nIn addition to calculating ANI for a given set of genomes, pyANI-plus also includes the following features:\n\nPlotting heatmaps and distributions for individual runs.\nComparing and visualising multiple runs.\nExporting any single run from the pyANI-plus SQLite3 database in tabular format.\nClassifying genomes into clusters based on ANI results.\nResuming partial runs already logged in the database.\nDeleting any single run from the pyANI-plus SQLite3 database.",
+    "text": "About pyANI-plus\npyANI-plus is a Python package and software package that that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:\n\nANIb (average nucleotide identity using BLAST+)\nANIm (average nucleotide identity using MUMmer)\ndnadiff (average nucleotide identity using [dnadiff)\nfastANI (average nucleotide identity using fastANI)\nsourmash (average nucleotide identity using sourmash)\nexternal-alignment (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)\n\nIn addition to calculating ANI for a given set of genomes, pyANI-plus also includes the following features:\n\nPlotting heatmaps and distributions for individual runs.\nComparing and visualising multiple runs.\nExporting any single run from the pyANI-plus SQLite3 database in tabular format.\nClassifying genomes into clusters based on ANI results.\nResuming partial runs already logged in the database.\nDeleting any single run from the pyANI-plus SQLite3 database.\nRunning on a High Performance Compute (HPC) cluster.",
     "crumbs": [
       "About pyANI-plus"
     ]
@@ -559,6 +559,36 @@
     "crumbs": [
       "pyANI-plus subcommands",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>`classify`</span>"
+    ]
+  },
+  {
+    "objectID": "cluster.html",
+    "href": "cluster.html",
+    "title": "Cluster",
+    "section": "",
+    "text": "SLURM\nYou can run pyANI-plus on a High Performance Compute (HPC) cluster, and for larger datasets this is generally expected. In the original tool pyANI we worked directly with SGE, which became a problem when our local cluster switched the SLURM instead. For pyANI-plus we instead use snakemake internally to handle our worker jobs. This gives us a uniform platform for running jobs locally (on the same machine – the default), or using one of the Snakemake exectutor plugins.\nTo enable this all the ANI compute commands have an optional --executor option defaulting to local. The analysis and plotting commands are only ever run locally.\nThis in the recommend parrallel executor for pyANI-plus, which was developed and tested on two different SLURM clusters (ARCHIE-WeSt and the UK Crop Diversity Bioinformatics HPC Resource).\nYou need to prepare a Snakemake configuration (as a directory containing a config.yaml file), set an environment variable to point at your configuration (the path of that directory), and add --executor slurm to your pyani-plus command.\nIf you are using version control for your analysis scripts, you should also check-in the config.yaml file too.\nWhile some of the underlying tools can be run with multiple cores, we expect you to ask the cluster for lots of single-core jobs (each of which has modest memory (RAM) needs). The exception is Sourmash, which is memory demanding but very quick - this we run on a single machine (even a desktop) with the default local executor.",
+    "crumbs": [
+      "Cluster"
+    ]
+  },
+  {
+    "objectID": "cluster.html#slurm",
+    "href": "cluster.html#slurm",
+    "title": "Cluster",
+    "section": "",
+    "text": "mkdir snakemake-profile-name/\nemacs snakemake-profile-name/config.yaml  # see examples below\nexport SNAKEMAKE_PROFILE=$PWD/snakemake-profile-name\npyani-plus ... --executor slurm ...\n\n\n\nARCHIE-WeSt\nThis is a real configuration used on ARCHIE-WeSt in 2025 while developing the tool.\nOn this cluster we were limited to at most 400 CPUs, which we tell Snakemake to use as (up to) 400 single-core jobs.\nThe precommand is used to make sure the pyani-plus command is available and on the $PATH. This cluster used the module system for dependencies, specifically we used a conda-based module, and within that a conda environment called pyani-plus_py312 which had Python 3.12 and the tool and dependencies installed.\nexecutor: slurm\njobs: 400\ncores: 1\nprecommand: \"module purge && module load miniconda && conda activate pyani-plus_py312\"\n\ndefault-resources:\n    slurm_partition: dev\n    slurm_account: pritchard-grxiv\nThis cluster has a billing system and required explicitly setting the partition (queue) and account. Here the RAM limit is implicit (set by the cluster administrators as a multiple of the cores for billing purposes).\n\n\nCrop Diversity\nThis configuration was used on the Crop Diversity Cluster in 2025. It targetted their “hicpu” queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM limits. Here we could run 1000 jobs at once.\nexecutor: slurm\njobs: 1000\ncores: 1\n\ndefault-resources:\n    slurm_partition: hicpu\n    slurm_account: cropdiv-acc\n    runtime: 100\nSnakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM. Here the RAM limit per job (2GB) was implicit via the partition (queue).",
+    "crumbs": [
+      "Cluster"
+    ]
+  },
+  {
+    "objectID": "cluster.html#cluster-groubleshooting",
+    "href": "cluster.html#cluster-groubleshooting",
+    "title": "Cluster",
+    "section": "Cluster groubleshooting",
+    "text": "Cluster groubleshooting\nStart with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool.\nIf specfic genomes appear to be a problem, try reducing the number of genomes to work out which.\nIf you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N).",
+    "crumbs": [
+      "Cluster"
     ]
   },
   {

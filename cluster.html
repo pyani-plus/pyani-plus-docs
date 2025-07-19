@@ -8,7 +8,7 @@
 
 <meta name="author" content="Angelika Kiepas, Peter Cock, and Leighton Pritchard">
 
-<title>Contributing to pyANI-plus – pyANI-plus</title>
+<title>Cluster – pyANI-plus</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./testing.html" rel="next">
-<link href="./cluster.html" rel="prev">
+<link href="./contributing.html" rel="next">
+<link href="./subcommands/classify.html" rel="prev">
 <link href="./icon_32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Contributing to <code>pyANI-plus</code></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cluster.html">Cluster</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -267,13 +267,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cluster.html" class="sidebar-item-text sidebar-link">
+  <a href="./cluster.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Cluster</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing.html" class="sidebar-item-text sidebar-link active">
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing to <code>pyANI-plus</code></span></a>
   </div>
 </li>
@@ -316,21 +316,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#reporting-bugs-and-errors" id="toc-reporting-bugs-and-errors" class="nav-link active" data-scroll-target="#reporting-bugs-and-errors">Reporting bugs and errors</a></li>
-  <li><a href="#contributing-code-or-documentation" id="toc-contributing-code-or-documentation" class="nav-link" data-scroll-target="#contributing-code-or-documentation">Contributing code or documentation</a>
+  <li><a href="#slurm" id="toc-slurm" class="nav-link active" data-scroll-target="#slurm">SLURM</a>
   <ul class="collapse">
-  <li><a href="#making-changes-and-pull-requests" id="toc-making-changes-and-pull-requests" class="nav-link" data-scroll-target="#making-changes-and-pull-requests">Making changes and pull requests</a></li>
+  <li><a href="#archie-west" id="toc-archie-west" class="nav-link" data-scroll-target="#archie-west">ARCHIE-WeSt</a></li>
+  <li><a href="#crop-diversity" id="toc-crop-diversity" class="nav-link" data-scroll-target="#crop-diversity">Crop Diversity</a></li>
   </ul></li>
-  <li><a href="#suggestions-for-improvement" id="toc-suggestions-for-improvement" class="nav-link" data-scroll-target="#suggestions-for-improvement">Suggestions for improvement</a></li>
+  <li><a href="#cluster-groubleshooting" id="toc-cluster-groubleshooting" class="nav-link" data-scroll-target="#cluster-groubleshooting">Cluster groubleshooting</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/cluster.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-contributing" class="quarto-section-identifier">Contributing to <code>pyANI-plus</code></span></h1>
+<h1 class="title"><span id="cluster" class="quarto-section-identifier">Cluster</span></h1>
 </div>
 
 
@@ -347,38 +347,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="reporting-bugs-and-errors" class="level2">
-<h2 class="anchored" data-anchor-id="reporting-bugs-and-errors">Reporting bugs and errors</h2>
-<p>If you find a bug, or an error in the code or documentation, please report this by raising an issue at the <a href="https://github.com/pyani-plus/pyani-plus/issues">GitHub issue page</a> for <code>pyANI-plus</code>.</p>
+<p>You can run <code>pyANI-plus</code> on a High Performance Compute (HPC) cluster, and for larger datasets this is generally expected. In the original tool <code>pyANI</code> we worked directly with SGE, which became a problem when our local cluster switched the SLURM instead. For <code>pyANI-plus</code> we instead use <code>snakemake</code> internally to handle our worker jobs. This gives us a uniform platform for running jobs locally (on the same machine – the default), or using one of the <a href="https://snakemake.github.io/snakemake-plugin-catalog/">Snakemake exectutor plugins</a>.</p>
+<p>To enable this all the ANI compute commands have an optional <code>--executor</code> option defaulting to <code>local</code>. The analysis and plotting commands are only ever run locally.</p>
+<section id="slurm" class="level2">
+<h2 class="anchored" data-anchor-id="slurm">SLURM</h2>
+<p>This in the recommend parrallel executor for <code>pyANI-plus</code>, which was developed and tested on two different SLURM clusters (<a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> and the <a href="https://cropdiversity.ac.uk/">UK Crop Diversity Bioinformatics HPC Resource</a>).</p>
+<p>You need to prepare a Snakemake configuration (as a directory containing a <code>config.yaml</code> file), set an environment variable to point at your configuration (the path of that directory), and add <code>--executor slurm</code> to your <code>pyani-plus</code> command.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> snakemake-profile-name/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">emacs</span> snakemake-profile-name/config.yaml  <span class="co"># see examples below</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SNAKEMAKE_PROFILE</span><span class="op">=</span><span class="va">$PWD</span>/snakemake-profile-name</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> ... <span class="at">--executor</span> slurm ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you are using version control for your analysis scripts, you should also check-in the <code>config.yaml</code> file too.</p>
+<p>While some of the underlying tools can be run with multiple cores, we expect you to ask the cluster for lots of single-core jobs (each of which has modest memory (RAM) needs). The exception is Sourmash, which is memory demanding but very quick - this we run on a single machine (even a desktop) with the default local executor.</p>
+<section id="archie-west" class="level3">
+<h3 class="anchored" data-anchor-id="archie-west">ARCHIE-WeSt</h3>
+<p>This is a real configuration used on <a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> in 2025 while developing the tool.</p>
+<p>On this cluster we were limited to at most 400 CPUs, which we tell Snakemake to use as (up to) 400 single-core jobs.</p>
+<p>The <code>precommand</code> is used to make sure the <code>pyani-plus</code> command is available and on the <code>$PATH</code>. This cluster used the module system for dependencies, specifically we used a conda-based module, and within that a conda environment called <code>pyani-plus_py312</code> which had Python 3.12 and the tool and dependencies installed.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">400</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">precommand</span><span class="kw">:</span><span class="at"> </span><span class="st">"module purge &amp;&amp; module load miniconda &amp;&amp; conda activate pyani-plus_py312"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> dev</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> pritchard-grxiv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This cluster has a billing system and required explicitly setting the partition (queue) and account. Here the RAM limit is implicit (set by the cluster administrators as a multiple of the cores for billing purposes).</p>
 </section>
-<section id="contributing-code-or-documentation" class="level2">
-<h2 class="anchored" data-anchor-id="contributing-code-or-documentation">Contributing code or documentation</h2>
-<p>We welcome contributions of all kinds! Check out the GitHub contributors link for a list of those who have helped shape the project.</p>
-<p>Whether you’d like to develop <code>pyANI-plus</code>, fix a bug, or improve documentation, your help is appreciated! To help maintain an efficient workflow, please adhere to the developer guidelines below:</p>
-<section id="making-changes-and-pull-requests" class="level3">
-<h3 class="anchored" data-anchor-id="making-changes-and-pull-requests">Making changes and pull requests</h3>
-<ol type="1">
-<li><p>Fork the <code>pyANI-plus</code> <a href="https://github.com/pyani-plus/pyani-plus">repository</a> under your <a href="https://github.com/">GitHub</a> account.<br>
-</p></li>
-<li><p>Clone the forked repository to your local development machine.</p>
-<ul>
-<li><p>To edit <code>pyANI-plus</code> and see changes take effect immediately (without reinstalling), run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>inside the cloned repository. This is useful for testing.</p></li>
-</ul></li>
-<li><p>Create a new branch in your forked repository with an informative name such as <code>fix_issue_107</code>, by running:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> fix_issue_107</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Make the changes you need and commit them to your local branch.<br>
-</p></li>
-<li><p>Run the <code>pytests</code> in the respoitory to ensure your changes work and do not intriduce any bugs or errors (see the <a href="./testing.html#testing">testing documentation</a>)</p></li>
-<li><p>If the tests all pass, push the changes to your fork, and submit a pull request against the original repository.</p></li>
-<li><p>Indicate one of the <code>pyANI-plus</code> developers as an assignee in your pull request. A developer will review your pull request and either merge it or provide feedback for further improvements.</p></li>
-</ol>
+<section id="crop-diversity" class="level3">
+<h3 class="anchored" data-anchor-id="crop-diversity">Crop Diversity</h3>
+<p>This configuration was used on the <a href="https://cropdiversity.ac.uk">Crop Diversity Cluster</a> in 2025. It targetted their “hicpu” queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM limits. Here we could run 1000 jobs at once.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> hicpu</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> cropdiv-acc</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Snakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM. Here the RAM limit per job (2GB) was implicit via the partition (queue).</p>
 </section>
 </section>
-<section id="suggestions-for-improvement" class="level2">
-<h2 class="anchored" data-anchor-id="suggestions-for-improvement">Suggestions for improvement</h2>
-<p>We appreciate your feedback on <code>pyANI-plus</code>. If you have a specific issue or proposal, please submit it through <a href="https://github.com/pyani-plus/pyani-plus/issues">GitHub Issues</a>. To discuss ideas with the maintainers and community, join the conversation on <a href="https://github.com/pyani-plus/pyani-plus/discussions/landing">GitHub Discussions</a>.</p>
+<section id="cluster-groubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="cluster-groubleshooting">Cluster groubleshooting</h2>
+<p>Start with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool.</p>
+<p>If specfic genomes appear to be a problem, try reducing the number of genomes to work out which.</p>
+<p>If you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N).</p>
 
 
 </section>
@@ -785,13 +799,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cluster.html" class="pagination-link" aria-label="Cluster">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cluster</span>
+      <a href="./subcommands/classify.html" class="pagination-link" aria-label="`classify`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><code>classify</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./testing.html" class="pagination-link" aria-label="Testing">
-        <span class="nav-page-text">Testing</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./contributing.html" class="pagination-link" aria-label="Contributing to `pyANI-plus`">
+        <span class="nav-page-text">Contributing to <code>pyANI-plus</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -803,7 +817,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/contributing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/cluster.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
