@@ -92,7 +92,7 @@ Snakemake would give distracting warnings if the account or runtime was
 ommitted, although this cluster had default values setup in SLURM.
 Here the RAM limit per job (2GB) was implicit via the partition (queue).
 
-## Cluster groubleshooting
+## Cluster Troubleshooting
 
 Start with a small example first, like the walkthough, to make sure
 the cluster intergration is working. Check the stdout/stderr logs if
