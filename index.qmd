@@ -4,7 +4,7 @@
 
 - `ANIb` (average nucleotide identity using [`BLAST+`](https://blast.ncbi.nlm.nih.gov/Blast.cgi))
 - `ANIm` (average nucleotide identity using [`MUMmer`](https://mummer.sourceforge.net/manual/))
-- `dnadiff` (average nucleotide identity using [[`dnadiff`](https://mummer.sourceforge.net/manual/))
+- `dnadiff` (average nucleotide identity using [`dnadiff`](https://mummer.sourceforge.net/manual/))
 - `fastANI` (average nucleotide identity using [`fastANI`](https://github.com/ParBLiSS/FastANI))
 - `sourmash` (average nucleotide identity using [`sourmash`](https://sourmash.readthedocs.io/en/latest/index.html))
 - `external-alignment` (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)
