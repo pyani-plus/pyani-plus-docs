@@ -1,33 +1,81 @@
 # `dnadiff` {#dnadiff-subcommand .unnambered}
 
+## Usage
 The `dnadiff` subcommand processes genome files from the `indir` directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus dnadiff` Usage
+```shell
+$ pyani-plus dnadiff -h
+                                                                                     
+ Usage: pyani-plus dnadiff [OPTIONS] FASTA                                      
+                                                                                
+ Execute mumer-based dnadiff calculations, logged to a pyANI-plus SQLite3       
+ database.                                                                      
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
-```bash
-pyani-plus dnadiff [OPTIONS] FASTA 
 ```
-:::
 
-## Arguments {.unnambered}
+## What does `dnadiff` method do?
 
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
+In the context of `pyani-plus dnadiff`, ANI is calculated using the method implemented by the [dnadiff software](https://github.com/garviz/MUMmer/blob/master/dnadiff).
 
-## Options {.unnambered}
+- __Sequence Alignment__: MUMmer3's `NUCmer` (NUCleotide MUMmer) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating `.delta` files. `.delta` files are created using the `--maxmatch` parameter, which includes all anchor matches, regardless of their uniqueness.
 
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+- __Alignment filtering__: `.delta` alignment files are filtered with the `delta-filter` program to retain many-to-many alignments, producing `.filter` files.
 
-`--create-db`: Create database if does not exist.
+- __Parsing of `.filter` files__: `.filter` files are parsed with the `show-diff` (`-qH` parameters), and `show-coords` (`-rclTH` parameters) wrappers for `NUCmer`.
 
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
 
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
+- __Result Parsing and Calculation__: Outputs generated by `show-coords` (`.mcoords`) and `show-diff` (`.qdiff`) files are parsed, and the following metrics are computed:
 
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+    - __Aligned bases__: Total aligned bases for each genome (`reference_positions_in_alignment + insertions - deletions`)
 
-## Debugging {.unnambered}
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / genome_length`)
 
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
 
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)
+    - __Similarity errors__: The number of unaligned or non-identical bases (`non-identities + insertions + deletions`)
+
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+
+    - __tANI score__: The negative natural log of coverage multiplied by identity
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+For a more in-depth understanding of how MUMmer and wrappers for MUMmer work, please refer to [MUMmer's documentation](https://mummer.sourceforge.net/).
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}

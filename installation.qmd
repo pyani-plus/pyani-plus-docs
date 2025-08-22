@@ -96,3 +96,5 @@ If the installation was completed correctly, this should display a list of avail
 │                      file.                                                             │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+{{< include includes/_requirements.qmd >}}

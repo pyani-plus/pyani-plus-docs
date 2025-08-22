@@ -1,41 +1,91 @@
 # `external-alignment` {#external-alignment-subcommand .unnambered}
 
+## Usage
 The `external-alignment` subcommand compute pairwise ANI from given multiple-sequence-alignment (MSA) file and genome files from the `indir` directory, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus external-alignment` Usage
 
-```bash
-pyani-plus external-alignment [OPTIONS] FASTA 
+```shell
+$ pyani-plus external-alignment -h
+                                                                                     
+ Usage: pyani-plus external-alignment [OPTIONS] FASTA                           
+                                                                                
+ Compute pairwise ANI from given multiple-sequence-alignment (MSA) file.        
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ *  --alignment        FILE                 FASTA format MSA of the same      │
+│                                            genomes (one sequence per genome) │
+│                                            [default: None]                   │
+│                                            [required]                        │
+│    --label            [md5|filename|stem]  How are the sequences in the MSA  │
+│                                            labelled vs the FASTA genomes?    │
+│                                            [default: stem]                   │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Input
+`pyANI-plus external-alignment` accepts as input a multiple sequence alignment (MSA) in the FASTA format.
+
+::: { .callout-important}
+Each sequence in the MSA must represent a different organism, with only one sequence allowed per genome/organism.
 :::
 
-## Arguments {.unnambered}
-
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
-
-## Options {.unnambered}
-
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--create-db`: Create database if does not exist.
-
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
-
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
-
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
-
-## Method parameters {.unnambered}
-
-`--alignment`: FASTA format MSA of the same genomes (one sequence per genome). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--label`: How are the sequences in the MSA labelled vs the FASTA genomes? [<span style="color:grey;">Default: stem</span>] (<span style="color:green;">`md5`|`filename`|`stem`
-</span>)
 
 
-## Debugging {.unnambered}
+## What does `external-alignment` method do?
 
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
+In the context of `pyani-plus external-alignment`, ANI is computed from the given multiple sequence alignment (MSA). This subcommand is designed for estimating ANI values for synthetic sequences, individual genes, and concatenated set of sequence.
 
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)
+- __Estimation of ANI__: A custom Python script performs pairwise comparisons between sequences in the provided MSA, checking each pair for identical bases, mismatches and gaps. The following metrics are computed:
+
+    - __Aligned bases__: Total aligned bases for each genome (`reference_positions_in_alignment + insertions - deletions`)
+
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / genome_length`)
+
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
+
+    - __Similarity errors__: The number of unaligned or non-identical bases (`non-identities + insertions + deletions`)
+
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
+
+    - __tANI score__: The negative natural log of coverage multiplied by identity
+
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
+

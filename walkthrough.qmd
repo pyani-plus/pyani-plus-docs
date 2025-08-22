@@ -1,10 +1,10 @@
-# pyANI-plus walkthrough {.unnumbered}
+# pyANI-plus walkthrough {#walkthrough .unnumbered}
 
-This section walks through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedure for any `pyANI-plus` analysis is:
+This section walks you through how `pyANI-plus` can be applied to calculate Average Nucleotide Identity, render graphical and tabular summary output, and perform other related measures for whole genome comparisons. The general procedure for any `pyANI-plus` analysis is:
 
 1. Collect genomes for analysis
-2. Perform ANI analysis using a chosen method such as ANIb, ANIm, etc.
-3. Report as tabular output and/or generate a graphical visualisation
+2. Perform ANI analysis using different methods such as ANIb, ANIm etc.
+3. Report and visualise analysis reports
 4. Use the analysis results to classify input genomes and generate species hypotheses
 
 ::: { .callout-tip}
@@ -317,32 +317,40 @@ Optionally, you can label genomes using `md5` and `filename` using the `--label`
 
 `plot-run` subcommand generates the following heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database:
 
-- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`, @fig-anim-heatmap)
+- percentage identity of aligned regions (`<method>_idenity_heatmap.<extension>`, `<method>_identity_dist.<extension>` and `<method>_identity.tsv`, @fig-anim-identity-heatmap)
 
 ::: {.column-margin}
 
-![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-heatmap .lightbox }
+![ANIm percentage identity heatmap for walkthrough_data](walkthrough_plots/ANIm_identity_heatmap.png){#fig-anim-identity-heatmap .lightbox }
 
 :::
-
 
 In the above heatmap, each cell represents a pairwise comparision between the genomes shown in the rows and columns, showing the pairwise identity of aligned regions. The dendrograms are single-linkage clustering trees generated from the matrix of pairwise identity results. The default color scheme assigns red to cells with identity $\geq 0.95$, blue to those with identity $<0.95$, and orange to cells representing comparisons with no alignment found (e.g., NULLs). This division corresponds to a widely-used convention for bacterial species boundaries.
 
 
-- percentage coverage of each query genome by aligned regions (`<method>_query_cov_heatmap.<extension>`, `<method>_query_cov_dist.<extension>`, `<method>_query_cov_scatter.<extension>` and `<method>_query_cov.tsv`)
+- percentage coverage of each query genome by aligned regions (`<method>_query_cov_heatmap.<extension>`, `<method>_query_cov_dist.<extension>`, `<method>_query_cov_scatter.<extension>` and `<method>_query_cov.tsv`, @fig-anim-cov-heatmap)
 
-![ANIm percentage coverage heatmap for walkthrough_data](walkthrough_plots/ANIm_query_cov_heatmap.png)
+
+::: {.column-margin}
+![ANIm percentage coverage heatmap for walkthrough_data](walkthrough_plots/ANIm_query_cov_heatmap.png){#fig-anim-cov-heatmap .lightbox }
+:::
 
 In the above heatmap, each cell represents a pairwise comparision between the genomes shown in the rows and columns, showing the pairwise coverage of each genome by aligned regions in the comparison. The dendrograms are single-linkage clustering trees generated from the matrix of pairwise coverage results. The default color scheme assigns red to cells with coverage $\geq 0.50$, blue to those with coverage $<0.50$, and orange to cells representing comparisons with no alignment found (e.g., NULLs). This division corresponds to a strict majority of each genome in the comparison being alignable (a plausible minimum requirement for two sequences being considered “the same thing”).
 
 
-- a Hadamard matrix of percentage identity multiplied by percentage coverage for each comparison (`<method>_hadamard_heatmap.<extension>`, `<method>_hadamard_dist.<extension>` and `<method>_hadamard.tsv`)
+- a Hadamard matrix of percentage identity multiplied by percentage coverage for each comparison (`<method>_hadamard_heatmap.<extension>`, `<method>_hadamard_dist.<extension>` and `<method>_hadamard.tsv`, @fig-anim-hadamard-heatmap)
 
-![ANIm hadamard heatmap for walkthrough_data](walkthrough_plots/ANIm_hadamard_heatmap.png)
+::: {.column-margin}
+![ANIm hadamard heatmap for walkthrough_data](walkthrough_plots/ANIm_hadamard_heatmap.png){#fig-anim-hadamard-heatmap .lightbox }
+:::
 
-- a total Avenarge Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity (`<method>_tANI_heatmap.<extension>`, `<method>_tANI_dist.<extension>`, `<method>_tANI_scatter.<extension>` and `<method>_tANI.tsv`)
 
-![ANIm tANI heatmap for walkthrough_data](walkthrough_plots/ANIm_tANI_heatmap.png)
+- a total Avenarge Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity (`<method>_tANI_heatmap.<extension>`, `<method>_tANI_dist.<extension>`, `<method>_tANI_scatter.<extension>` and `<method>_tANI.tsv`, @fig-anim-tani-heatmap)
+
+::: {.column-margin}
+![ANIm tANI heatmap for walkthrough_data](walkthrough_plots/ANIm_tANI_heatmap.png){#fig-anim-tani-heatmap .lightbox }
+:::
+
 
 - number of “similarity errors” on each genome (`<method>_sim_errors.tsv`)
 - Long form of ANI results which include the query and subject genomes and all the comparison properties as columns (`<method>_run_<ID>.tsv`)
@@ -363,10 +371,11 @@ pyani-plus plot-run-comp --database walkthrough.db --outdir walkthrough_output/ 
 
 This command generates the following outputs:
 
-- A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`).
+- A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`, @fig-compare-scatter).
 
-
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_scatter_vs_others.png)
+::: {.column-margin}
+![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_scatter_vs_others.png){#fig-compare-scatter .lightbox }
+:::
 
 
 ::: { .callout-tip}
@@ -374,9 +383,12 @@ The red diagonal line serves as a reference (_x_-axis values equal _y_-axis valu
 :::
 
 
-- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs.
+- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs (`<reference_method>_identity_<run_ID>_diff_vs_others.<extension>`, @fig-compare-dist).
 
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_diff_vs_others.png)
+::: {.column-margin}
+![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_diff_vs_others.png){#fig-compare-dist .lightbox }
+:::
+
 
 ::: { .callout-tip}
 The red horizontal line at 0 indicates no difference between the pairwise comparison results across methods.

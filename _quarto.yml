@@ -30,14 +30,14 @@ book:
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
   author: "Angelika Kiepas, Peter Cock, and Leighton Pritchard"
-  date: "03/15/2025"
+  date: "03/25/2025"
 
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
-    - requirements.qmd
     - installation.qmd
+    - quick_start.qmd
     - walkthrough.qmd
 
     - part: subcommands/subcommands.qmd
@@ -59,6 +59,7 @@ book:
     - cluster.qmd       
     - contributing.qmd
     - testing.qmd
+    - contributing.qmd
     - part: licensing.qmd
       chapters: 
         - pyani_licence.qmd
@@ -67,6 +68,7 @@ book:
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib
+reference-location: section
 
 # Formatting and theme; may not need to be changed
 format:
@@ -78,6 +80,14 @@ format:
   
 #  pdf:
 #    documentclass: scrreprt
+
+custom-callout:
+  callout-todo:
+    title: "TODO"
+    icon-symbol: "📝"
+    color: "pink"
+filters:
+- custom-callout
 
 # Freeze output before pushing modifications to the repository when publishing
 # Should not need changing

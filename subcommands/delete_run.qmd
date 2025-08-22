@@ -1,26 +1,39 @@
 # `delete-run` {#delete-run-subcommand.unnambered}
 
+## Usage
 The `delete-run` subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is "Running", but that can be overridden.
 
 
-::: { .callout-important}
-Currently this will *not* delete any linked comparisons, even if they are not currently linked to another run. They will be reused should you start a new run using an overlapping set of input FASTA files. 
-:::
+```shell
+ $ pyani-plus delete-run -h
+                                                                                     
+ Usage: pyani-plus delete-run [OPTIONS]                                         
+                                                                                
+ Delete any single run from the given pyANI-plus SQLite3 database.              
+ This will prompt the user for confirmation if the run has comparisons, or if   
+ the run status is "Running", but that can be overridden.                       
+ Currently this will *not* delete any linked comparisons, even if they are not  
+ currently linked to another run. They will be reused should you start a new    
+ run using an overlapping set of input FASTA files.                             
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database  -d      FILE     Path to pyANI-plus SQLite3 database.         │
+│                                 [required]                                   │
+│    --run-id    -r      INTEGER  Which run from the database (defaults to     │
+│                                 latest).                                     │
+│    --force     -f               Delete without confirmation                  │
+│    --help      -h               Show this message and exit.                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --log        FILE  Where to record log(s). Use '-' for no logging.           │
+│                    [default: pyani-plus.log]                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
 
-::: { .callout-tip}
-## `pyani-plus delete-run` Usage
-
-```bash
-pyani-plus resume [OPTIONS]
 ```
+
+## Output
+The `pyani-plus delete-run` command does not produce direct output. Instead, it modifies the provided [SQLite3](https://www.sqlite.org/) database by removing the specified run.
+
+::: { .callout-note}
+Deleting a run from the database will not adjust the numbering of the remaining runs.
 :::
-
-## Options
-
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
-
-`--run-id`: Which run from the database. [<span style="color:grey;">Defaults to latest.</span>] (<span style="color:green;">INTEGER</span>) 
-
-`--force`, `-f`: Delete without confirmation.
-
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.

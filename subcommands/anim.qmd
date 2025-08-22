@@ -1,37 +1,83 @@
 # `anim` {#anim-subcommand .unnambered}
 
+## Usage
 The `anim` subcommand processes genome files from the `indir` directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus anim` Usage
-
-```bash
-pyani-plus anim [OPTIONS] FASTA 
+```shell
+$ pyani-plus anim -h
+                                                                                     
+ Usage: pyani-plus anim [OPTIONS] FASTA                                         
+                                                                                
+ Execute ANIm calculations, logged to a pyANI-plus SQLite3 database.            
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ --mode        [mum|maxmatch]  Nucmer mode for ANIm. [default: mum]           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```
-:::
 
-## Arguments {.unnambered}
+## What does `aniM` method do?
+`pyani-plus` implements Average Nucleotide Identity using [MUMmer](https://mummer.sourceforge.net/) (ANIm) as described in @richter2009shifting.
 
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 
-## Options {.unnambered}
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
 
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+- __Sequence Alignment__: MUMmer3's `NUCmer` (NUCleotide MUMmer) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating .delta files. By default, `.delta` files are created using the `--mum` parameter, which restricts anchor matches to those that are unique in both the reference and query genomes. However, users can opt for the `--maxmatch` parameter instead, which includes all anchor matches, regardless of their uniqueness.
 
-`--create-db`: Create database if does not exist.
+- __Alignment filtering__: `.delta` alignment files are filtered with the `delta-filter` program to retain 1-to-1 alignments, producing `.filter` files.
 
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
+- __Result Parsing and Calculation__: The `.filter` file is parsed, and the following metrics are computed:
 
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
+    - __Aligned bases__: Total aligned bases for each genome (`reference_positions_in_alignment + insertions - deletions`)
 
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / genome_length`)
 
-## Method parameters {.unnambered}
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
 
-`--mode`:  Nucmer mode for ANIm. [<span style="color:grey;">Default: `mum`</span>] (<span style="color:green;">`mum`|`maxmatch`</span>)
+    - __Similarity errors__: The number of unaligned or non-identical bases (`non-identities + insertions + deletions`)
 
-## Debugging {.unnambered}
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
 
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
+    - __tANI score__: The negative natural log of coverage multiplied by identity
 
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
+
+For a more in-depth understanding of how MUMmer works, please refer to [MUMmer's documentation](https://mummer.sourceforge.net/).
+
+{{< include ../includes/_bidirectional_comp.qmd >}}
+
+{{< include ../includes/_method_output.qmd >}}
+
+## References {.unnumbered}
