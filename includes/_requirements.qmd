@@ -3,10 +3,6 @@
 `pyANI-plus` relies on several other programs, packages, and tools for normal running and for development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.
 
 ## Python3
-<<<<<<< HEAD:requirements.qmd
-=======
-`pyANI-plus` is designed to run on [Python3](https://www.python.org/), taking advantage of its latest features and improvements. It is not compatible with Python2.
->>>>>>> doc_part_two:includes/_requirements.qmd
 
 `pyANI-plus` is designed to run on [Python3](https://www.python.org/), taking advantage of its latest features and improvements. It is not compatible with Python2. Python3 is required for installation and development.
 
