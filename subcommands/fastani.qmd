@@ -1,43 +1,88 @@
 # `fastani` {#fastani-subcommand .unnambered}
 
+## Usage
 The `fastani` subcommand processes genome files from the `indir` directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus fastani` Usage
 
-```bash
-pyani-plus fastani [OPTIONS] FASTA 
+```shell
+$ pyani-plus fastani -h
+                                                                                     
+ Usage: pyani-plus fastani [OPTIONS] FASTA                                      
+                                                                                
+ Execute fastANI calculations, logged to a pyANI-plus SQLite3 database.         
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ --fragsize        INTEGER RANGE [x>=1]       Comparison method fragment      │
+│                                              size.                           │
+│                                              [default: 3000]                 │
+│ --kmersize        INTEGER RANGE [1<=x<=16]   Comparison method k-mer size    │
+│                                              [default: 16]                   │
+│ --minmatch        FLOAT RANGE [0.0<=x<=1.0]  Comparison method min-match.    │
+│                                              [default: 0.2]                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
 ```
-:::
 
-## Arguments {.unnambered}
+## What does `fastANI` method do?
+`pyani-plus` implements Average Nucleotide Identity using [fastANI](https://github.com/ParBLiSS/FastANI) (fastANI) as described in @jain2018high.
 
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
 
-## Options {.unnambered}
+- __Sequence Alignment__: [fastANI](https://github.com/ParBLiSS/FastANI) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating `.fastani` files. By default, `.fastani` files are created with a fragment length of 3000 (`--fragsize`), a k-mer size of 16 (`--kmer`), and a minimum genome overlap of `0.2` (`--minmatch`). If the reference and query genomes differ in size, the smaller genome is used. These parameters can be adjusted by users as needed. 
 
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+- __Result Parsing and Calculation__: The `.fastani` files are parsed, and the following metrics are computed:
 
-`--create-db`: Create database if does not exist.
+    - __Aligned bases__: Total aligned bases for each genome (`orthologous_matches * fragment_length`)
 
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`orthologous_matches / fragments`)
 
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
 
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+    - __Similarity errors__: The number of unaligned or non-identical matches (`fragments - orthologous_matches`)
 
-## Method parameters {.unnambered}
+    - __Hadamard score__: The percentage identity multiplied by percentage coverage
 
-`--fragsize`: Comparison method fragment size. [<span style="color:grey;">Default: 1020</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
+    - __tANI score__: The negative natural log of coverage multiplied by identity
 
-`--kmersize`: Comparison method k-mer size. [<span style="color:grey;">Default: 16</span>] (<span style="color:green;">$1 \leq x \leq 16$
-</span>)
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
 
-`--minmatch`: Comparison method min-match. [<span style="color:grey;">Default: 0.2</span>] (<span style="color:green;">$0.0 \leq x \leq 1.0$
-</span>)
+For more details on how `fastANI` works, please refer to [fastANI's documentation](https://github.com/ParBLiSS/FastANI).
 
-## Debugging {.unnambered}
+{{< include ../includes/_bidirectional_comp.qmd >}}
 
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
+{{< include ../includes/_method_output.qmd >}}
 
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)
+## References {.unnumbered}

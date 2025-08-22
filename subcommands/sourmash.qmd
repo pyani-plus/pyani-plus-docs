@@ -1,39 +1,82 @@
 # `sourmash` {#sourmash-subcommand .unnambered}
 
+## Usage
 The `sourmash` subcommand processes genome files from the `indir` directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
-## `pyani-plus sourmash` Usage
-
-```bash
-pyani-plus sourmash [OPTIONS] FASTA 
+```shell
+$ pyani-plus sourmash -h
+                                                                                     
+ Usage: pyani-plus sourmash [OPTIONS] FASTA                                     
+                                                                                
+ Execute sourmash-plugin-branchwater ANI calculations, logged to a pyANI-plus   
+ SQLite3 database.                                                              
+                                                                                
+╭─ Arguments ──────────────────────────────────────────────────────────────────╮
+│ *    fasta      PATH  Directory of FASTA files (extensions .fas, .fasta,     │
+│                       .fna).                                                 │
+│                       [required]                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ *  --database   -d      FILE           Path to pyANI-plus SQLite3 database.  │
+│                                        [required]                            │
+│    --name               TEXT           Run name. Default is 'N genomes using │
+│                                        METHOD'.                              │
+│    --create-db                         Create database if does not exist.    │
+│    --executor           [local|slurm]  How should the internal tools be run? │
+│                                        [default: local]                      │
+│    --cache              DIRECTORY      Cache location if required for a      │
+│                                        method (must be visible to cluster    │
+│                                        workers). Defaults to .cache in the   │
+│                                        current directory.                    │
+│    --help       -h                     Show this message and exit.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Debugging ──────────────────────────────────────────────────────────────────╮
+│ --temp         DIRECTORY  Directory to use for intermediate files, which for │
+│                           debugging purposes will not be deleted. For        │
+│                           clusters this must be on a shared drive. Default   │
+│                           behaviour is to use a system specified temporary   │
+│                           directory (specific to the compute-node when using │
+│                           a cluster) and remove this afterwards.             │
+│ --wtemp        DIRECTORY  Directory to use for temporary workflow            │
+│                           coordination files, which for debugging purposes   │
+│                           will not be deleted. For clusters this must be on  │
+│                           a shared drive. Default behaviour is to use a      │
+│                           system specified temporary directory (for the      │
+│                           local executor) or a temporary directory under the │
+│                           present direct (for clusters), and remove this     │
+│                           afterwards.                                        │
+│ --log          FILE       Where to record log(s). Use '-' for no logging.    │
+│                           [default: pyani-plus.log]                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Method parameters ──────────────────────────────────────────────────────────╮
+│ --scaled          INTEGER RANGE [x>=1]  Sets the compression scaling ratio.  │
+│                                         [default: 1000]                      │
+│ --kmersize        INTEGER RANGE [x>=1]  Comparison method k-mer size.        │
+│                                         [default: 31]                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
 ```
-:::
 
-## Arguments {.unnambered}
+## What does `sourmash` method do?
+`pyani-plus` implements Average Nucleotide Identity using [sourmash](https://sourmash.readthedocs.io/en/latest/) (sourmash) as described in @pierce2019large.
 
-__fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
+In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
 
-## Options {.unnambered}
+- __Building signature files__: `sourmash compare` is used to build singatures for each genome genearting `.sig` files. By default, `.sig` fileas are created with  a k-mer size of 31 (`--kmer`) and compression scaling ratio of 1000 (`--scaled`). These parameters can be adjusted by users as needed.
 
-`--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
+- __Sequence Alignment__: [sourmash-plugin-branchwater](https://github.com/sourmash-bio/sourmash_plugin_branchwater) is used to perform pairwise comparisons between input genomes, identifying homologous (alignable) regions and generating `manysearch.csv` files.
 
-`--create-db`: Create database if does not exist.
+- __Result Parsing and Calculation__: The `manysearch.csv` files are parsed, and the following metrics are computed:
 
-`--name`: Run name. [<span style="color:grey;">Default: "N genomes using METHOD"</span>] (<span style="color:green;">TEXT</span>)
+    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`query_containment`)
 
-`--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
+    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical (`max_containment`)
 
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
 
-## Method parameters {.unnambered}
+For more details on how `sourmash` works, please refer to [sourmash's documentation](https://sourmash.readthedocs.io/en/latest/).
 
-`--scaled`:  Sets the compression ratio. [<span style="color:grey;">Default: 1000</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
+{{< include ../includes/_bidirectional_comp.qmd >}}
 
-`--kmersize`:   Comparison method k-mer size. [<span style="color:grey;">Default: 31</span>] (<span style="color:green;">Integer range: $x\geq1$</span>)
+{{< include ../includes/_method_output.qmd >}}
 
-## Debugging {.unnambered}
-
-`--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
-
-`--wtemp`: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (<span style="color:green;">Directory</span>)
+## References {.unnumbered}

@@ -1,0 +1,46 @@
+# QuickStart {.unnumbered}
+
+This section is a quick overview of how to use `pyANI-plus` for calculation of whole-genome similarity measures. For a more detailed tutorial, please refer to section [pyANI-plus walkthrough](walkthrough.qmd#walthrough). 
+
+::: { .callout-todo }
+**We need to package for `conda` and `PyPI`.**
+:::
+
+## Installation
+To start using `pyANI-plus`, you'll first need to install it on a local system, such as a laptop, desktop, server, or cluster. The latest version can be easily installed using one of the two most common Python package managers:
+
+1. `conda`
+
+You can install `pyANI-plus` through the `Bioconda` channel on [Anaconda](https://www.anaconda.com/):
+
+```bash
+conda install pyani-plus
+```
+
+2. `PyPI`
+`pyANI-plus` is available via the [PyPI](https://pypi.org/) package manager for Python:
+
+```bash
+pip install pyani-plus
+```
+
+::: { .callout-tip}
+You can also install pyANI-plus directly from the source. For detailed and alternative installation methods, see the [Installation Guide](installation.qmd#installation) page.
+:::
+
+## Basic usage
+{{< include includes/_basic_usage.qmd >}}
+
+## Input files
+{{< include includes/_input_fasta.qmd >}}
+
+## Output files
+The core `pyANI-plus` output file is the SQLite database containing the results of each run.
+
+Further outputs can be generated from this database using `pyANI-plus` and the precise output will vary depending on the specific command used. At present, the software generates graphical, tabular, and log outputs:
+
+- __Graphical Outputs__: These include plots such as heatmaps, distributions, and scatter plots, which are available in popular formats like `PDF`, `PNG`, `JPG` and `SVGZ`.
+- __Tabular Outputs__: `pyANI-plus` also produces matrices that display ANI (Average Nucleotide Identity) results, along with classification data,  provided in tab-separated `.tsv` format.
+- __Log Files__: For each run, `pyANI-plus` creates log files that track running details, execution settings, and any warnings or errors. These logs can be handy for troubleshooting and keeping a record of what happened during the run.
+
+For more detailed information on the specific outputs of each subcommand, please refer to the respective [subcommand](subcommands/subcommands.qmd#subcommands) sections.

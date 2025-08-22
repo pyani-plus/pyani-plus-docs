@@ -1,11 +1,61 @@
-# `anib` {#anib-subcommand .unnambered}
+The basic structure of a command in `pyANI-plus` follows this general format:
 
-## Usage
-The `anib` subcommand processes genome files from the `indir` directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.
+```shell
+pyani-plus [OPTIONS] COMMAND [ARGS]
+```
+
+To view the avaliable options and commands for `pyANI-plus`, use the `-h` (help) option. For example:
+
+```shell
+$ pyani-plus -h
+ Usage: pyani-plus [OPTIONS] COMMAND [ARGS]...                           
+                                                                         
+╭─ Options ─────────────────────────────────────────────────────────────╮
+│ --install-completion            Install completion for the current    │
+│                                 shell.                                │
+│ --show-completion               Show completion for the current       │
+│                                 shell, to copy it or customize the    │
+│                                 installation.                         │
+│ --help                -h        Show this message and exit.           │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────╮
+│ classify             Classify genomes into clusters based on ANI      │
+│                      results.                                         │
+│ delete-run           Delete any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ export-run           Export any single run from the given pyANI-plus  │
+│                      SQLite3 database.                                │
+│ list-runs            List the runs defined in a given pyANI-plus      │
+│                      SQLite3 database.                                │
+│ plot-run             Plot heatmaps and distributions for any single   │
+│                      run.                                             │
+│ plot-run-comp        Plot comparisons between multiple runs.          │
+│ resume               Resume any (partial) run already logged in the   │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
+╭─ ANI methods ─────────────────────────────────────────────────────────╮
+│ anib                 Execute ANIb calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ anim                 Execute ANIm calculations, logged to a           │
+│                      pyANI-plus SQLite3 database.                     │
+│ dnadiff              Execute mumer-based dnadiff calculations, logged │
+│                      to a pyANI-plus SQLite3 database.                │
+│ external-alignment   Compute pairwise ANI from given                  │
+│                      multiple-sequence-alignment (MSA) file.          │
+│ fastani              Execute fastANI calculations, logged to a        │
+│                      pyANI-plus SQLite3 database.                     │
+│ sourmash             Execute sourmash-plugin-branchwater ANI          │
+│                      calculations, logged to a pyANI-plus SQLite3     │
+│                      database.                                        │
+╰───────────────────────────────────────────────────────────────────────╯
+
+```
+
+To see the options for a specific subcommand, use `pyani-plus <subcommand> -h`. For example, to view options for the ANIb method:
 
 ```shell
 $ pyani-plus anib -h
-                                                                                     
+
  Usage: pyani-plus anib [OPTIONS] FASTA                                         
                                                                                 
  Execute ANIb calculations, logged to a pyANI-plus SQLite3 database.            
@@ -47,36 +97,4 @@ $ pyani-plus anib -h
 │ --log          FILE       Where to record log(s). Use '-' for no logging.    │
 │                           [default: pyani-plus.log]                          │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-
 ```
-
-## What does `aniB` method do?
-`pyani-plus` implements Average Nucleotide Identity using [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata) (ANIb) as described in @goris2007dna.
-
-
-In brief, the analysis proceeds as follows for a set of input prokaryotic genomes:
-
-- __Genome Fragmentation__: Query genomes are fragmented into 1020bp segments. Fragments shorter than 1020 bp are retained.
-
-- __Sequence Alignment__: The fragmented query sequences are aligned against the intact subject sequences using [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata).
-- __Result Parsing and Calculation__: The [BLASTN](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata) output (tab-separated plain text format) is parsed, and the following metrics are computed:
-
-    - __Aligned bases__: Total aligned bases for each genome (`alignment_length - gaps`)
-
-    - __Genome coverage__: The fraction of each genome (query and subject) that is aligned (`alignment_length / query_genome_length`)
-
-    - __Average Nucleotide Identity (ANI)__: The proportion of aligned regions that are identical
-
-    - __Similarity errors__: The number of unaligned or non-identical bases (`gaps + mismatches`)
-
-    - __Hadamard score__: The percentage identity multiplied by percentage coverage (`ANI * coverage`)
-
-    - __tANI score__: The negative natural log of coverage multiplied by identity
-
-- __Recording values__: The output values are recorded in the [SQLite3](https://www.sqlite.org/) database.
-
-{{< include ../includes/_bidirectional_comp.qmd >}}
-
-{{< include ../includes/_method_output.qmd >}}
-
-## References {.unnumbered}
