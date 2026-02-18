@@ -73,9 +73,9 @@ as a multiple of the cores for billing purposes).
 ### Crop Diversity
 
 This configuration was used on the [Crop Diversity Cluster](https://cropdiversity.ac.uk)
-in 2025 and 2026. It targetted their "hicpu" queue for low-memory CPU limited jobs,
-which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM limits.
-Here we could run 1000 jobs at once.
+in 2025 and 2026 for large sets of bacterial genomes. It targetted the "hicpu" queue for
+low-memory CPU limited jobs, which at the time was setup with older compute nodes with
+6 hour runtime and 2GB RAM upper limits. Here we could run 1000 jobs at once.
 
 ```yaml
 executor: slurm
@@ -86,15 +86,35 @@ default-resources:
     slurm_partition: hicpu
     slurm_account: cropdiv-acc
     runtime: 100
-    mem_mb: 2048
 ```
 
 Snakemake would give distracting warnings if the account or runtime was
 ommitted, although this cluster had default values setup in SLURM.
 
 By default the cluster applied a 1GB memory limit, which was ample
-for bacteria. Here the RAM limit has been increased to 2GB (the limit
-on this queue) to handle slightly larger genomes.
+for bacteria. Adding `mem_mb: 2048` under the `default-resources`
+section would have used the full RAM limit on this queue to handle
+*slightly* larger genomes.
+
+The following configuration was used in 2026 for a set of 100 fungal
+genomes around 40Mbp (taking less than a day).
+Here individual comparisons naturally take longer than with bacteria,
+so a queue with a longer run-time limit had to be used (24 hour, or 1440 mins).
+While most of the comparisons worked with 4GB of RAM, a few needed more,
+so about 5GB was used:
+
+```yaml
+executor: slurm
+jobs: 1000
+cores: 1
+
+default-resources:
+    slurm_partition: medium
+    slurm_account: cropdiv-acc
+    runtime: 1440
+    mem_mb: 5000
+    threads: 1
+```
 
 ## Cluster Troubleshooting
 
