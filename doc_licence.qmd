@@ -1,4 +1,4 @@
-# pyANI-plus documentation {#licence-documentation}
+# pyANI-plus documentation {#licence-documentation .unnumbered}
 
 Unless otherwise indicated, documentation is subjected to the following agreement:
 
