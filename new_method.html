@@ -8,7 +8,7 @@
 
 <meta name="author" content="Angelika Kiepas, Peter Cock, and Leighton Pritchard">
 
-<title>plot-run-comp – pyANI-plus</title>
+<title>Adding a New ANI Method – pyANI-plus</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -62,26 +62,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../subcommands/list_runs.html" rel="next">
-<link href="../subcommands/plot_run.html" rel="prev">
-<link href="../icon_32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./licensing.html" rel="next">
+<link href="./testing.html" rel="prev">
+<link href="./icon_32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -151,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../subcommands/subcommands.html">pyANI-plus subcommands</a></li><li class="breadcrumb-item"><a href="../subcommands/plot_run_comp.html"><code>plot-run-comp</code></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./new_method.html">Adding a New ANI Method</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,7 +137,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">pyANI-plus</a> 
+      <a href="./">pyANI-plus</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/pyani-plus/pyani-plus-docs" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -186,31 +157,31 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About pyANI-plus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../requirements.html" class="sidebar-item-text sidebar-link">
+  <a href="./requirements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Requirements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../walkthrough.html" class="sidebar-item-text sidebar-link">
+  <a href="./walkthrough.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pyANI-plus walkthrough</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../subcommands/subcommands.html" class="sidebar-item-text sidebar-link">
+            <a href="./subcommands/subcommands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pyANI-plus subcommands</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -219,85 +190,85 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/anib.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/anib.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>anib</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/anim.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/anim.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>anim</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/dnadiff.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/dnadiff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>dnadiff</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/external_alignment.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/external_alignment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>external-alignment</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/fastani.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/fastani.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>fastani</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/skani.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/skani.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>skani</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/sourmash.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/sourmash.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>sourmash</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/plot_run.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/plot_run.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>plot-run</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/plot_run_comp.html" class="sidebar-item-text sidebar-link active">
+  <a href="./subcommands/plot_run_comp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>plot-run-comp</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/list_runs.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/list_runs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>list-runs</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/export_run.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/export_run.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>export-run</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/resume.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/resume.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>resume</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/delete_run.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/delete_run.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>delete-run</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../subcommands/classify.html" class="sidebar-item-text sidebar-link">
+  <a href="./subcommands/classify.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>classify</code></span></a>
   </div>
 </li>
@@ -305,31 +276,31 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cluster.html" class="sidebar-item-text sidebar-link">
+  <a href="./cluster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing.html" class="sidebar-item-text sidebar-link">
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing to <code>pyANI-plus</code></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../testing.html" class="sidebar-item-text sidebar-link">
+  <a href="./testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../new_method.html" class="sidebar-item-text sidebar-link">
+  <a href="./new_method.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Adding a New ANI Method</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../licensing.html" class="sidebar-item-text sidebar-link">
+            <a href="./licensing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Licensing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -338,13 +309,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pyani_licence.html" class="sidebar-item-text sidebar-link">
+  <a href="./pyani_licence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pyANI-plus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../doc_licence.html" class="sidebar-item-text sidebar-link">
+  <a href="./doc_licence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pyANI-plus documentation</span></a>
   </div>
 </li>
@@ -360,16 +331,36 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#options" id="toc-options" class="nav-link active" data-scroll-target="#options">Options</a></li>
+  <li><a href="#create-a-new-environment-and-branch-to-work-in" id="toc-create-a-new-environment-and-branch-to-work-in" class="nav-link active" data-scroll-target="#create-a-new-environment-and-branch-to-work-in">Create a new environment and branch to work in</a>
+  <ul class="collapse">
+  <li><a href="#create-a-new-conda-environment" id="toc-create-a-new-conda-environment" class="nav-link" data-scroll-target="#create-a-new-conda-environment">Create a new <code>conda</code> environment</a></li>
+  <li><a href="#clone-the-repository-and-set-up-the-required-tools" id="toc-clone-the-repository-and-set-up-the-required-tools" class="nav-link" data-scroll-target="#clone-the-repository-and-set-up-the-required-tools">Clone the repository and set up the required tools</a></li>
+  <li><a href="#create-a-new-git-branch" id="toc-create-a-new-git-branch" class="nav-link" data-scroll-target="#create-a-new-git-branch">Create a new <code>git</code> branch</a></li>
+  </ul></li>
+  <li><a href="#write-the-code-for-your-new-method" id="toc-write-the-code-for-your-new-method" class="nav-link" data-scroll-target="#write-the-code-for-your-new-method">Write the code for your new method</a>
+  <ul class="collapse">
+  <li><a href="#download-and-install-the-method-you-want-to-add" id="toc-download-and-install-the-method-you-want-to-add" class="nav-link" data-scroll-target="#download-and-install-the-method-you-want-to-add">Download and install the method you want to add</a></li>
+  <li><a href="#add-the-method-as-a-third-party-requirement" id="toc-add-the-method-as-a-third-party-requirement" class="nav-link" data-scroll-target="#add-the-method-as-a-third-party-requirement">Add the method as a third party requirement</a></li>
+  <li><a href="#make-the-tool-available-to-pyani-plus" id="toc-make-the-tool-available-to-pyani-plus" class="nav-link" data-scroll-target="#make-the-tool-available-to-pyani-plus">Make the tool available to <code>pyani-plus</code></a></li>
+  <li><a href="#add-tests-for-tool-finding" id="toc-add-tests-for-tool-finding" class="nav-link" data-scroll-target="#add-tests-for-tool-finding">Add tests for tool finding</a></li>
+  <li><a href="#generate-test-target-fixtures" id="toc-generate-test-target-fixtures" class="nav-link" data-scroll-target="#generate-test-target-fixtures">Generate test target fixtures</a></li>
+  <li><a href="#add-temporary-output-fixtures" id="toc-add-temporary-output-fixtures" class="nav-link" data-scroll-target="#add-temporary-output-fixtures">Add temporary output fixtures</a></li>
+  <li><a href="#write-a-parser-for-the-tool-output" id="toc-write-a-parser-for-the-tool-output" class="nav-link" data-scroll-target="#write-a-parser-for-the-tool-output">Write a parser for the tool output</a></li>
+  <li><a href="#write-a-parser-test-for-the-tool-output" id="toc-write-a-parser-test-for-the-tool-output" class="nav-link" data-scroll-target="#write-a-parser-test-for-the-tool-output">Write a parser test for the tool output</a></li>
+  <li><a href="#add-a-function-in-private_cli.py-to-run-the-tool" id="toc-add-a-function-in-private_cli.py-to-run-the-tool" class="nav-link" data-scroll-target="#add-a-function-in-private_cli.py-to-run-the-tool">Add a function in <code>private_cli.py</code> to run the tool</a></li>
+  <li><a href="#write-a-test-for-running-the-tool" id="toc-write-a-test-for-running-the-tool" class="nav-link" data-scroll-target="#write-a-test-for-running-the-tool">Write a test for running the tool</a></li>
+  <li><a href="#update-the-public-cli" id="toc-update-the-public-cli" class="nav-link" data-scroll-target="#update-the-public-cli">Update the public CLI</a></li>
+  <li><a href="#add-remaining-tests" id="toc-add-remaining-tests" class="nav-link" data-scroll-target="#add-remaining-tests">Add remaining tests</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/subcommands/plot_run_comp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/new_method.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../subcommands/subcommands.html">pyANI-plus subcommands</a></li><li class="breadcrumb-item"><a href="../subcommands/plot_run_comp.html"><code>plot-run-comp</code></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="plot-run-comp-subcommand" class="quarto-section-identifier"><code>plot-run-comp</code></span></h1>
+<h1 class="title"><span id="new_method" class="quarto-section-identifier">Adding a New ANI Method</span></h1>
 </div>
 
 
@@ -386,42 +377,88 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>plot-run-comp</code> subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as <code>JPG</code>, <code>PDF</code>, <code>PNG</code> and <code>SVGZ</code>, as well as the tabular data, will be saved in the <code>outdir</code> directory.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The output directory must already exist. The scatter plots will be named <code>&lt;method&gt;_&lt;property&gt;_&lt;run-id&gt;_vs_*.&lt;extension&gt;</code> and any pre-existing files will be overwritten.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><code>pyani-plus plot-run-comp</code> Usage
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run <span class="pp">[</span><span class="ss">OPTIONS</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<section id="options" class="level2">
-<h2 class="anchored" data-anchor-id="options">Options</h2>
-<p><code>--database</code>: Path to <code>pyANI-plus</code> SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]</p>
-<p><code>--outdir</code>: Output directory. (<span style="color:green;">DIRECTORY</span>) [<span style="color:red;">REQUIRED</span>]</p>
-<p><code>--run-ids</code>: Which runs (comma separated list, reference first)? (<span style="color:green;">TEXT</span>) [<span style="color:red;">REQUIRED</span>]</p>
-<p><code>--columns</code>: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [<span style="color:grey;">Default: 0</span>] (<span style="color:green;">Integer range: <span class="math inline">\(x\geq0\)</span></span>)</p>
-<p><code>--help</code>, <code>-h</code>: Display usage information for <code>pyani-plus plot-run</code> and exit.</p>
+<p>This page outlines a workflow for adding a new ANI method to <code>pyani-plus</code>. This requires some software development.</p>
+<section id="create-a-new-environment-and-branch-to-work-in" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-environment-and-branch-to-work-in">Create a new environment and branch to work in</h2>
+<section id="create-a-new-conda-environment" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-conda-environment">Create a new <code>conda</code> environment</h3>
+<p>For example, if you want to create a new <code>conda</code> environment to sandbox the development process, you might use:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> pyani-plus-dev_py313 python=3.13 <span class="at">-y</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pyani-plus-dev_py313</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="clone-the-repository-and-set-up-the-required-tools" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-repository-and-set-up-the-required-tools">Clone the repository and set up the required tools</h3>
+<p>Clone the <code>pyani-plus</code> repository to your local machine.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:pyani-plus/pyani-plus.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Change directory into the repository, and install <code>pyani-plus</code> and all developer requirements. The <code>Makefile</code> has options for</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> setup_dev_macos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="create-a-new-git-branch" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-git-branch">Create a new <code>git</code> branch</h3>
+<p>We will only accept contributions <em>via</em> pull request, and it is best to keep all the work within its own branch. Ensure that your local repository is up to date, and then create a branch to work in.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> add_skani</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="write-the-code-for-your-new-method" class="level2">
+<h2 class="anchored" data-anchor-id="write-the-code-for-your-new-method">Write the code for your new method</h2>
+<section id="download-and-install-the-method-you-want-to-add" class="level3">
+<h3 class="anchored" data-anchor-id="download-and-install-the-method-you-want-to-add">Download and install the method you want to add</h3>
+<p>Install the method in your local environment. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install bioconda::skani <span class="at">-y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="add-the-method-as-a-third-party-requirement" class="level3">
+<h3 class="anchored" data-anchor-id="add-the-method-as-a-third-party-requirement">Add the method as a third party requirement</h3>
+<p>Update the OS-specific requirements file, e.g.&nbsp;<code>requirements-thirdparty-macos.txt</code> and <code>requirements-thirdparty-linux.txt</code> so that the corresponding tool is installed.</p>
+</section>
+<section id="make-the-tool-available-to-pyani-plus" class="level3">
+<h3 class="anchored" data-anchor-id="make-the-tool-available-to-pyani-plus">Make the tool available to <code>pyani-plus</code></h3>
+<p>Add a suitable <code>get_method()</code> function to <code>pyani_plus.tools</code></p>
+</section>
+<section id="add-tests-for-tool-finding" class="level3">
+<h3 class="anchored" data-anchor-id="add-tests-for-tool-finding">Add tests for tool finding</h3>
+<p>Add a <code>mock_method</code> file to <code>tests/tools</code>, following the pattern in that directory.</p>
+<p>Add suitable <code>test_fake_method()</code> and <code>test_find_method()</code> tests to <code>tests/test_tools.py</code></p>
+</section>
+<section id="generate-test-target-fixtures" class="level3">
+<h3 class="anchored" data-anchor-id="generate-test-target-fixtures">Generate test target fixtures</h3>
+<p>Add a new file to the <code>tests/generate_fixtures.py</code> directory with an appropriate filename, following the pattern of <code>generate_target_anim_files.py</code>. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture</p>
+<p>Update the <code>Makefile</code> <code>fixtures</code> directive to include the appropriate call to the new target generation script.</p>
+</section>
+<section id="add-temporary-output-fixtures" class="level3">
+<h3 class="anchored" data-anchor-id="add-temporary-output-fixtures">Add temporary output fixtures</h3>
+<p>Add a temporary <code>method_targets_outdir()</code> fixture for the method in <code>tests/conftest.py</code></p>
+</section>
+<section id="write-a-parser-for-the-tool-output" class="level3">
+<h3 class="anchored" data-anchor-id="write-a-parser-for-the-tool-output">Write a parser for the tool output</h3>
+<p>Create a new file (if needed) for the method in <code>pyani_plus/methods</code> (e.g.&nbsp;<code>skani.py</code>). This should minimally provide a function to parse method output (e.g.&nbsp;<code>parse_skani()</code>) and return appropriate values from the method output.</p>
+</section>
+<section id="write-a-parser-test-for-the-tool-output" class="level3">
+<h3 class="anchored" data-anchor-id="write-a-parser-test-for-the-tool-output">Write a parser test for the tool output</h3>
+<p>Create a new file (if needed) for the method in <code>tests</code> (e.g.&nbsp;<code>tests/test_skani.py</code>). This should minimally provide tests to confirm correct parsing of the tool’s output files. Good practice would require that tests are also provided that throw errors for poorly-formatted or failing comparison files. New test fixtures can be created if necessary to aid with this.</p>
+</section>
+<section id="add-a-function-in-private_cli.py-to-run-the-tool" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-function-in-private_cli.py-to-run-the-tool">Add a function in <code>private_cli.py</code> to run the tool</h3>
+<p>Add a function prefixed with <code>compute</code> (e.g.&nbsp;<code>compute_skani</code>) to <code>private_cli.py</code>. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other <code>compute_*</code> functions as a template.</p>
+<p>Be sure to att the method to <code>compute_column</code></p>
+</section>
+<section id="write-a-test-for-running-the-tool" class="level3">
+<h3 class="anchored" data-anchor-id="write-a-test-for-running-the-tool">Write a test for running the tool</h3>
+<p>Create a new function in the appropriate test suite file (e.g.&nbsp;<code>tests/test_skani.py</code>) with the <code>test_running</code> prefix (e.g.&nbsp;<code>test_running_skani</code>). This should pass if the run completes without error.</p>
+</section>
+<section id="update-the-public-cli" class="level3">
+<h3 class="anchored" data-anchor-id="update-the-public-cli">Update the public CLI</h3>
+<p>Add the new tool to <code>public_cli.py</code>, as a <code>cli_*</code> function (e.g.&nbsp;<code>cli_skani</code>) decorated with Typer’s <code>app.command</code>. Use one of the other <code>cli_*</code> functions as a template.</p>
+<p>If additional arguments to the tool are to be included, these should be incorporated here, and in the accompanying <code>public_cli_args.py</code> file as Typer argument definitions.</p>
+<p>Be sure to add a new switch to the <code>resume()</code> function for resuming failed runs.</p>
+</section>
+<section id="add-remaining-tests" class="level3">
+<h3 class="anchored" data-anchor-id="add-remaining-tests">Add remaining tests</h3>
+<p>Add tests to <code>test_tools.py</code>, <code>test_private_cli.py</code>, <code>test_public_cli.py</code> etc., with appropriate fixtures, to maintain 100% test coverage.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -827,13 +864,13 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../subcommands/plot_run.html" class="pagination-link" aria-label="`plot-run`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>plot-run</code></span>
+      <a href="./testing.html" class="pagination-link" aria-label="Testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Testing</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../subcommands/list_runs.html" class="pagination-link" aria-label="`list-runs`">
-        <span class="nav-page-text"><code>list-runs</code></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./licensing.html" class="pagination-link" aria-label="Licensing">
+        <span class="nav-page-text">Licensing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -845,7 +882,7 @@ Important
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/subcommands/plot_run_comp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/new_method.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -212,353 +212,397 @@
   {
     "objectID": "subcommands/anib.html",
     "href": "subcommands/anib.html",
-    "title": "1  anib",
+    "title": "anib",
     "section": "",
-    "text": "1.1 Arguments\nThe anib subcommand processes genome files from the indir directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe anib subcommand processes genome files from the indir directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>`anib`</span>"
+      "`anib`"
     ]
   },
   {
     "objectID": "subcommands/anib.html#options",
     "href": "subcommands/anib.html#options",
-    "title": "1  anib",
-    "section": "1.2 Options",
-    "text": "1.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usage information for pyani-plus anib.",
+    "title": "anib",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usage information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>`anib`</span>"
+      "`anib`"
     ]
   },
   {
     "objectID": "subcommands/anib.html#method-parameters",
     "href": "subcommands/anib.html#method-parameters",
-    "title": "1  anib",
-    "section": "1.3 Method parameters",
-    "text": "1.3 Method parameters\n--fragsize: Comparison method fragment size. [Default: 1020] (Integer range: \\(X\\geq1\\))",
+    "title": "anib",
+    "section": "Method parameters",
+    "text": "Method parameters\n--fragsize: Comparison method fragment size. [Default: 1020] (Integer range: \\(X\\geq1\\))",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>`anib`</span>"
+      "`anib`"
     ]
   },
   {
     "objectID": "subcommands/anib.html#debugging",
     "href": "subcommands/anib.html#debugging",
-    "title": "1  anib",
-    "section": "1.4 Debugging",
-    "text": "1.4 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "anib",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>`anib`</span>"
+      "`anib`"
     ]
   },
   {
     "objectID": "subcommands/anim.html",
     "href": "subcommands/anim.html",
-    "title": "2  anim",
+    "title": "anim",
     "section": "",
-    "text": "2.1 Arguments\nThe anim subcommand processes genome files from the indir directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe anim subcommand processes genome files from the indir directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`anim`</span>"
+      "`anim`"
     ]
   },
   {
     "objectID": "subcommands/anim.html#options",
     "href": "subcommands/anim.html#options",
-    "title": "2  anim",
-    "section": "2.2 Options",
-    "text": "2.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "title": "anim",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`anim`</span>"
+      "`anim`"
     ]
   },
   {
     "objectID": "subcommands/anim.html#method-parameters",
     "href": "subcommands/anim.html#method-parameters",
-    "title": "2  anim",
-    "section": "2.3 Method parameters",
-    "text": "2.3 Method parameters\n--mode: Nucmer mode for ANIm. [Default: mum] (mum|maxmatch)",
+    "title": "anim",
+    "section": "Method parameters",
+    "text": "Method parameters\n--mode: Nucmer mode for ANIm. [Default: mum] (mum|maxmatch)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`anim`</span>"
+      "`anim`"
     ]
   },
   {
     "objectID": "subcommands/anim.html#debugging",
     "href": "subcommands/anim.html#debugging",
-    "title": "2  anim",
-    "section": "2.4 Debugging",
-    "text": "2.4 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "anim",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`anim`</span>"
+      "`anim`"
     ]
   },
   {
     "objectID": "subcommands/dnadiff.html",
     "href": "subcommands/dnadiff.html",
-    "title": "3  dnadiff",
+    "title": "dnadiff",
     "section": "",
-    "text": "3.1 Arguments\nThe dnadiff subcommand processes genome files from the indir directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe dnadiff subcommand processes genome files from the indir directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>`dnadiff`</span>"
+      "`dnadiff`"
     ]
   },
   {
     "objectID": "subcommands/dnadiff.html#options",
     "href": "subcommands/dnadiff.html#options",
-    "title": "3  dnadiff",
-    "section": "3.2 Options",
-    "text": "3.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "title": "dnadiff",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>`dnadiff`</span>"
+      "`dnadiff`"
     ]
   },
   {
     "objectID": "subcommands/dnadiff.html#debugging",
     "href": "subcommands/dnadiff.html#debugging",
-    "title": "3  dnadiff",
-    "section": "3.3 Debugging",
-    "text": "3.3 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "dnadiff",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>`dnadiff`</span>"
+      "`dnadiff`"
     ]
   },
   {
     "objectID": "subcommands/external_alignment.html",
     "href": "subcommands/external_alignment.html",
-    "title": "4  external-alignment",
+    "title": "external-alignment",
     "section": "",
-    "text": "4.1 Arguments\nThe external-alignment subcommand compute pairwise ANI from given multiple-sequence-alignment (MSA) file and genome files from the indir directory, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe external-alignment subcommand compute pairwise ANI from given multiple-sequence-alignment (MSA) file and genome files from the indir directory, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>`external-alignment`</span>"
+      "`external-alignment`"
     ]
   },
   {
     "objectID": "subcommands/external_alignment.html#options",
     "href": "subcommands/external_alignment.html#options",
-    "title": "4  external-alignment",
-    "section": "4.2 Options",
-    "text": "4.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "title": "external-alignment",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>`external-alignment`</span>"
+      "`external-alignment`"
     ]
   },
   {
     "objectID": "subcommands/external_alignment.html#method-parameters",
     "href": "subcommands/external_alignment.html#method-parameters",
-    "title": "4  external-alignment",
-    "section": "4.3 Method parameters",
-    "text": "4.3 Method parameters\n--alignment: FASTA format MSA of the same genomes (one sequence per genome). (PATH) [REQUIRED]\n--label: How are the sequences in the MSA labelled vs the FASTA genomes? [Default: stem] (md5|filename|stem )",
+    "title": "external-alignment",
+    "section": "Method parameters",
+    "text": "Method parameters\n--alignment: FASTA format MSA of the same genomes (one sequence per genome). (PATH) [REQUIRED]\n--label: How are the sequences in the MSA labelled vs the FASTA genomes? [Default: stem] (md5|filename|stem )",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>`external-alignment`</span>"
+      "`external-alignment`"
     ]
   },
   {
     "objectID": "subcommands/external_alignment.html#debugging",
     "href": "subcommands/external_alignment.html#debugging",
-    "title": "4  external-alignment",
-    "section": "4.4 Debugging",
-    "text": "4.4 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "external-alignment",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>`external-alignment`</span>"
+      "`external-alignment`"
     ]
   },
   {
     "objectID": "subcommands/fastani.html",
     "href": "subcommands/fastani.html",
-    "title": "5  fastani",
+    "title": "fastani",
     "section": "",
-    "text": "5.1 Arguments\nThe fastani subcommand processes genome files from the indir directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe fastani subcommand processes genome files from the indir directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`fastani`</span>"
+      "`fastani`"
     ]
   },
   {
     "objectID": "subcommands/fastani.html#options",
     "href": "subcommands/fastani.html#options",
-    "title": "5  fastani",
-    "section": "5.2 Options",
-    "text": "5.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "title": "fastani",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`fastani`</span>"
+      "`fastani`"
     ]
   },
   {
     "objectID": "subcommands/fastani.html#method-parameters",
     "href": "subcommands/fastani.html#method-parameters",
-    "title": "5  fastani",
-    "section": "5.3 Method parameters",
-    "text": "5.3 Method parameters\n--fragsize: Comparison method fragment size. [Default: 1020] (Integer range: \\(x\\geq1\\))\n--kmersize: Comparison method k-mer size. [Default: 16] (\\(1 \\leq x \\leq 16\\) )\n--minmatch: Comparison method min-match. [Default: 0.2] (\\(0.0 \\leq x \\leq 1.0\\) )",
+    "title": "fastani",
+    "section": "Method parameters",
+    "text": "Method parameters\n--fragsize: Comparison method fragment size. [Default: 1020] (Integer range: \\(x\\geq1\\))\n--kmersize: Comparison method k-mer size. [Default: 16] (\\(1 \\leq x \\leq 16\\) )\n--minmatch: Comparison method min-match. [Default: 0.2] (\\(0.0 \\leq x \\leq 1.0\\) )",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`fastani`</span>"
+      "`fastani`"
     ]
   },
   {
     "objectID": "subcommands/fastani.html#debugging",
     "href": "subcommands/fastani.html#debugging",
-    "title": "5  fastani",
-    "section": "5.4 Debugging",
-    "text": "5.4 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "fastani",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>`fastani`</span>"
+      "`fastani`"
+    ]
+  },
+  {
+    "objectID": "subcommands/skani.html",
+    "href": "subcommands/skani.html",
+    "title": "skani",
+    "section": "",
+    "text": "Arguments\nThe skani subcommand processes genome files from the indir directory to perform skani analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "crumbs": [
+      "pyANI-plus subcommands",
+      "`skani`"
+    ]
+  },
+  {
+    "objectID": "subcommands/skani.html#options",
+    "href": "subcommands/skani.html#options",
+    "title": "skani",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "crumbs": [
+      "pyANI-plus subcommands",
+      "`skani`"
+    ]
+  },
+  {
+    "objectID": "subcommands/skani.html#method-parameters",
+    "href": "subcommands/skani.html#method-parameters",
+    "title": "skani",
+    "section": "Method parameters",
+    "text": "Method parameters\n--nide: Selects one of the skani presets. [Default: fast] (choice: fast|medium|slow|small-genomes )",
+    "crumbs": [
+      "pyANI-plus subcommands",
+      "`skani`"
+    ]
+  },
+  {
+    "objectID": "subcommands/skani.html#debugging",
+    "href": "subcommands/skani.html#debugging",
+    "title": "skani",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "crumbs": [
+      "pyANI-plus subcommands",
+      "`skani`"
     ]
   },
   {
     "objectID": "subcommands/sourmash.html",
     "href": "subcommands/sourmash.html",
-    "title": "6  sourmash",
+    "title": "sourmash",
     "section": "",
-    "text": "6.1 Arguments\nThe sourmash subcommand processes genome files from the indir directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe sourmash subcommand processes genome files from the indir directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>`sourmash`</span>"
+      "`sourmash`"
     ]
   },
   {
     "objectID": "subcommands/sourmash.html#options",
     "href": "subcommands/sourmash.html#options",
-    "title": "6  sourmash",
-    "section": "6.2 Options",
-    "text": "6.2 Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
+    "title": "sourmash",
+    "section": "Options",
+    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usgae information for pyani-plus anib.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>`sourmash`</span>"
+      "`sourmash`"
     ]
   },
   {
     "objectID": "subcommands/sourmash.html#method-parameters",
     "href": "subcommands/sourmash.html#method-parameters",
-    "title": "6  sourmash",
-    "section": "6.3 Method parameters",
-    "text": "6.3 Method parameters\n--scaled: Sets the compression ratio. [Default: 1000] (Integer range: \\(x\\geq1\\))\n--kmersize: Comparison method k-mer size. [Default: 31] (Integer range: \\(x\\geq1\\))",
+    "title": "sourmash",
+    "section": "Method parameters",
+    "text": "Method parameters\n--scaled: Sets the compression ratio. [Default: 1000] (Integer range: \\(x\\geq1\\))\n--kmersize: Comparison method k-mer size. [Default: 31] (Integer range: \\(x\\geq1\\))",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>`sourmash`</span>"
+      "`sourmash`"
     ]
   },
   {
     "objectID": "subcommands/sourmash.html#debugging",
     "href": "subcommands/sourmash.html#debugging",
-    "title": "6  sourmash",
-    "section": "6.4 Debugging",
-    "text": "6.4 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "sourmash",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>`sourmash`</span>"
+      "`sourmash`"
     ]
   },
   {
     "objectID": "subcommands/plot_run.html",
     "href": "subcommands/plot_run.html",
-    "title": "7  plot-run",
+    "title": "plot-run",
     "section": "",
-    "text": "7.1 Options\nThe plot-run subcommand generates heatmaps, distribution plots, and tabular output from an ANI analysis for a specified --run_id, using data stored in a local SQLite3 database. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus plot-run and exit.",
+    "text": "Options\nThe plot-run subcommand generates heatmaps, distribution plots, and tabular output from an ANI analysis for a specified --run_id, using data stored in a local SQLite3 database. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus plot-run and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`plot-run`</span>"
+      "`plot-run`"
     ]
   },
   {
     "objectID": "subcommands/plot_run_comp.html",
     "href": "subcommands/plot_run_comp.html",
-    "title": "8  plot-run-comp",
+    "title": "plot-run-comp",
     "section": "",
-    "text": "8.1 Options\nThe plot-run-comp subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-ids: Which runs (comma separated list, reference first)? (TEXT) [REQUIRED]\n--columns: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [Default: 0] (Integer range: \\(x\\geq0\\))\n--help, -h: Display usage information for pyani-plus plot-run and exit.",
+    "text": "Options\nThe plot-run-comp subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-ids: Which runs (comma separated list, reference first)? (TEXT) [REQUIRED]\n--columns: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [Default: 0] (Integer range: \\(x\\geq0\\))\n--help, -h: Display usage information for pyani-plus plot-run and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>`plot-run-comp`</span>"
+      "`plot-run-comp`"
     ]
   },
   {
     "objectID": "subcommands/list_runs.html",
     "href": "subcommands/list_runs.html",
-    "title": "9  list-runs",
+    "title": "list-runs",
     "section": "",
-    "text": "9.1 Options\nThe list-runs subcommand lists the runs defined in a given pyANI-plus SQLite3 database.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--help, -h: Display usage information for pyani-plus reasume and exit.",
+    "text": "Options\nThe list-runs subcommand lists the runs defined in a given pyANI-plus SQLite3 database.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--help, -h: Display usage information for pyani-plus reasume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>`list-runs`</span>"
+      "`list-runs`"
     ]
   },
   {
     "objectID": "subcommands/export_run.html",
     "href": "subcommands/export_run.html",
-    "title": "10  export-run",
+    "title": "export-run",
     "section": "",
-    "text": "10.1 Options\nThe export-run subcommand exports ANI results in a tabular format for a specified --run_id, using data stored in a local SQLite3 database.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
+    "text": "Options\nThe export-run subcommand exports ANI results in a tabular format for a specified --run_id, using data stored in a local SQLite3 database.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>`export-run`</span>"
+      "`export-run`"
     ]
   },
   {
     "objectID": "subcommands/resume.html",
     "href": "subcommands/resume.html",
-    "title": "11  resume",
+    "title": "resume",
     "section": "",
-    "text": "11.1 Options\nThe resume subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed, and the the old run will be marked as complete. This should have no effect on completed comparisons.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--cache: Cache location if required for a method (must be visible to cluster workers). Default to .cache in the current directory. (DIRECTORY)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
+    "text": "Options\nThe resume subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed, and the the old run will be marked as complete. This should have no effect on completed comparisons.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--cache: Cache location if required for a method (must be visible to cluster workers). Default to .cache in the current directory. (DIRECTORY)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>`resume`</span>"
+      "`resume`"
     ]
   },
   {
     "objectID": "subcommands/resume.html#debugging",
     "href": "subcommands/resume.html#debugging",
-    "title": "11  resume",
-    "section": "11.2 Debugging",
-    "text": "11.2 Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
+    "title": "resume",
+    "section": "Debugging",
+    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>`resume`</span>"
+      "`resume`"
     ]
   },
   {
     "objectID": "subcommands/delete_run.html",
     "href": "subcommands/delete_run.html",
-    "title": "12  delete-run",
+    "title": "delete-run",
     "section": "",
-    "text": "12.1 Options\nThe delete-run subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is “Running”, but that can be overridden.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--force, -f: Delete without confirmation.\n--help, -h: Display usage information for pyani-plus reasume and exit.",
+    "text": "Options\nThe delete-run subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is “Running”, but that can be overridden.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--force, -f: Delete without confirmation.\n--help, -h: Display usage information for pyani-plus reasume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>`delete-run`</span>"
+      "`delete-run`"
     ]
   },
   {
     "objectID": "subcommands/classify.html",
     "href": "subcommands/classify.html",
-    "title": "13  classify",
+    "title": "classify",
     "section": "",
-    "text": "13.1 Options\nThe classify subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy. The output, including classify plots (JPG, PDF, PNG, SVGZ) and tabular data, is written to outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
+    "text": "Options\nThe classify subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy. The output, including classify plots (JPG, PDF, PNG, SVGZ) and tabular data, is written to outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus reasume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>`classify`</span>"
+      "`classify`"
     ]
   },
   {
     "objectID": "subcommands/classify.html#method-parameters",
     "href": "subcommands/classify.html#method-parameters",
-    "title": "13  classify",
-    "section": "13.2 Method parameters",
-    "text": "13.2 Method parameters\n--mode: Classify mode intended to identify cliques within a set of genomes. [Default: identity] (identity|tANI)\n--score-edges: How to resolve asymmetrical ANI identity/tANI results for edges in the graph (min, max or mean). [Default: min] (TEXT)\n--coverage-edges: How to resolve asymmetrical ANI coverage results for edges in the graph (min, max or mean). [Default: min] (TEXT)\n--cov-min: Minimum %coverage for an edge. [Default: 0.5] (\\(0.0 \\leq x \\leq 1.0\\) )\n--vertical-line: Threshold for red vertical line at identity/tANI. The default is set to 0.95 if --mode is identity and -0.323 if --mode is tANI. (TEXT)",
+    "title": "classify",
+    "section": "Method parameters",
+    "text": "Method parameters\n--mode: Classify mode intended to identify cliques within a set of genomes. [Default: identity] (identity|tANI)\n--score-edges: How to resolve asymmetrical ANI identity/tANI results for edges in the graph (min, max or mean). [Default: min] (TEXT)\n--coverage-edges: How to resolve asymmetrical ANI coverage results for edges in the graph (min, max or mean). [Default: min] (TEXT)\n--cov-min: Minimum %coverage for an edge. [Default: 0.5] (\\(0.0 \\leq x \\leq 1.0\\) )\n--vertical-line: Threshold for red vertical line at identity/tANI. The default is set to 0.95 if --mode is identity and -0.323 if --mode is tANI. (TEXT)",
     "crumbs": [
       "pyANI-plus subcommands",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>`classify`</span>"
+      "`classify`"
     ]
   },
   {
@@ -636,7 +680,7 @@
     "href": "testing.html#test-directory-structure",
     "title": "Testing",
     "section": "",
-    "text": "Input data for tests are provided in tests/fixtures directory. This fixtures directory contains a variety of test sets, including sequence data and intermediate files, intended for use and testing with pyANI-plus. The current test sets include:\n\nviral_example: Three phage genomes that share similar regions, resulting in aligned regions. These viral genomes are the main test set due to the short runtime of the methods.\nbacterial_example: Four bacterial genomes previously used for testing the legacy pyANI. This test set only being used in the test suite for the faster methods like fastANI and sourmash.\nbad_alignments: Two highly divergent phage genomes with no shared regions, resulting in no alignments. This test set ensures that pyANI-plus correctly detects and handles such comparisons, which are recorded in the database as NULL.\ntools: Mock tools designed for version testing of third-party tools. It also includes examples of faulty tools that are either not executable or do not provide version information.\n\n\n\n\nTest output is written to temporary files that are automatically deleted after execution.\n\n\n\n\n\n\n\nContributing and Writing Tests\n\n\n\n\n\nWe welcome contributions from the community! If you would like to write new tests for pyANI-plus, please ensure your test data and operations follow this structure.",
+    "text": "Input data for tests are provided in tests/fixtures directory. This fixtures directory contains a variety of test sets, including sequence data and intermediate files, intended for use and testing with pyANI-plus. The current test sets include:\n\nviral_example: Three phage genomes that share similar regions, resulting in aligned regions. These viral genomes are the main test set due to the short runtime of the methods.\nbacterial_example: Four bacterial genomes previously used for testing the legacy pyANI. This test set only being used in the test suite for the faster methods like fastANI and sourmash.\nbad_alignments: Two highly divergent phage genomes with no shared regions, resulting in no alignments. This test set ensures that pyANI-plus correctly detects and handles such comparisons, which are recorded in the database as NULL.\ntools: Mock tools designed for version testing of third-party tools. It also includes examples of faulty tools that are either not executable or do not provide version information.\n\n\n\n\nTest output is written to temporary files that are automatically deleted after execution.\n\n\n\n\n\n\n\nTipContributing and Writing Tests\n\n\n\n\n\nWe welcome contributions from the community! If you would like to write new tests for pyANI-plus, please ensure your test data and operations follow this structure.",
     "crumbs": [
       "Testing"
     ]
@@ -652,6 +696,36 @@
     ]
   },
   {
+    "objectID": "new_method.html",
+    "href": "new_method.html",
+    "title": "Adding a New ANI Method",
+    "section": "",
+    "text": "Create a new environment and branch to work in\nThis page outlines a workflow for adding a new ANI method to pyani-plus. This requires some software development.",
+    "crumbs": [
+      "Adding a New ANI Method"
+    ]
+  },
+  {
+    "objectID": "new_method.html#create-a-new-environment-and-branch-to-work-in",
+    "href": "new_method.html#create-a-new-environment-and-branch-to-work-in",
+    "title": "Adding a New ANI Method",
+    "section": "",
+    "text": "Create a new conda environment\nFor example, if you want to create a new conda environment to sandbox the development process, you might use:\nconda create --name pyani-plus-dev_py313 python=3.13 -y\nconda activate pyani-plus-dev_py313\n\n\nClone the repository and set up the required tools\nClone the pyani-plus repository to your local machine.\ngit clone git@github.com:pyani-plus/pyani-plus.git\nChange directory into the repository, and install pyani-plus and all developer requirements. The Makefile has options for\nmake setup_dev_macos\n\n\nCreate a new git branch\nWe will only accept contributions via pull request, and it is best to keep all the work within its own branch. Ensure that your local repository is up to date, and then create a branch to work in.\ngit checkout main\ngit pull\ngit checkout -b add_skani",
+    "crumbs": [
+      "Adding a New ANI Method"
+    ]
+  },
+  {
+    "objectID": "new_method.html#write-the-code-for-your-new-method",
+    "href": "new_method.html#write-the-code-for-your-new-method",
+    "title": "Adding a New ANI Method",
+    "section": "Write the code for your new method",
+    "text": "Write the code for your new method\n\nDownload and install the method you want to add\nInstall the method in your local environment. For example:\nconda install bioconda::skani -y\n\n\nAdd the method as a third party requirement\nUpdate the OS-specific requirements file, e.g. requirements-thirdparty-macos.txt and requirements-thirdparty-linux.txt so that the corresponding tool is installed.\n\n\nMake the tool available to pyani-plus\nAdd a suitable get_method() function to pyani_plus.tools\n\n\nAdd tests for tool finding\nAdd a mock_method file to tests/tools, following the pattern in that directory.\nAdd suitable test_fake_method() and test_find_method() tests to tests/test_tools.py\n\n\nGenerate test target fixtures\nAdd a new file to the tests/generate_fixtures.py directory with an appropriate filename, following the pattern of generate_target_anim_files.py. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture\nUpdate the Makefile fixtures directive to include the appropriate call to the new target generation script.\n\n\nAdd temporary output fixtures\nAdd a temporary method_targets_outdir() fixture for the method in tests/conftest.py\n\n\nWrite a parser for the tool output\nCreate a new file (if needed) for the method in pyani_plus/methods (e.g. skani.py). This should minimally provide a function to parse method output (e.g. parse_skani()) and return appropriate values from the method output.\n\n\nWrite a parser test for the tool output\nCreate a new file (if needed) for the method in tests (e.g. tests/test_skani.py). This should minimally provide tests to confirm correct parsing of the tool’s output files. Good practice would require that tests are also provided that throw errors for poorly-formatted or failing comparison files. New test fixtures can be created if necessary to aid with this.\n\n\nAdd a function in private_cli.py to run the tool\nAdd a function prefixed with compute (e.g. compute_skani) to private_cli.py. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other compute_* functions as a template.\nBe sure to att the method to compute_column\n\n\nWrite a test for running the tool\nCreate a new function in the appropriate test suite file (e.g. tests/test_skani.py) with the test_running prefix (e.g. test_running_skani). This should pass if the run completes without error.\n\n\nUpdate the public CLI\nAdd the new tool to public_cli.py, as a cli_* function (e.g. cli_skani) decorated with Typer’s app.command. Use one of the other cli_* functions as a template.\nIf additional arguments to the tool are to be included, these should be incorporated here, and in the accompanying public_cli_args.py file as Typer argument definitions.\nBe sure to add a new switch to the resume() function for resuming failed runs.\n\n\nAdd remaining tests\nAdd tests to test_tools.py, test_private_cli.py, test_public_cli.py etc., with appropriate fixtures, to maintain 100% test coverage.",
+    "crumbs": [
+      "Adding a New ANI Method"
+    ]
+  },
+  {
     "objectID": "licensing.html",
     "href": "licensing.html",
     "title": "Licensing",
@@ -664,23 +738,23 @@
   {
     "objectID": "pyani_licence.html",
     "href": "pyani_licence.html",
-    "title": "14  pyANI-plus",
+    "title": "pyANI-plus",
     "section": "",
     "text": "Unless otherwise indicated, all code is subjected to the following agreement:\n© The University of Strathclyde 2024 Author: Leighton Pritchard\nemail: leighton.pritchard@strath.ac.uk\nAdress:\nLeighton Pritchard, Strathclyde Institute of Pharmacy and Biomedical Sciences, University of Strathclyde, 161 Cathedral Street, Glasgow, G4 0RE, Scotland, UK\n\nThe MIT License\nCopyright © 2019 The Univeristy of Strathclyde\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
     "crumbs": [
       "Licensing",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>pyANI-plus</span>"
+      "pyANI-plus"
     ]
   },
   {
     "objectID": "doc_licence.html",
     "href": "doc_licence.html",
-    "title": "15  pyANI-plus documentation",
+    "title": "pyANI-plus documentation",
     "section": "",
     "text": "Unless otherwise indicated, documentation is subjected to the following agreement:\n© The University of Strathclyde 2024 Author: Leighton Pritchard\nemail: leighton.pritchard@strath.ac.uk\nAdress:\nLeighton Pritchard, Strathclyde Institute of Pharmacy and Biomedical Sciences, University of Strathclyde, 161 Cathedral Street, Glasgow, G4 0RE, Scotland, UK\n\nCreative Commons Attribution Share Alike 4.0 International\nAttribution-ShareAlike 4.0 International\n=======================================================================\nCreative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.\nUsing Creative Commons Public Licenses\nCreative Commons public licenses provide a standard set of terms and conditions that creators and other rights holders may use to share original works of authorship and other material subject to copyright and certain other rights specified in the public license below. The following considerations are for informational purposes only, are not exhaustive, and do not form part of our licenses.\n Considerations for licensors: Our public licenses are\n intended for use by those authorized to give the public\n permission to use material in ways otherwise restricted by\n copyright and certain other rights. Our licenses are\n irrevocable. Licensors should read and understand the terms\n and conditions of the license they choose before applying it.\n Licensors should also secure all rights necessary before\n applying our licenses so that the public can reuse the\n material as expected. Licensors should clearly mark any\n material not subject to the license. This includes other CC-\n licensed material, or material used under an exception or\n limitation to copyright. More considerations for licensors:\n wiki.creativecommons.org/Considerations_for_licensors\n\n Considerations for the public: By using one of our public\n licenses, a licensor grants the public permission to use the\n licensed material under specified terms and conditions. If\n the licensor's permission is not necessary for any reason--for\n example, because of any applicable exception or limitation to\n copyright--then that use is not regulated by the license. Our\n licenses grant only permissions under copyright and certain\n other rights that a licensor has authority to grant. Use of\n the licensed material may still be restricted for other\n reasons, including because others have copyright or other\n rights in the material. A licensor may make special requests,\n such as asking that all changes be marked or described.\n Although not required by our licenses, you are encouraged to\n respect those requests where reasonable. More considerations\n for the public:\n wiki.creativecommons.org/Considerations_for_licensees\n=======================================================================\nCreative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n\nreproduce and Share the Licensed Material, in whole or in part; and\nproduce, reproduce, and Share Adapted Material.\n\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)\n\nnever produces Adapted Material.\n\nDownstream recipients.\n\nOffer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nAdditional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nNo downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\n\nretain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nindicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nindicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material,\nincluding for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS, ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.\nTO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES, COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n=======================================================================\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” The text of the Creative Commons public licenses is dedicated to the public domain under the CC0 Public Domain Dedication. Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org.",
     "crumbs": [
       "Licensing",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>pyANI-plus documentation</span>"
+      "pyANI-plus documentation"
     ]
   }
 ]
