@@ -47,6 +47,7 @@ book:
         - subcommands/dnadiff.qmd
         - subcommands/external_alignment.qmd
         - subcommands/fastani.qmd
+        - subcommands/skani.qmd
         - subcommands/sourmash.qmd
         - subcommands/plot_run.qmd
         - subcommands/plot_run_comp.qmd
