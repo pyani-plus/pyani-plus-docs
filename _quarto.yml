@@ -56,6 +56,7 @@ book:
         - subcommands/delete_run.qmd
         - subcommands/classify.qmd
     - testing.qmd
+    - new_method.qmd
     - part: licensing.qmd
       chapters: 
         - pyani_licence.qmd
