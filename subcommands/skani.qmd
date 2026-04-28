@@ -1,16 +1,16 @@
-# `anim` {#anim-subcommand .unnumbered}
+# `skani` {#skani-subcommand .unnumbered}
 
-The `anim` subcommand processes genome files from the `indir` directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.
+The `skani` subcommand processes genome files from the `indir` directory to perform skani analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
-## `pyani-plus anim` Usage
+## `pyani-plus skani` Usage
 
 ```bash
-pyani-plus anim [OPTIONS] FASTA 
+pyani-plus skani [OPTIONS] FASTA 
 ```
 :::
 
-## Arguments {.unnumbered}
+## Arguments {.unnambered}
 
 __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 
@@ -28,7 +28,7 @@ __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<spa
 
 ## Method parameters {.unnumbered}
 
-`--mode`:  Nucmer mode for ANIm. [<span style="color:grey;">Default: `mum`</span>] (<span style="color:green;">`mum`|`maxmatch`</span>)
+`--nide`:  Selects one of the `skani` presets. [<span style="color:grey;">Default: `fast`</span>] (<span style="color:green;">choice: `fast`|`medium`|`slow`|`small-genomes` </span>)
 
 ## Debugging {.unnumbered}
 

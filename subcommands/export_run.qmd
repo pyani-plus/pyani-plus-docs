@@ -1,4 +1,4 @@
-# `export-run` {#export-run-subcommand .unnambered}
+# `export-run` {#export-run-subcommand .unnumbered}
 
 The `export-run` subcommand exports ANI results in a tabular format for a specified `--run_id`, using data stored in a local SQLite3 database. 
 
