@@ -57,7 +57,7 @@ Add a suitable `get_method()` function to `pyani_plus.tools`
 
 ### Add tests for tool finding
 
-Add a `mock_method` file to `tests/tools`, following the pattern in that directory.
+Add a `mock_method` file to `tests/fixtures/tools`, following the pattern in that directory.
 
 Add suitable `test_fake_method()` and `test_find_method()` tests to `tests/test_tools.py`
 
