@@ -63,13 +63,15 @@ Add suitable `test_fake_method()` and `test_find_method()` tests to `tests/test_
 
 ### Generate test target fixtures
 
-Add a new file to the `tests/generate_fixtures.py` directory with an appropriate filename, following the pattern of `generate_target_anim_files.py`. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture
+Add a new file to the `tests/generate_fixtures` directory with an appropriate filename, following the pattern of `generate_target_anim_files.py`. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture
 
 Update the `Makefile` `fixtures` directive to include the appropriate call to the new target generation script.
 
-### Add temporary output fixtures
+### Add fixtures
 
-Add a temporary `method_targets_outdir()` fixture for the method in `tests/conftest.py`
+Add a temporary output `method_targets_outdir()` fixture for the method in `tests/conftest.py`
+
+Add an example output file with bad headers to `tests/fixtures/method/bad_headers.out` (or similar file)
 
 ### Write a parser for the tool output
 
@@ -83,7 +85,7 @@ Create a new file (if needed) for the method in `tests` (e.g. `tests/test_skani.
 
 Add a function prefixed with `compute` (e.g. `compute_skani`) to `private_cli.py`. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other `compute_*` functions as a template.
 
-Be sure to att the method to `compute_column`
+Be sure to add the method to `compute_column`
 
 ### Write a test for running the tool
 
