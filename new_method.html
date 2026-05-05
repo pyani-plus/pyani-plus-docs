@@ -344,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#make-the-tool-available-to-pyani-plus" id="toc-make-the-tool-available-to-pyani-plus" class="nav-link" data-scroll-target="#make-the-tool-available-to-pyani-plus">Make the tool available to <code>pyani-plus</code></a></li>
   <li><a href="#add-tests-for-tool-finding" id="toc-add-tests-for-tool-finding" class="nav-link" data-scroll-target="#add-tests-for-tool-finding">Add tests for tool finding</a></li>
   <li><a href="#generate-test-target-fixtures" id="toc-generate-test-target-fixtures" class="nav-link" data-scroll-target="#generate-test-target-fixtures">Generate test target fixtures</a></li>
-  <li><a href="#add-temporary-output-fixtures" id="toc-add-temporary-output-fixtures" class="nav-link" data-scroll-target="#add-temporary-output-fixtures">Add temporary output fixtures</a></li>
+  <li><a href="#add-fixtures" id="toc-add-fixtures" class="nav-link" data-scroll-target="#add-fixtures">Add fixtures</a></li>
   <li><a href="#write-a-parser-for-the-tool-output" id="toc-write-a-parser-for-the-tool-output" class="nav-link" data-scroll-target="#write-a-parser-for-the-tool-output">Write a parser for the tool output</a></li>
   <li><a href="#write-a-parser-test-for-the-tool-output" id="toc-write-a-parser-test-for-the-tool-output" class="nav-link" data-scroll-target="#write-a-parser-test-for-the-tool-output">Write a parser test for the tool output</a></li>
   <li><a href="#add-a-function-in-private_cli.py-to-run-the-tool" id="toc-add-a-function-in-private_cli.py-to-run-the-tool" class="nav-link" data-scroll-target="#add-a-function-in-private_cli.py-to-run-the-tool">Add a function in <code>private_cli.py</code> to run the tool</a></li>
@@ -423,12 +423,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="generate-test-target-fixtures" class="level3">
 <h3 class="anchored" data-anchor-id="generate-test-target-fixtures">Generate test target fixtures</h3>
-<p>Add a new file to the <code>tests/generate_fixtures.py</code> directory with an appropriate filename, following the pattern of <code>generate_target_anim_files.py</code>. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture</p>
+<p>Add a new file to the <code>tests/generate_fixtures</code> directory with an appropriate filename, following the pattern of <code>generate_target_anim_files.py</code>. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture</p>
 <p>Update the <code>Makefile</code> <code>fixtures</code> directive to include the appropriate call to the new target generation script.</p>
 </section>
-<section id="add-temporary-output-fixtures" class="level3">
-<h3 class="anchored" data-anchor-id="add-temporary-output-fixtures">Add temporary output fixtures</h3>
-<p>Add a temporary <code>method_targets_outdir()</code> fixture for the method in <code>tests/conftest.py</code></p>
+<section id="add-fixtures" class="level3">
+<h3 class="anchored" data-anchor-id="add-fixtures">Add fixtures</h3>
+<p>Add a temporary output <code>method_targets_outdir()</code> fixture for the method in <code>tests/conftest.py</code></p>
+<p>Add an example output file with bad headers to <code>tests/fixtures/method/bad_headers.out</code> (or similar file)</p>
 </section>
 <section id="write-a-parser-for-the-tool-output" class="level3">
 <h3 class="anchored" data-anchor-id="write-a-parser-for-the-tool-output">Write a parser for the tool output</h3>
@@ -441,7 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="add-a-function-in-private_cli.py-to-run-the-tool" class="level3">
 <h3 class="anchored" data-anchor-id="add-a-function-in-private_cli.py-to-run-the-tool">Add a function in <code>private_cli.py</code> to run the tool</h3>
 <p>Add a function prefixed with <code>compute</code> (e.g.&nbsp;<code>compute_skani</code>) to <code>private_cli.py</code>. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other <code>compute_*</code> functions as a template.</p>
-<p>Be sure to att the method to <code>compute_column</code></p>
+<p>Be sure to add the method to <code>compute_column</code></p>
 </section>
 <section id="write-a-test-for-running-the-tool" class="level3">
 <h3 class="anchored" data-anchor-id="write-a-test-for-running-the-tool">Write a test for running the tool</h3>
