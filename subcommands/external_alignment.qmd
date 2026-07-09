@@ -1,4 +1,4 @@
-# `external-alignment` {#external-alignment-subcommand .unnambered}
+# `external-alignment` {#external-alignment-subcommand .unnumbered}
 
 The `external-alignment` subcommand compute pairwise ANI from given multiple-sequence-alignment (MSA) file and genome files from the `indir` directory, and logs comparison and run data in a local SQLite3 database.
 
@@ -10,11 +10,11 @@ pyani-plus external-alignment [OPTIONS] FASTA
 ```
 :::
 
-## Arguments {.unnambered}
+## Arguments {.unnumbered}
 
 __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 
-## Options {.unnambered}
+## Options {.unnumbered}
 
 `--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
 
@@ -26,7 +26,7 @@ __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<spa
 
 `--help`, `-h`: Display usgae information for `pyani-plus anib`.
 
-## Method parameters {.unnambered}
+## Method parameters {.unnumbered}
 
 `--alignment`: FASTA format MSA of the same genomes (one sequence per genome). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 

@@ -1,4 +1,4 @@
-# `list-runs` {#list-runs-subcommand.unnambered}
+# `list-runs` {#list-runs-subcommand .unnumbered}
 
 The `list-runs` subcommand lists the runs defined in a given pyANI-plus SQLite3 database.
 

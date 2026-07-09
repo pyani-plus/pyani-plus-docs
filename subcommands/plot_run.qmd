@@ -1,4 +1,4 @@
-# `plot-run` {#plot-run-subcommand .unnambered}
+# `plot-run` {#plot-run-subcommand .unnumbered}
 
 The `plot-run` subcommand generates heatmaps, distribution plots, and tabular output from an ANI analysis for a specified `--run_id`, using data stored in a local SQLite3 database. All plots, including formats such as `JPG`, `PDF`, `PNG` and `SVGZ`, as well as the tabular data, will be saved in the `outdir` directory.
 

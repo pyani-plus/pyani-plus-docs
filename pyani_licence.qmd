@@ -1,4 +1,4 @@
-# pyANI-plus {#licence-software}
+# pyANI-plus {#licence-software .unnumbered}
 
 Unless otherwise indicated, all code is subjected to the following agreement:
 

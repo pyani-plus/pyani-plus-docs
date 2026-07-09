@@ -1,4 +1,4 @@
-# `dnadiff` {#dnadiff-subcommand .unnambered}
+# `dnadiff` {#dnadiff-subcommand .unnumbered}
 
 The `dnadiff` subcommand processes genome files from the `indir` directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.
 
@@ -10,11 +10,11 @@ pyani-plus dnadiff [OPTIONS] FASTA
 ```
 :::
 
-## Arguments {.unnambered}
+## Arguments {.unnumbered}
 
 __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 
-## Options {.unnambered}
+## Options {.unnumbered}
 
 `--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
 
@@ -26,7 +26,7 @@ __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<spa
 
 `--help`, `-h`: Display usgae information for `pyani-plus anib`.
 
-## Debugging {.unnambered}
+## Debugging {.unnumbered}
 
 `--temp`: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (<span style="color:green;">Directory</span>)
 

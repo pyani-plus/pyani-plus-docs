@@ -92,9 +92,9 @@ Snakemake would give distracting warnings if the account or runtime was
 ommitted, although this cluster had default values setup in SLURM.
 
 By default the cluster applied a 1GB memory limit, which was ample
-for bacteria. Adding `mem_mb: 2048` under the `default-resources`
-section would have used the full RAM limit on this queue to handle
-*slightly* larger genomes.
+for bacteria. Adding `memory: 2G` or `mem_mb: 2048` under the
+`default-resources` section would have used the full 2G RAM limit on
+this queue to handle *slightly* larger genomes.
 
 The following configuration was used in 2026 for a set of 100 fungal
 genomes around 40Mbp (taking less than a day).
@@ -120,13 +120,16 @@ default-resources:
 
 Start with a small example first, like the walkthough, to make sure
 the cluster intergration is working. Check the stdout/stderr logs if
-possible. Use the logging and debug options within the tool.
+possible. Use the logging and debug options within the tool (to keep
+the intermediate files and logs).
 
-If specfic genomes appear to be a problem, try reducing the number of
-genomes to work out which.
+If you suspect specfic genomes or genome pairs to be a problem, try
+reducing the number of genomes to work out which.
 
 If you are getting out of memory (OOM) failures, this could be from
 larger or more complex genomes - in which case try increasing the RAM
 limit. However, pathological data like genomes which have not been
 quality controlled can cause problems in some methods (eg excessive
-runs of N).
+runs of N). On SLURM the `sacct` command or similar will show when a
+job failed with `OUT_OF_MEMORY`. In this case, adjust your Snakemake
+`config.yaml` and retry (see example above).

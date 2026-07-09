@@ -1,0 +1,104 @@
+# Adding a New ANI Method {#new_method .unnumbered}
+
+This page outlines a workflow for adding a new ANI method to `pyani-plus`. This requires some software development.
+
+## Create a new environment and branch to work in
+
+### Create a new `conda` environment
+
+For example, if you want to create a new `conda` environment to sandbox the development process, you might use:
+
+```bash
+conda create --name pyani-plus-dev_py313 python=3.13 -y
+conda activate pyani-plus-dev_py313
+```
+
+### Clone the repository and set up the required tools
+
+Clone the `pyani-plus` repository to your local machine.
+
+```bash
+git clone git@github.com:pyani-plus/pyani-plus.git
+```
+
+Change directory into the repository, and install `pyani-plus` and all developer requirements. The `Makefile` has options for 
+
+```bash
+make setup_dev_macos
+```
+
+### Create a new `git` branch
+
+We will only accept contributions _via_ pull request, and it is best to keep all the work within its own branch. Ensure that your local repository is up to date, and then create a branch to work in.
+
+```bash
+git checkout main
+git pull
+git checkout -b add_skani
+```
+
+## Write the code for your new method
+
+### Download and install the method you want to add
+
+Install the method in your local environment. For example:
+
+```bash
+conda install bioconda::skani -y
+```
+
+### Add the method as a third party requirement
+
+Update the OS-specific requirements file, e.g. `requirements-thirdparty-macos.txt` and `requirements-thirdparty-linux.txt` so that the corresponding tool is installed.
+
+### Make the tool available to `pyani-plus`
+
+Add a suitable `get_method()` function to `pyani_plus.tools`
+
+### Add tests for tool finding
+
+Add a `mock_method` file to `tests/fixtures/tools`, following the pattern in that directory.
+
+Add suitable `test_fake_method()` and `test_find_method()` tests to `tests/test_tools.py`
+
+### Generate test target fixtures
+
+Add a new file to the `tests/generate_fixtures` directory with an appropriate filename, following the pattern of `generate_target_anim_files.py`. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture
+
+Update the `Makefile` `fixtures` directive to include the appropriate call to the new target generation script.
+
+### Add fixtures
+
+Add a temporary output `method_targets_outdir()` fixture for the method in `tests/conftest.py`
+
+Add an example output file with bad headers to `tests/fixtures/method/bad_headers.out` (or similar file)
+
+### Write a parser for the tool output
+
+Create a new file (if needed) for the method in `pyani_plus/methods` (e.g. `skani.py`). This should minimally provide a function to parse method output (e.g. `parse_skani()`) and return appropriate values from the method output.
+
+### Write a parser test for the tool output
+ 
+Create a new file (if needed) for the method in `tests` (e.g. `tests/test_skani.py`). This should minimally provide tests to confirm correct parsing of the tool's output files. Good practice would require that tests are also provided that throw errors for poorly-formatted or failing comparison files. New test fixtures can be created if necessary to aid with this.
+
+### Add a function in `private_cli.py` to run the tool
+
+Add a function prefixed with `compute` (e.g. `compute_skani`) to `private_cli.py`. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other `compute_*` functions as a template.
+
+Be sure to add the method to `compute_column`
+
+### Write a test for running the tool
+
+Create a new function in the appropriate test suite file (e.g. `tests/test_skani.py`) with the `test_running` prefix (e.g. `test_running_skani`). This should pass if the run completes without error.
+
+### Update the public CLI
+
+Add the new tool to `public_cli.py`, as a `cli_*` function (e.g. `cli_skani`) decorated with Typer's `app.command`. Use one of the other `cli_*` functions as a template.
+
+If additional arguments to the tool are to be included, these should be incorporated here, and in the accompanying `public_cli_args.py` file as Typer argument definitions.
+
+Be sure to add a new switch to the `resume()` function for resuming failed runs.
+
+### Add remaining tests
+
+Add tests to `test_tools.py`, `test_private_cli.py`, `test_public_cli.py` etc., with appropriate fixtures, to maintain 100% test coverage.
