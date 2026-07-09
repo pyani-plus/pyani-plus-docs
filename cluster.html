@@ -391,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="crop-diversity" class="level3">
 <h3 class="anchored" data-anchor-id="crop-diversity">Crop Diversity</h3>
-<p>This configuration was used on the <a href="https://cropdiversity.ac.uk">Crop Diversity Cluster</a> in 2025. It targetted their “hicpu” queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM limits. Here we could run 1000 jobs at once.</p>
+<p>This configuration was used on the <a href="https://cropdiversity.ac.uk">Crop Diversity Cluster</a> in 2025 and 2026 for large sets of bacterial genomes. It targetted the “hicpu” queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM upper limits. Here we could run 1000 jobs at once.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
@@ -400,17 +400,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> hicpu</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> cropdiv-acc</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Snakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM. Here the RAM limit per job (2GB) was implicit via the partition (queue), and this was ample for bacterial genomes.</p>
-<p>For larger genomes needing more memory (and longer run-times) we had to use a different queue, for example the “short” queue allows up to 6 hours and up to 256GB RAM:</p>
+<p>Snakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM.</p>
+<p>By default the cluster applied a 1GB memory limit, which was ample for bacteria. Adding <code>memory: 2G</code> or <code>mem_mb: 2048</code> under the <code>default-resources</code> section would have used the full 2G RAM limit on this queue to handle <em>slightly</em> larger genomes.</p>
+<p>The following configuration was used in 2026 for a set of 100 fungal genomes around 40Mbp (taking less than a day). Here individual comparisons naturally take longer than with bacteria, so a queue with a longer run-time limit had to be used (24 hour, or 1440 mins). While most of the comparisons worked with 4GB of RAM, a few needed more, so about 5GB was used:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> short</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> medium</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> cropdiv-acc</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">360</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> 8G</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">1440</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mem_mb</span><span class="kw">:</span><span class="at"> </span><span class="dv">5000</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="cluster-troubleshooting" class="level2">
