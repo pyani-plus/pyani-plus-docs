@@ -90,19 +90,39 @@ default-resources:
 
 Snakemake would give distracting warnings if the account or runtime was
 ommitted, although this cluster had default values setup in SLURM.
-Here the RAM limit per job (2GB) was implicit via the partition (queue).
+Here the RAM limit per job (2GB) was implicit via the partition (queue),
+and this was ample for bacterial genomes.
+
+For larger genomes needing more memory (and longer run-times) we had to
+use a different queue, for example the "short" queue allows up to 6 hours
+and up to 256GB RAM:
+
+```yaml
+executor: slurm
+jobs: 1000
+cores: 1
+
+default-resources:
+    slurm_partition: short
+    slurm_account: cropdiv-acc
+    runtime: 360
+    memory: 8G
+```
 
 ## Cluster Troubleshooting
 
 Start with a small example first, like the walkthough, to make sure
 the cluster intergration is working. Check the stdout/stderr logs if
-possible. Use the logging and debug options within the tool.
+possible. Use the logging and debug options within the tool (to keep
+the intermediate files and logs).
 
-If specfic genomes appear to be a problem, try reducing the number of
-genomes to work out which.
+If you suspect specfic genomes or genome pairs to be a problem, try
+reducing the number of genomes to work out which.
 
 If you are getting out of memory (OOM) failures, this could be from
 larger or more complex genomes - in which case try increasing the RAM
 limit. However, pathological data like genomes which have not been
 quality controlled can cause problems in some methods (eg excessive
-runs of N).
+runs of N). On SLURM the `sacct` command or similar will show when a
+job failed with `OUT_OF_MEMORY`. In this case, adjust your Snakemake
+`config.yaml` and retry (see example above).
