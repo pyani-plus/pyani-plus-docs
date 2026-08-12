@@ -11,7 +11,7 @@ Currently this will *not* delete any linked comparisons, even if they are not cu
 ## `pyani-plus delete-run` Usage
 
 ```bash
-pyani-plus resume [OPTIONS]
+pyani-plus delete-run [OPTIONS]
 ```
 :::
 
