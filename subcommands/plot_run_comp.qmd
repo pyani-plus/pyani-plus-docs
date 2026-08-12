@@ -10,7 +10,7 @@ The `plot-run-comp` subcommand compares ANI results from multiple runs, generati
 ## `pyani-plus plot-run-comp` Usage
 
 ```bash
-pyani-plus plot-run [OPTIONS]
+pyani-plus plot-run-comp [OPTIONS]
 ```
 :::
 
@@ -20,7 +20,7 @@ pyani-plus plot-run [OPTIONS]
 
 `--outdir`:  Output directory. (<span style="color:green;">DIRECTORY</span>)  [<span style="color:red;">REQUIRED</span>]
 
-`--run-ids`: Which runs (comma separated list, reference first)? (<span style="color:green;">TEXT</span>) [<span style="color:red;">REQUIRED</span>]
+`--run-ids`: Which runs (comma separated list, reference first)? Ex. 1,2,3,4 (reference = 1) (<span style="color:green;">TEXT</span>) [<span style="color:red;">REQUIRED</span>]
 
 `--columns`: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [<span style="color:grey;">Default: 0</span>] (<span style="color:green;">Integer range: $x\geq0$</span>)
 
