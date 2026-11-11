@@ -24,7 +24,7 @@ __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<spa
 
 `--executor`: How should the internal tools be run? [<span style="color:grey;">Default: local</span>] (<span style="color:green;">`local`|`slurm`</span>)
 
-`--help`, `-h`: Display usgae information for `pyani-plus anib`.
+`--help`, `-h`: Display usgae information for `pyani-plus LZ-ANI`.
 
 ## Method parameters {.unnumbered}
 
