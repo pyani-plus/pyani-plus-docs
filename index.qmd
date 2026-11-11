@@ -4,17 +4,20 @@
 
 - `ANIb` (average nucleotide identity using [`BLAST+`](https://blast.ncbi.nlm.nih.gov/Blast.cgi))
 - `ANIm` (average nucleotide identity using [`MUMmer`](https://mummer.sourceforge.net/manual/))
+- `animinimap2` (average nucleotide identity using [`minimap2`](https://github.com/lh3/minimap2#full-genome))
 - `dnadiff` (average nucleotide identity using [`dnadiff`](https://mummer.sourceforge.net/manual/))
 - `fastANI` (average nucleotide identity using [`fastANI`](https://github.com/ParBLiSS/FastANI))
+- `LZ-ANI` (average nucleotide identity using [`LZ-ANI`](https://github.com/refresh-bio/LZ-ANI))
+- `skani` (average nucleotide identity using [`skani`](https://github.com/refresh-bio/skani))
 - `sourmash` (average nucleotide identity using [`sourmash`](https://sourmash.readthedocs.io/en/latest/index.html))
 - `external-alignment` (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)
 
 In addition to calculating ANI for a given set of genomes, `pyANI-plus` also includes the following features:
 
-- Plotting heatmaps and distributions for individual runs.
-- Comparing and visualising multiple runs.
-- Exporting any single run from the `pyANI-plus` SQLite3 database in tabular format.
-- Classifying genomes into clusters based on ANI results.
-- Resuming partial runs already logged in the database.
-- Deleting any single run from the pyANI-plus SQLite3 database.
-- Running on a High Performance Compute (HPC) cluster.
+- Plotting heatmaps and distributions for individual runs. (`plot-run`)
+- Comparing and visualising multiple runs. (`plot-run-comp`)
+- Exporting any single run from the `pyANI-plus` SQLite3 database in tabular format. (`export-run`)
+- Classifying genomes into clusters based on ANI results. (`classify`)
+- Resuming partial runs already logged in the database. (`resume`)
+- Deleting any single run from the pyANI-plus SQLite3 database. (`delete-run`)
+- Running on a High Performance Compute (HPC) cluster. (`--executor`)
