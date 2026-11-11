@@ -28,7 +28,7 @@ __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<spa
 
 ## Method parameters {.unnumbered}
 
-`--nide`:  Selects one of the `skani` presets. [<span style="color:grey;">Default: `fast`</span>] (<span style="color:green;">choice: `fast`|`medium`|`slow`|`small-genomes` </span>)
+`--mode`:  Selects one of the `skani` presets. [<span style="color:grey;">Default: `fast`</span>] (<span style="color:green;">choice: `fast`|`medium`|`slow`|`small-genomes` </span>)
 
 ## Debugging {.unnumbered}
 
