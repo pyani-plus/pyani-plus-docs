@@ -373,7 +373,7 @@ Optionally, genomes can be labelled using either `md5` or `filename` using the `
 ![ANIm hadamard distribution for walkthrough data](walkthrough_plots/ANIm_hadamard_dist.png){#fig-anim-hadamard-dist .lightbox width=80%}
 
 
-#### Total Average Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity
+#### Total Average Nucleotide Identity (tANI) matrix of the negative log of the coverage multiplied by identity
 
 - heatmap: `<method>_tANI_heatmap.<extension>` @fig-anim-tani-heat
 - distribution: `<method>_tANI_dist.<extension>` @fig-anim-tani-dist
