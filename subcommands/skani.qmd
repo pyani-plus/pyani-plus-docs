@@ -10,7 +10,7 @@ pyani-plus skani [OPTIONS] FASTA
 ```
 :::
 
-## Arguments {.unnambered}
+## Arguments {.unnumbered}
 
 __fasta__: Directory of FASTA files (extensions `.fas`, `.fasta`, `.fna`). (<span style="color:green;">PATH</span>) [<span style="color:red;">REQUIRED</span>]
 
