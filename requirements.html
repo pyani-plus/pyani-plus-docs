@@ -313,11 +313,13 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#python3" id="toc-python3" class="nav-link active" data-scroll-target="#python3">Python3</a></li>
-  <li><a href="#ncbi-blast" id="toc-ncbi-blast" class="nav-link" data-scroll-target="#ncbi-blast"><code>NCBI-BLAST+</code></a></li>
-  <li><a href="#mummer" id="toc-mummer" class="nav-link" data-scroll-target="#mummer"><code>MUMmer</code></a></li>
-  <li><a href="#sourmash" id="toc-sourmash" class="nav-link" data-scroll-target="#sourmash"><code>sourmash</code></a></li>
   <li><a href="#fastani" id="toc-fastani" class="nav-link" data-scroll-target="#fastani"><code>fastANI</code></a></li>
-  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3">SQLite3</a></li>
+  <li><a href="#lz-ani" id="toc-lz-ani" class="nav-link" data-scroll-target="#lz-ani"><code>LZ-ANI</code></a></li>
+  <li><a href="#minimap2" id="toc-minimap2" class="nav-link" data-scroll-target="#minimap2"><code>minimap2</code></a></li>
+  <li><a href="#mummer" id="toc-mummer" class="nav-link" data-scroll-target="#mummer"><code>MUMmer</code></a></li>
+  <li><a href="#ncbi-blast" id="toc-ncbi-blast" class="nav-link" data-scroll-target="#ncbi-blast"><code>NCBI-BLAST+</code></a></li>
+  <li><a href="#sourmash" id="toc-sourmash" class="nav-link" data-scroll-target="#sourmash"><code>sourmash</code></a></li>
+  <li><a href="#sqlite3" id="toc-sqlite3" class="nav-link" data-scroll-target="#sqlite3"><code>SQLite3</code></a></li>
   <li><a href="#snakemake" id="toc-snakemake" class="nav-link" data-scroll-target="#snakemake"><code>snakemake</code></a></li>
   <li><a href="#python-packages" id="toc-python-packages" class="nav-link" data-scroll-target="#python-packages">Python Packages</a></li>
   <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development</a></li>
@@ -346,48 +348,84 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><code>pyANI-plus</code> relies on several other programs, packages, and tools for normal running and for development. While many of these dependencies are installed automatically during setup, some may need to be downloaded and installed separately. This page provides a list of all required dependencies, along with explanations of their roles and why they are used.</p>
+<p><code>pyANI-plus</code> relies on several other programs, packages, and tools for normal running and for development. Most of these dependencies are installed automatically during setup, but some may need to be downloaded and installed separately. This page provides a list of required dependencies, their roles and why they are used.</p>
 <section id="python3" class="level2">
 <h2 class="anchored" data-anchor-id="python3">Python3</h2>
 <p><code>pyANI-plus</code> is designed to run on <a href="https://www.python.org/">Python3</a>, taking advantage of its latest features and improvements. It is not compatible with Python2. Python3 is required for installation and development.</p>
-</section>
-<section id="ncbi-blast" class="level2">
-<h2 class="anchored" data-anchor-id="ncbi-blast"><code>NCBI-BLAST+</code></h2>
-<p>ANIb analysis, which calculates Average Nucleotide Identity using <a href="https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata"><code>BLASTn+</code></a>, involves comparing genome sequences through the <code>BLAST+</code> tool provided by NCBI.</p>
-</section>
-<section id="mummer" class="level2">
-<h2 class="anchored" data-anchor-id="mummer"><code>MUMmer</code></h2>
-<p>For ANIm (Average Nucleotide Identity using <code>MUMmer</code>) analysis, genome sequences are compared using the <code>nucmer</code> tool from the <a href="https://mummer.sourceforge.net/"><code>MUMmer</code></a> package. The same tool provides the <code>dnadiff</code> command to compare and analyze genome sequences.</p>
-<p>A key difference between <code>nucmer</code> and <code>dnadiff</code> methods lies in how intermediate alignments are generated. <code>dnadiff</code> uses the <code>--maxmatch</code> (all anchor matches regardless of their uniqueness) parameter and <code>-m</code> (many-to-many) alignments to replicate the results reported by the <code>dnadiff</code> wrapper. In contrast, ANIm uses the <code>--mum</code> (anchor matches that are unique in both the reference and query) parameter by default, with the possibility of using the <code>--maxmatch</code> and <code>-1</code> parameters in the delta.filter wrapper to generate 1-to-1 alignments. A further difference is that <code>dnadiff</code> uses intermediate processed output from <code>mummer</code> that identifies a golden path through the alignment; <code>nucmer</code> does not use this golden path.</p>
-</section>
-<section id="sourmash" class="level2">
-<h2 class="anchored" data-anchor-id="sourmash"><code>sourmash</code></h2>
-<p>For sourmash (Average Nucletide Identity using sourmash) analysis, genome sequences are compared using the <a href="https://sourmash.readthedocs.io/en/latest/"><code>sourmash</code></a> tool.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Due to the requirements of some dependencies, only versions of Python up to 3.14 are currently supported.</p>
+</div>
+</div>
 </section>
 <section id="fastani" class="level2">
 <h2 class="anchored" data-anchor-id="fastani"><code>fastANI</code></h2>
 <p>For fastANI (Average Nucletide Identity using FastANI) analysis, genome sequences are compared using the <a href="https://github.com/ParBLiSS/FastANI"><code>fastANI</code></a> tool.</p>
 </section>
+<section id="lz-ani" class="level2">
+<h2 class="anchored" data-anchor-id="lz-ani"><code>LZ-ANI</code></h2>
+<p>The <a href="https://github.com/refresh-bio/LZ-ANI"><code>LZ-ANI</code></a> tool that underlies the <code>VCLUST</code> software is used for ANI analysis with the <code>LZ-ANI</code> subcommand.</p>
+</section>
+<section id="minimap2" class="level2">
+<h2 class="anchored" data-anchor-id="minimap2"><code>minimap2</code></h2>
+<p>The <a href="https://github.com/lh3/minimap2"><code>minimap2</code></a> software is required for ANI analysis with the <code>animinimap2</code> subcommand. This runs the full genome/assembly alignment option of <code>minimap2</code>.</p>
+</section>
+<section id="mummer" class="level2">
+<h2 class="anchored" data-anchor-id="mummer"><code>MUMmer</code></h2>
+<p>For ANIm (Average Nucleotide Identity using <code>MUMmer</code>) analysis, genome sequences are compared using the <code>nucmer</code> tool from the <a href="https://mummer.sourceforge.net/"><code>MUMmer</code></a> package. The same tool provides the <code>dnadiff</code> command to compare and analyze genome sequences.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A key difference between <code>nucmer</code> and <code>dnadiff</code> methods is how intermediate alignments are generated.</p>
+<p><code>dnadiff</code> uses intermediate processed output from <code>mummer</code> that identifies a golden path through the alignment; <code>nucmer</code> does not use this golden path. <code>dnadiff</code> also uses the <code>--maxmatch</code> (all anchor matches regardless of their uniqueness) parameter and <code>-m</code> (many-to-many) alignments.</p>
+<p>ANIm (the <code>anim</code> option) uses the <code>--mum</code> (anchor matches that are unique in both the reference and query) parameter by default, with the possibility of using the <code>--maxmatch</code> and <code>-1</code> parameters in the delta.filter wrapper to generate 1-to-1 alignments.</p>
+</div>
+</div>
+</section>
+<section id="ncbi-blast" class="level2">
+<h2 class="anchored" data-anchor-id="ncbi-blast"><code>NCBI-BLAST+</code></h2>
+<p>ANIb analysis, which calculates Average Nucleotide Identity using <a href="https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata"><code>BLASTn+</code></a>, requires comparing genome sequences through the <code>BLAST+</code> tool provided by NCBI.</p>
+</section>
+<section id="sourmash" class="level2">
+<h2 class="anchored" data-anchor-id="sourmash"><code>sourmash</code></h2>
+<p>For sourmash (Average Nucletide Identity using sourmash) analysis, genome sequences are compared using the <a href="https://sourmash.readthedocs.io/en/latest/"><code>sourmash</code></a> tool.</p>
+</section>
 <section id="sqlite3" class="level2">
-<h2 class="anchored" data-anchor-id="sqlite3">SQLite3</h2>
-<p>The output generated by <code>pyani-plus</code> analyses is stored in a local database using SQLite3, for rapid querying and recovery. This allows for persistent storage of results without the need to keep the original alignment files, and for incremental addition of new analyses. SQLite3 is installed with Python</p>
+<h2 class="anchored" data-anchor-id="sqlite3"><code>SQLite3</code></h2>
+<p>Output generated by <code>pyani-plus</code> analyses is stored in a local database using SQLite3, for rapid querying and recovery. This allows for persistent storage of results without the need to keep the original alignment files, and for incremental addition of new analyses.</p>
 </section>
 <section id="snakemake" class="level2">
 <h2 class="anchored" data-anchor-id="snakemake"><code>snakemake</code></h2>
-<p>By building on <a href="https://snakemake.readthedocs.io/en/stable/"><code>snakemake</code></a>, we maintain a single interface for defining and managing workflows. This allows us to standardize job execution across different environments without needing separate scheduling logic for local, cluster, or cloud execution.</p>
+<p>We build on <a href="https://snakemake.readthedocs.io/en/stable/"><code>snakemake</code></a> to maintain a single interface for defining and managing workflows. This allows us to standardize job execution across different environments without needing separate scheduling logic for local, cluster, or cloud execution.</p>
 </section>
 <section id="python-packages" class="level2">
 <h2 class="anchored" data-anchor-id="python-packages">Python Packages</h2>
 <p><code>pyANI-plus</code> depends on several other Python packages, and we gratefully acknowledge their contribution:</p>
 <ul>
-<li><a href="https://matplotlib.org/"><code>Matplotlib</code></a>: for graphical output</li>
+<li><a href="https://matplotlib.org/"><code>matplotlib</code></a>: for graphical output</li>
 <li><a href="https://github.com/chaimleib/intervaltree"><code>intervaltree</code></a>: for identification of overlaps</li>
-<li><a href="https://seaborn.pydata.org/index.html"><code>Seaborn</code></a>: for graphical output</li>
-<li><a href="https://networkx.org/"><code>NetworkX</code></a>: for graph calculations and representation</li>
-<li><a href="https://numpy.org/"><code>Numpy</code></a>: for matrix calculations</li>
-<li><a href="https://pandas.pydata.org/"><code>Pandas</code></a>: for dataframe operations</li>
-<li><a href="https://www.sqlalchemy.org/"><code>SQLAlchemy</code></a>: for interaction with SQLite3</li>
+<li><a href="https://seaborn.pydata.org/index.html"><code>seaborn</code></a>: for graphical output</li>
+<li><a href="https://networkx.org/"><code>networkx</code></a>: for graph calculations and representation</li>
+<li><a href="https://numpy.org/"><code>numpy</code></a>: for matrix calculations</li>
+<li><a href="https://pandas.pydata.org/"><code>pandas</code></a>: for dataframe operations</li>
+<li><a href="https://www.sqlalchemy.org/"><code>sqlalchemy</code></a>: for interaction with SQLite3</li>
 <li><a href="https://rich.readthedocs.io/en/stable/introduction.html"><code>rich</code></a>: provides progress bars for user interaction and other CLI elements</li>
+<li><a href="https://typer.tiangolo.com/"><code>typer</code></a>: CLI framework</li>
 </ul>
 </section>
 <section id="development" class="level2">
@@ -395,11 +433,13 @@ ul.task-list li input[type="checkbox"] {
 <p>We rely on a number of additional packages to aid <code>pyani-plus</code> development. If you set up a development environment as recommended in the <a href="./contributing.html">contributing page</a>, then the following Python packages will be installed, or expected to be present:</p>
 <ul>
 <li><a href="https://pypi.org/project/coverage/"><code>coverage</code></a>: to generate code coverage output for the <code>codecov.io</code> service</li>
+<li><a href="https://pypi.org/project/pandas-stubs/"><code>pandas-stubs</code></a>: for <code>pandas</code> type hints</li>
 <li><a href="https://pre-commit.com/"><code>pre-commit</code></a>: Manages and runs pre-commit hooks to enforce code quality and formatting before commits</li>
 <li><a href="https://pytest.org/en/latest/"><code>pytest</code></a>: to manage and run automated testing</li>
 <li><a href="https://pypi.org/project/pytest-cov/"><code>pytest-cov</code></a>: to integrate <code>pytest</code> with <code>codecov</code> and <code>coverage</code></li>
 <li><a href="https://pypi.org/project/pytest-xdist/"><code>pytest-xdist</code></a>: Enables parallel test execution with <code>pytest</code>, improving test runtime efficiency.</li>
-<li><a href="https://docs.astral.sh/ruff/"><code>Ruff</code></a>: Python linter that enforces coding style and helps catch potential issues.</li>
+<li><a href="https://docs.astral.sh/ruff/"><code>ruff</code></a>: Python linter that enforces coding style and helps catch potential issues.</li>
+<li><a href="https://pypi.org/project/types-networkx/"><code>types-networkx</code></a>: for <code>networkx</code> type hints</li>
 <li><a href="https://pypi.org/project/types-tqdm/"><code>types-tqdm</code></a>: Provides type hints for tqdm, improving type checking and IDE support.</li>
 </ul>
 

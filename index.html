@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Angelika Kiepas, Peter Cock, and Leighton Pritchard">
-<meta name="dcterms.date" content="2025-03-15">
+<meta name="dcterms.date" content="2026-11-11">
 
 <title>pyANI-plus</title>
 <style>
@@ -338,7 +338,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 15, 2025</p>
+      <p class="date">November 11, 2026</p>
     </div>
   </div>
   
@@ -353,24 +353,28 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="sec-about" class="level1 unnumbered">
 <h1 class="unnumbered">About pyANI-plus</h1><p><img src="sipbs_compbio_800.png" title="pyANI-plus" class="quarto-cover-image nolightbox img-fluid"></p>
-<p><code>pyANI-plus</code> is a Python package and software package that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:</p>
+<p><img src="https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo.png" class="img-fluid" width="100" alt="Hex logo image for pyani-plus"> <img src="https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo_microsoc_2025.png" class="img-fluid" width="100" alt="Hex logo image for pyani-plus (MicorSoc 2025 edition)"> <img src="https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo_microsoc_2026.png" class="img-fluid" width="100" alt="Hex logo image for pyani-plus (MicroSoc 2026 edition)"></p>
+<p><code>pyANI-plus</code> is a Python package and software package that calculates average nucleotide identity (ANI) and provides other related measures for whole genome comparisons. The software stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes (though is useful in other situations), and implements the following methods:</p>
 <ul>
 <li><code>ANIb</code> (average nucleotide identity using <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi"><code>BLAST+</code></a>)</li>
 <li><code>ANIm</code> (average nucleotide identity using <a href="https://mummer.sourceforge.net/manual/"><code>MUMmer</code></a>)</li>
+<li><code>animinimap2</code> (average nucleotide identity using <a href="https://github.com/lh3/minimap2#full-genome"><code>minimap2</code></a>)</li>
 <li><code>dnadiff</code> (average nucleotide identity using <a href="https://mummer.sourceforge.net/manual/"><code>dnadiff</code></a>)</li>
 <li><code>fastANI</code> (average nucleotide identity using <a href="https://github.com/ParBLiSS/FastANI"><code>fastANI</code></a>)</li>
+<li><code>LZ-ANI</code> (average nucleotide identity using <a href="https://github.com/refresh-bio/LZ-ANI"><code>LZ-ANI</code></a>)</li>
+<li><code>skani</code> (average nucleotide identity using <a href="https://github.com/refresh-bio/skani"><code>skani</code></a>)</li>
 <li><code>sourmash</code> (average nucleotide identity using <a href="https://sourmash.readthedocs.io/en/latest/index.html"><code>sourmash</code></a>)</li>
 <li><code>external-alignment</code> (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)</li>
 </ul>
-<p>In addition to calculating ANI for a given set of genomes, <code>pyANI-plus</code> also includes the following features:</p>
+<p>In addition to calculating ANI and coverage for a given set of genomes, <code>pyANI-plus</code> also includes the following features:</p>
 <ul>
-<li>Plotting heatmaps and distributions for individual runs.</li>
-<li>Comparing and visualising multiple runs.</li>
-<li>Exporting any single run from the <code>pyANI-plus</code> SQLite3 database in tabular format.</li>
-<li>Classifying genomes into clusters based on ANI results.</li>
-<li>Resuming partial runs already logged in the database.</li>
-<li>Deleting any single run from the pyANI-plus SQLite3 database.</li>
-<li>Running on a High Performance Compute (HPC) cluster.</li>
+<li>Plotting heatmaps and distributions for individual runs. (<code>plot-run</code>)</li>
+<li>Comparing and visualising multiple runs. (<code>plot-run-comp</code>)</li>
+<li>Exporting any single run from the <code>pyANI-plus</code> SQLite3 database in tabular format. (<code>export-run</code>)</li>
+<li>Classifying genomes into clusters based on ANI results. (<code>classify</code>)</li>
+<li>Resuming partial runs already logged in the database. (<code>resume</code>)</li>
+<li>Deleting any single run from the pyANI-plus SQLite3 database. (<code>delete-run</code>)</li>
+<li>Running on a High Performance Compute (HPC) cluster. (<code>--executor</code>)</li>
 </ul>
 
 

@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#installation-from-source" id="toc-installation-from-source" class="nav-link active" data-scroll-target="#installation-from-source">Installation from source</a></li>
-  <li><a href="#installation-with-minicondaanacondabioconda" id="toc-installation-with-minicondaanacondabioconda" class="nav-link" data-scroll-target="#installation-with-minicondaanacondabioconda">Installation with Miniconda/Anaconda/Bioconda</a></li>
+  <li><a href="#installation-with-miniforgeminicondaanacondabioconda" id="toc-installation-with-miniforgeminicondaanacondabioconda" class="nav-link" data-scroll-target="#installation-with-miniforgeminicondaanacondabioconda">Installation with Miniforge/Miniconda/Anaconda/Bioconda</a></li>
   <li><a href="#installation-via-pippypi" id="toc-installation-via-pippypi" class="nav-link" data-scroll-target="#installation-via-pippypi">Installation via <code>pip</code>/PyPI</a></li>
   <li><a href="#check-the-installation" id="toc-check-the-installation" class="nav-link" data-scroll-target="#check-the-installation">Check the installation</a></li>
   </ul>
@@ -395,9 +395,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install_linux <span class="co"># For Linux</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install_macos <span class="co"># For macOS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="installation-with-minicondaanacondabioconda" class="level2">
-<h2 class="anchored" data-anchor-id="installation-with-minicondaanacondabioconda">Installation with Miniconda/Anaconda/Bioconda</h2>
-<p>With a working Miniconda/Anacodna installation that has Bioconda available, install using the command</p>
+<section id="installation-with-miniforgeminicondaanacondabioconda" class="level2">
+<h2 class="anchored" data-anchor-id="installation-with-miniforgeminicondaanacondabioconda">Installation with Miniforge/Miniconda/Anaconda/Bioconda</h2>
+<p>With a working Miniforge/Miniconda/Anaconda installation that has the <code>bioconda</code> channel available, install using the command</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pyani-plus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="installation-via-pippypi" class="level2">
@@ -410,40 +410,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To check if the installation was sucessful, run the following command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If the installation was completed correctly, this should display a list of available commands and options, similar to this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> pyani-plus <span class="at">-h</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">Usage:</span> pyani-plus <span class="pp">[</span><span class="ss">OPTIONS</span><span class="pp">]</span> COMMAND <span class="pp">[</span><span class="ss">ARGS</span><span class="pp">]</span>...</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Options ──────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--version</span>             <span class="at">-v</span>        Show tool version <span class="er">(</span><span class="ex">on</span> stdout<span class="kw">)</span> <span class="ex">and</span> quit.                │</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--install-completion</span>            Install completion for the current shell.              │</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--show-completion</span>               Show completion for the current shell, to copy it or   │</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                                 customize the installation.                            │</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--help</span>                <span class="at">-h</span>        Show this message and exit.                            │</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────╯</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Commands ─────────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> resume               Resume any <span class="er">(</span><span class="ex">partial</span><span class="kw">)</span> <span class="ex">run</span> already logged in the database.          │</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> list-runs            List the runs defined in a given pyANI-plus SQLite3 database.     │</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> delete-run           Delete any single run from the given pyANI-plus SQLite3 database. │</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> export-run           Export any single run from the given pyANI-plus SQLite3 database. │</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> plot-run             Plot heatmaps and distributions for any single run.               │</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> plot-run-comp        Plot comparisons between multiple runs.                           │</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> classify             Classify genomes into clusters based on ANI results.              │</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────╯</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> ANI methods ──────────────────────────────────────────────────────────────────────────╮</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> anim                 Execute ANIm calculations, logged to a pyANI-plus SQLite3         │</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      database.                                                         │</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> dnadiff              Execute mumer-based dnadiff calculations, logged to a pyANI-plus  │</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      SQLite3 database.                                                 │</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> anib                 Execute ANIb calculations, logged to a pyANI-plus SQLite3         │</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      database.                                                         │</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> fastani              Execute fastANI calculations, logged to a pyANI-plus SQLite3      │</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      database.                                                         │</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> sourmash             Execute sourmash-plugin-branchwater ANI calculations, logged to a │</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      pyANI-plus SQLite3 database.                                      │</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> external-alignment   Compute pairwise ANI from given multiple-sequence-alignment <span class="er">(</span><span class="ex">MSA</span><span class="kw">)</span> <span class="ex">│</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                      file.                                                             │</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="ex">╰────────────────────────────────────────────────────────────────────────────────────────╯</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> pyani-plus <span class="at">--help</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                                                             </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">Usage:</span> pyani-plus <span class="pp">[</span><span class="ss">OPTIONS</span><span class="pp">]</span> COMMAND <span class="pp">[</span><span class="ss">ARGS</span><span class="pp">]</span>...                               </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                                                             </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Options ─────────────────────────────────────────────────────────────────╮</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--version</span>             <span class="at">-v</span>      <span class="op">&lt;</span>bool<span class="op">&gt;</span>  Show tool version <span class="er">(</span><span class="ex">on</span> stdout<span class="kw">)</span> <span class="ex">and</span>   │</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                                       quit.                               │</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--install-completion</span>          <span class="op">&lt;</span>bool<span class="op">&gt;</span>  Install completion for the current  │</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                                       shell.                              │</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--show-completion</span>             <span class="op">&lt;</span>bool<span class="op">&gt;</span>  Show completion for the current     │</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                                       shell, to copy it or customize the  │</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                                       installation.                       │</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> <span class="at">--help</span>                <span class="at">-h</span>      <span class="op">&lt;</span>bool<span class="op">&gt;</span>  Show this message and exit.         │</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ex">╰───────────────────────────────────────────────────────────────────────────╯</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> Commands ────────────────────────────────────────────────────────────────╮</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> resume              Resume any <span class="er">(</span><span class="ex">partial</span><span class="kw">)</span> <span class="ex">run</span> already logged in the        │</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     database.                                             │</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> list-runs           List the runs defined in a given pyANI-plus SQLite3   │</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     database.                                             │</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> delete-run          Delete any single run from the given pyANI-plus       │</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     SQLite3 database.                                     │</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> export-run          Export any single run from the given pyANI-plus       │</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     SQLite3 database.                                     │</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> plot-run            Plot heatmaps and distributions for any single run.   │</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> plot-run-comp       Plot comparisons between multiple runs.               │</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> classify            Classify genomes into clusters based on ANI results.  │</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="ex">╰───────────────────────────────────────────────────────────────────────────╯</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="ex">╭─</span> ANI methods ─────────────────────────────────────────────────────────────╮</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> anim                Execute ANIm calculations, logged to a pyANI-plus     │</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     SQLite3 database.                                     │</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> dnadiff             Execute mumer-based dnadiff calculations, logged to a │</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     pyANI-plus SQLite3 database.                          │</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> animinimap2         Execute ANI minimap2 calculations, logged to a        │</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     pyANI-plus SQLite3 database.                          │</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> anib                Execute ANIb calculations, logged to a pyANI-plus     │</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     SQLite3 database.                                     │</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> fastani             Execute fastANI calculations, logged to a pyANI-plus  │</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     SQLite3 database.                                     │</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> LZ-ANI              Execute lz-ani ANI calculations, logged to a          │</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     pyANI-plus SQLite3 database.                          │</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> skani               Execute skani ANI calculations, logged to a           │</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     pyANI-plus SQLite3 database.                          │</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> sourmash            Execute sourmash-plugin-branchwater ANI calculations, │</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     logged to a pyANI-plus SQLite3 database.              │</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> external-alignment  Compute pairwise ANI from given                       │</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>                     multiple-sequence-alignment <span class="er">(</span><span class="ex">MSA</span><span class="kw">)</span> <span class="ex">file.</span>               │</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="ex">╰───────────────────────────────────────────────────────────────────────────╯</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
