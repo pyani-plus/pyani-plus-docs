@@ -1,6 +1,10 @@
 # About pyANI-plus {#sec-about .unnumbered}
 
-`pyANI-plus` is a Python package and software package that calculates average nucleotide identity (ANI), provides other related measures for whole genome comparisons, stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes, and implements the following methods:
+![Hex logo image for pyani-plus](https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo.png){width=100}
+![Hex logo image for pyani-plus (MicorSoc 2025 edition)](https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo_microsoc_2025.png){width=100}
+![Hex logo image for pyani-plus (MicroSoc 2026 edition)](https://github.com/pyani-plus/.github/raw/main/profile/images/pyani_plus_logo_microsoc_2026.png){width=100}
+
+`pyANI-plus` is a Python package and software package that calculates average nucleotide identity (ANI) and provides other related measures for whole genome comparisons. The software stores results persistently in a local SQLite3 database, and renders relevant graphical and tabular summary output. It is designed to be used with draft or complete prokaryote genomes (though is useful in other situations), and implements the following methods:
 
 - `ANIb` (average nucleotide identity using [`BLAST+`](https://blast.ncbi.nlm.nih.gov/Blast.cgi))
 - `ANIm` (average nucleotide identity using [`MUMmer`](https://mummer.sourceforge.net/manual/))
@@ -12,7 +16,7 @@
 - `sourmash` (average nucleotide identity using [`sourmash`](https://sourmash.readthedocs.io/en/latest/index.html))
 - `external-alignment` (pairwise average nucleotide identity from an externally-generated multiple sequence alignment)
 
-In addition to calculating ANI for a given set of genomes, `pyANI-plus` also includes the following features:
+In addition to calculating ANI and coverage for a given set of genomes, `pyANI-plus` also includes the following features:
 
 - Plotting heatmaps and distributions for individual runs. (`plot-run`)
 - Comparing and visualising multiple runs. (`plot-run-comp`)
