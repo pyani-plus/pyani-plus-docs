@@ -2,7 +2,7 @@
 
 The `skani` subcommand processes genome files from the `indir` directory to perform skani analysis, and logs comparison and run data in a local SQLite3 database.
 
-::: { .callout-tip collapse="true}
+::: { .callout-tip collapse="true"}
 ## `pyani-plus skani` Usage
 
 ```bash
