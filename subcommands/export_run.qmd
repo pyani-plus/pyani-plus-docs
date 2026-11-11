@@ -27,5 +27,5 @@ pyani-plus export-run [OPTIONS]
 
 `--label`: How to label the genomes. [<span style="color:grey;">Default: stem.</span>] (<span style="color:green;">md5|filename|stem</span>)
 
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+`--help`, `-h`: Display usage information for `pyani-plus export_run` and exit.
 

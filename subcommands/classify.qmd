@@ -21,7 +21,7 @@ pyani-plus classify [OPTIONS]
 
 `--label`: How to label the genomes. [<span style="color:grey;">Default: stem.</span>] (<span style="color:green;">md5|filename|stem</span>)
 
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+`--help`, `-h`: Display usage information for `pyani-plus classify` and exit.
 
 ## Method parameters
 `--mode`:  Classify mode intended to identify cliques within a set of genomes. [<span style="color:grey;">Default: identity</span>] (<span style="color:green;">identity|tANI</span>)

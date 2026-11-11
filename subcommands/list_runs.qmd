@@ -14,4 +14,4 @@ pyani-plus list-runs [OPTIONS]
 
 `--database`: Path to `pyANI-plus` SQLite3 database. (<span style="color:green;">FILE</span>) [<span style="color:red;">REQUIRED</span>]
 
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+`--help`, `-h`: Display usage information for `pyani-plus list_runs` and exit.

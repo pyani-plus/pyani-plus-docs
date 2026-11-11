@@ -23,4 +23,4 @@ pyani-plus resume [OPTIONS]
 
 `--force`, `-f`: Delete without confirmation.
 
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+`--help`, `-h`: Display usage information for `pyani-plus delete_run` and exit.

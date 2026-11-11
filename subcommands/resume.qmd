@@ -26,7 +26,7 @@ pyani-plus resume [OPTIONS]
 
 `--cache`: Cache location if required for a method (must be visible to cluster workers). Default to .cache in the current directory. (<span style="color:green;">DIRECTORY</span>)
 
-`--help`, `-h`: Display usage information for `pyani-plus reasume` and exit.
+`--help`, `-h`: Display usage information for `pyani-plus resume` and exit.
 
 ## Debugging {.unnambered}
 
