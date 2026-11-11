@@ -44,6 +44,7 @@ book:
       chapters: 
         - subcommands/anib.qmd
         - subcommands/anim.qmd
+        - subcommands/animinimap.qmd
         - subcommands/dnadiff.qmd
         - subcommands/external_alignment.qmd
         - subcommands/fastani.qmd
