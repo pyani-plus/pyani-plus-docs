@@ -298,50 +298,6 @@
     ]
   },
   {
-    "objectID": "subcommands/animinimap.html",
-    "href": "subcommands/animinimap.html",
-    "title": "animinimap2",
-    "section": "",
-    "text": "Arguments\nThe animinimap2 subcommand processes genome files from the indir directory to perform animinimap2 analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
-    "crumbs": [
-      "pyANI-plus subcommands",
-      "`animinimap2`"
-    ]
-  },
-  {
-    "objectID": "subcommands/animinimap.html#options",
-    "href": "subcommands/animinimap.html#options",
-    "title": "animinimap2",
-    "section": "Options",
-    "text": "Options\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--create-db: Create database if does not exist.\n--name: Run name. [Default: “N genomes using METHOD”] (TEXT)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--help, -h: Display usage information for pyani-plus animinimap2.",
-    "crumbs": [
-      "pyANI-plus subcommands",
-      "`animinimap2`"
-    ]
-  },
-  {
-    "objectID": "subcommands/animinimap.html#method-parameters",
-    "href": "subcommands/animinimap.html#method-parameters",
-    "title": "animinimap2",
-    "section": "Method parameters",
-    "text": "Method parameters\n--mode: Selects one of the animinimap2 presets. [Default: asm20] (choice: asm5|asm10|asm20 )",
-    "crumbs": [
-      "pyANI-plus subcommands",
-      "`animinimap2`"
-    ]
-  },
-  {
-    "objectID": "subcommands/animinimap.html#debugging",
-    "href": "subcommands/animinimap.html#debugging",
-    "title": "animinimap2",
-    "section": "Debugging",
-    "text": "Debugging\n--temp: Directory to use for intermediate files, which for debugging purposes will not be deleted. For clusters this must be on a shared drive. Default behaviour is to use a system specified temporary directory (specific to the compute-node when using a cluster) and remove this afterwards. (Directory)\n--wtemp: Directory to use for temporary workflow coordination files, which for debugging purposes will not be deleted. For clusters this must be on shared drive. Default behaviour is to use a system specified temporary directory (for the local executor) or a temporary directory under the present direct (for clusters), and remove this afterwards. (Directory)",
-    "crumbs": [
-      "pyANI-plus subcommands",
-      "`animinimap2`"
-    ]
-  },
-  {
     "objectID": "subcommands/dnadiff.html",
     "href": "subcommands/dnadiff.html",
     "title": "dnadiff",
