@@ -9,6 +9,7 @@
 /.quarto/
 README.html
 README_files/
+**/*.quarto_ipynb
 
 # Local Quarto output
 _book/
@@ -17,3 +18,4 @@ _freeze/
 # macOS cruft
 .DS_Store
 .positai
+
