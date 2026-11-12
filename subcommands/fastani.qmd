@@ -1,12 +1,12 @@
 # `fastani` {#fastani-subcommand .unnumbered}
 
-The `fastani` subcommand processes genome files from the `indir` directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.
+The `fastani` subcommand processes genome files from an input directory (`FASTADIR`) to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
 ## `pyani-plus fastani` Usage
 
 ```bash
-pyani-plus fastani [OPTIONS] FASTA 
+pyani-plus fastani [OPTIONS] FASTADIR
 ```
 :::
 

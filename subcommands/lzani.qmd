@@ -1,12 +1,12 @@
 # `LZ-ANI` {#lzani-subcommand .unnumbered}
 
-The `LZ-ANI` subcommand processes genome files from the `indir` directory to perform LZ-ANI analysis, and logs comparison and run data in a local SQLite3 database.
+The `LZ-ANI` subcommand processes genome files from an input directory (`FASTADIR`) to perform LZ-ANI analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true"}
 ## `pyani-plus LZ-ANI` Usage
 
 ```bash
-pyani-plus LZ-ANI [OPTIONS] FASTA 
+pyani-plus LZ-ANI [OPTIONS] FASTADIR
 ```
 :::
 

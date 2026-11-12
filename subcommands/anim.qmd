@@ -1,12 +1,12 @@
 # `anim` {#anim-subcommand .unnumbered}
 
-The `anim` subcommand processes genome files from the `indir` directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.
+The `anim` subcommand processes genome files from an input directory (`FASTADIR`) to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
 ## `pyani-plus anim` Usage
 
 ```bash
-pyani-plus anim [OPTIONS] FASTA 
+pyani-plus anim [OPTIONS] FASTADIR
 ```
 :::
 

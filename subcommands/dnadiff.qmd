@@ -1,12 +1,12 @@
 # `dnadiff` {#dnadiff-subcommand .unnumbered}
 
-The `dnadiff` subcommand processes genome files from the `indir` directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.
+The `dnadiff` subcommand processes genome files from an input directory (`FASTADIR`) to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
 ## `pyani-plus dnadiff` Usage
 
 ```bash
-pyani-plus dnadiff [OPTIONS] FASTA 
+pyani-plus dnadiff [OPTIONS] FASTADIR
 ```
 :::
 

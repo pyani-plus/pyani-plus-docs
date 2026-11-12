@@ -1,12 +1,12 @@
 # `skani` {#skani-subcommand .unnumbered}
 
-The `skani` subcommand processes genome files from the `indir` directory to perform skani analysis, and logs comparison and run data in a local SQLite3 database.
+The `skani` subcommand processes genome files from an input directory (`FASTADIR`) to perform skani analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true"}
 ## `pyani-plus skani` Usage
 
 ```bash
-pyani-plus skani [OPTIONS] FASTA 
+pyani-plus skani [OPTIONS] FASTADIR
 ```
 :::
 

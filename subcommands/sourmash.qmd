@@ -1,12 +1,12 @@
 # `sourmash` {#sourmash-subcommand .unnumbered}
 
-The `sourmash` subcommand processes genome files from the `indir` directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.
+The `sourmash` subcommand processes genome files from an input directory (`FASTADIR`) to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
 ## `pyani-plus sourmash` Usage
 
 ```bash
-pyani-plus sourmash [OPTIONS] FASTA 
+pyani-plus sourmash [OPTIONS] FASTADIR 
 ```
 :::
 

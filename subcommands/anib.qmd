@@ -1,12 +1,12 @@
 # `anib` {#anib-subcommand .unnumbered}
 
-The `anib` subcommand processes genome files from the `indir` directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.
+The `anib` subcommand processes genome files from an input directory (`FASTADIR`) to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true}
 ## `pyani-plus anib` Usage
 
 ```bash
-pyani-plus anib [OPTIONS] FASTA 
+pyani-plus anib [OPTIONS] FASTADIR 
 ```
 :::
 

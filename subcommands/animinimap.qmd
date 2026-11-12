@@ -1,12 +1,12 @@
 # `animinimap2` {#animinimap-subcommand .unnumbered}
 
-The `animinimap2` subcommand processes genome files from the `indir` directory to perform animinimap2 analysis, and logs comparison and run data in a local SQLite3 database.
+The `animinimap2` subcommand processes genome files from an input directory (`FASTADIR`) to perform animinimap2 analysis, and logs comparison and run data in a local SQLite3 database.
 
 ::: { .callout-tip collapse="true"}
 ## `pyani-plus animinimap2` Usage
 
 ```bash
-pyani-plus animinimap2 [OPTIONS] FASTA 
+pyani-plus animinimap2 [OPTIONS] FASTADIR
 ```
 :::
 
