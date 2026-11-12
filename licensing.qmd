@@ -1,2 +1,3 @@
 # Licensing {#licence-section .unnumbered}
-This section provides the licensing terms for both `pyANI-plus` and its documentation. Before using `pyANI-plus` or its documentation, ensure that you have agreed to the terms of the license provided.
+
+This section provides the licensing terms for `pyANI-plus` and its documentation. Before using `pyANI-plus` or its documentation, please ensure that you agree to the terms of the license provided.

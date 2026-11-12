@@ -2,7 +2,7 @@
 
 Unless otherwise indicated, all code is subjected to the following agreement:
 
-&copy; The University of Strathclyde 2024 Author: Leighton Pritchard
+&copy; The University of Strathclyde 2024-present Authors: Leighton Pritchard, Peter Cock, Angelika Kiepas
 
 email: [leighton.pritchard@strath.ac.uk](mailto:leighton.pritchard@strath.ac.uk)
 
@@ -12,7 +12,7 @@ Leighton Pritchard, Strathclyde Institute of Pharmacy and Biomedical Sciences, U
 
 # The MIT License {.unnumbered}
 
-Copyright &copy; 2019 The Univeristy of Strathclyde
+Copyright &copy; 2024-present The Univeristy of Strathclyde
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

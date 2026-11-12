@@ -2,7 +2,7 @@
 
 Unless otherwise indicated, documentation is subjected to the following agreement:
 
-&copy; The University of Strathclyde 2024 Author: Leighton Pritchard
+&copy; The University of Strathclyde 2024-present Authors: Leighton Pritchard, Peter Cock, Angelika Kiepas
 
 email: [leighton.pritchard@strath.ac.uk](mailto:leighton.pritchard@strath.ac.uk)
 
