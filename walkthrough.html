@@ -905,8 +905,8 @@ Figure&nbsp;7: ANIm hadamard distribution for walkthrough data
 </figure>
 </div>
 </section>
-<section id="total-average-nucleotide-identity-tani-matrix-of-he-negative-log-of-the-coverage-multiplied-by-identity" class="level4">
-<h4 class="anchored" data-anchor-id="total-average-nucleotide-identity-tani-matrix-of-he-negative-log-of-the-coverage-multiplied-by-identity">Total Average Nucleotide Identity (tANI) matrix of he negative log of the coverage multiplied by identity</h4>
+<section id="total-average-nucleotide-identity-tani-matrix-of-the-negative-log-of-the-coverage-multiplied-by-identity" class="level4">
+<h4 class="anchored" data-anchor-id="total-average-nucleotide-identity-tani-matrix-of-the-negative-log-of-the-coverage-multiplied-by-identity">Total Average Nucleotide Identity (tANI) matrix of the negative log of the coverage multiplied by identity</h4>
 <ul>
 <li>heatmap: <code>&lt;method&gt;_tANI_heatmap.&lt;extension&gt;</code> <a href="#fig-anim-tani-heat" class="quarto-xref">Figure&nbsp;<span>8</span></a></li>
 <li>distribution: <code>&lt;method&gt;_tANI_dist.&lt;extension&gt;</code> <a href="#fig-anim-tani-dist" class="quarto-xref">Figure&nbsp;<span>9</span></a></li>
@@ -955,7 +955,7 @@ Figure&nbsp;10: ANIm tANI scatterplot for walkthrough_data. The scatterplot pres
 </section>
 <section id="plotting-comparisons-between-runs" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-comparisons-between-runs">Plotting comparisons between runs</h2>
-<p>ANI results can vary depending on the method used. <code>pyANI-plus</code> allows you to compare the ANI results from multiple runs. In this example, we show how to use the <code>pyani-plus plot-run-comp</code> subcommand to visualise and compare these results. Running <code>pyani-plus plot-run-comp</code> requires specifying the output directory (e.g., <code>walkthrough_output/</code>), the path to the pyANI-plus SQLite3 database (<code>walkthrough.db</code> for this walkthrough), and a comma-separated list of run IDs for comparison.</p>
+<p>ANI results vary for the same pairwise comparison, depending on the method used. <code>pyANI-plus</code> allows you to compare ANI results across multiple methods. In example below we use the <code>pyani-plus plot-run-comp</code> subcommand to visualise and compare more than one analysis.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -966,59 +966,36 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The first run ID will be treated as the reference, and all subsequent runs will be compared to it.</p>
-<p>In this example, we use ANIb as the reference method, with other methods compared against it.</p>
+<p>The first run ID provided will be treated as the reference, against which all subsequent runs are compared.</p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-ids</span> 1,2,3,4,5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This command generates the following outputs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> plot-run-comp <span class="at">--database</span> walkthrough.db <span class="at">--outdir</span> walkthrough_output/ <span class="at">--run-ids</span> 1,2,3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This command generates the following scatterplots where <em>x</em>-axis represents reference method results, and the <em>y</em>-axis represents results reported by other methods:</p>
 <ul>
-<li>A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (<code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_scatter_vs_others.&lt;extension&gt;</code>).</li>
+<li>ANI scatterplots: <code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_scatter_vs_others.&lt;extension&gt;</code> (<a href="#fig-comparison-ani-scatter" class="quarto-xref">Figure&nbsp;<span>11</span></a>)</li>
+<li>scatterplots of ANI deviation from the reference method: <code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_scatter_vs_others.&lt;extension&gt;</code> (<a href="#fig-deviation-ani-scatter" class="quarto-xref">Figure&nbsp;<span>12</span></a>)</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="walkthrough_plots/ANIb_identity_1_scatter_vs_others.png" class="img-fluid figure-img"></p>
-<figcaption>Scatterplot output for <code>pyani-plus plot-run-comp</code> subcommand</figcaption>
+<div id="fig-comparison-ani-scatter" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-comparison-ani-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="walkthrough_plots/ANIm_identity_1_scatter_vs_others.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Scatterplot output for pyani-plus plot-run-comp subcommand. The red diagonal line serves as a reference (x-axis values equal y-axis values), indicating where data points would lie on the scatterplot if the methods being compared gave identical results. Marginal histograms represent ANI distribution for each method. Here fastANI underestimates, and sourmash overestimates, ANI with respect to ANIm."><img src="walkthrough_plots/ANIm_identity_1_scatter_vs_others.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-ani-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Scatterplot output for <code>pyani-plus plot-run-comp</code> subcommand. The red diagonal line serves as a reference (<em>x</em>-axis values equal <em>y</em>-axis values), indicating where data points would lie on the scatterplot if the methods being compared gave identical results. Marginal histograms represent ANI distribution for each method. Here fastANI underestimates, and sourmash overestimates, ANI with respect to ANIm.
+</figcaption>
 </figure>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="fig-deviation-ani-scatter" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deviation-ani-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="walkthrough_plots/ANIm_identity_1_diff_vs_others.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Scatterplot showing ANI deviation from a reference method. The red horizontal line indicates no deviation from (i.e.&nbsp;agreement with) the reference. Here, fastani is seen to underestimate, and sourmash to overestimate ANI with respect to ANIm."><img src="walkthrough_plots/ANIm_identity_1_diff_vs_others.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The red diagonal line serves as a reference (<em>x</em>-axis values equal <em>y</em>-axis values), indicating where data points would align on the scatterplot if the methods being compared give the same values.</p>
-</div>
-</div>
-<ul>
-<li>A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="walkthrough_plots/ANIb_identity_1_diff_vs_others.png" class="img-fluid figure-img"></p>
-<figcaption>Scatterplot output for <code>pyani-plus plot-run-comp</code> subcommand</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deviation-ani-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Scatterplot showing ANI deviation from a reference method. The red horizontal line indicates no deviation from (i.e.&nbsp;agreement with) the reference. Here, fastani is seen to underestimate, and sourmash to overestimate ANI with respect to ANIm.
+</figcaption>
 </figure>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The red horizontal line at 0 indicates no difference between the pairwise comparison results across methods.</p>
-</div>
-</div>
-<ul>
-<li>Tabular summary of the comparison output (<code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_vs_&lt;run_ID&gt;.tsv</code>).</li>
-</ul>
+<p>The command also generates tabular summaries of individual method comparisons within files with the filename format <code>&lt;reference_method&gt;_identity_&lt;run_ID&gt;_vs_&lt;run_ID&gt;.tsv</code>.</p>
 
 
 </section>
