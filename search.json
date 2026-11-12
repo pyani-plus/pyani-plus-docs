@@ -639,7 +639,7 @@
     "href": "subcommands/plot_run_comp.html",
     "title": "plot-run-comp",
     "section": "",
-    "text": "Options\nThe plot-run-comp subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-ids: Which runs (comma separated list, reference first)? (TEXT) [REQUIRED]\n--columns: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [Default: 0] (Integer range: \\(x\\geq0\\))\n--help, -h: Display usage information for pyani-plus plot-run-comp and exit.",
+    "text": "Options\nThe plot-run-comp subcommand compares ANI results from multiple runs, generating scatterplots and tabular summaries. All plots, including formats such as JPG, PDF, PNG and SVGZ, as well as the tabular data, will be saved in the specified directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-ids: Which runs (comma separated list, reference first)? (TEXT) [REQUIRED]\n--columns: How many columns to use when tiling plots of multiple runs. Default 0 means automatically tries for square tiling. [Default: 0] (Integer range: \\(x\\geq0\\))\n--help, -h: Display usage information for pyani-plus plot-run-comp and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
       "`plot-run-comp`"
@@ -672,7 +672,7 @@
     "href": "subcommands/resume.html",
     "title": "resume",
     "section": "",
-    "text": "Options\nThe resume subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed, and the the old run will be marked as complete. This should have no effect on completed comparisons.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--cache: Cache location if required for a method (must be visible to cluster workers). Default to .cache in the current directory. (DIRECTORY)\n--help, -h: Display usage information for pyani-plus resume and exit.",
+    "text": "Options\nThe resume subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed. This should not recalculate completed comparisons.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--executor: How should the internal tools be run? [Default: local] (local|slurm)\n--cache: Cache location if required for a method (must be visible to cluster workers). Default to .cache in the current directory. (DIRECTORY)\n--help, -h: Display usage information for pyani-plus resume and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
       "`resume`"
@@ -694,7 +694,7 @@
     "href": "subcommands/delete_run.html",
     "title": "delete-run",
     "section": "",
-    "text": "Options\nThe delete-run subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is “Running”, but that can be overridden.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--force, -f: Delete without confirmation.\n--help, -h: Display usage information for pyani-plus delete_run and exit.",
+    "text": "Options\nThe delete-run subcommand deletes a single run stored in the database. This will prompt the user for confirmation if the database contains comparisons, or if the run status is Running.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--force, -f: Delete without confirmation.\n--help, -h: Display usage information for pyani-plus delete_run and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
       "`delete-run`"
@@ -705,7 +705,7 @@
     "href": "subcommands/classify.html",
     "title": "classify",
     "section": "",
-    "text": "Options\nThe classify subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that can not be described using traditional taxonomy. The output, including classify plots (JPG, PDF, PNG, SVGZ) and tabular data, is written to outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus classify and exit.",
+    "text": "Options\nThe classify subcommand classifies genomes into cliques (k-complete) graphs based on ANI results, generating plots and tabular summaries. This is helpful for circumscribing potentially meaningful groups of genomes that might not be described using traditional taxonomy. The output, including classify plots (JPG, PDF, PNG, SVGZ) and tabular data, is written to outdir directory.\n--database: Path to pyANI-plus SQLite3 database. (FILE) [REQUIRED]\n--outdir: Output directory. (DIRECTORY) [REQUIRED]\n--run-id: Which run from the database. [Defaults to latest.] (INTEGER)\n--label: How to label the genomes. [Default: stem.] (md5|filename|stem)\n--help, -h: Display usage information for pyani-plus classify and exit.",
     "crumbs": [
       "pyANI-plus subcommands",
       "`classify`"
