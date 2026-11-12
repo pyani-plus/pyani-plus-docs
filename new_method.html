@@ -393,12 +393,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page outlines a workflow for adding a new ANI method to <code>pyani-plus</code>. This requires some software development.</p>
+<p>This page outlines a workflow for adding a new ANI method to <code>pyani-plus</code>.</p>
 <section id="create-a-new-environment-and-branch-to-work-in" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-new-environment-and-branch-to-work-in">Create a new environment and branch to work in</h2>
 <section id="create-a-new-conda-environment" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-new-conda-environment">Create a new <code>conda</code> environment</h3>
-<p>For example, if you want to create a new <code>conda</code> environment to sandbox the development process, you might use:</p>
+<p>If necessary, create a new <code>conda</code> environment to sandbox the development process, e.g.:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> pyani-plus-dev_py313 python=3.13 <span class="at">-y</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pyani-plus-dev_py313</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -406,12 +406,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="clone-the-repository-and-set-up-the-required-tools">Clone the repository and set up the required tools</h3>
 <p>Clone the <code>pyani-plus</code> repository to your local machine.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:pyani-plus/pyani-plus.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Change directory into the repository, and install <code>pyani-plus</code> and all developer requirements. The <code>Makefile</code> has options for</p>
+<p>Change directory into the repository, and install <code>pyani-plus</code> and all developer requirements. The <code>Makefile</code> has options to assist with this.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> setup_dev_macos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is useful to install <code>pyani-plus</code> with <code>pip install -e .</code> so that updates to code are reflected immediately during development.</p>
+</div>
+</div>
 </section>
 <section id="create-a-new-git-branch" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-new-git-branch">Create a new <code>git</code> branch</h3>
-<p>We will only accept contributions <em>via</em> pull request, and it is best to keep all the work within its own branch. Ensure that your local repository is up to date, and then create a branch to work in.</p>
+<p>We will only accept contributions <em>via</em> pull request, and it is best to keep all the work within its own branch. Ensure that your local repository is up to date, and then create a branch to work in. Name the branch informatively (e.g.&nbsp;<code>add_skani</code> was used when adding the code to run <code>skani</code> comparisons.)</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> add_skani</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -421,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="write-the-code-for-your-new-method">Write the code for your new method</h2>
 <section id="download-and-install-the-method-you-want-to-add" class="level3">
 <h3 class="anchored" data-anchor-id="download-and-install-the-method-you-want-to-add">Download and install the method you want to add</h3>
-<p>Install the method in your local environment. For example:</p>
+<p>Install the method in your local environment. For example, <code>skani</code> was installed using:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install bioconda::skani <span class="at">-y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="add-the-method-as-a-third-party-requirement" class="level3">
@@ -434,12 +447,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="add-tests-for-tool-finding" class="level3">
 <h3 class="anchored" data-anchor-id="add-tests-for-tool-finding">Add tests for tool finding</h3>
-<p>Add a <code>mock_method</code> file to <code>tests/fixtures/tools</code>, following the pattern in that directory.</p>
-<p>Add suitable <code>test_fake_method()</code> and <code>test_find_method()</code> tests to <code>tests/test_tools.py</code></p>
+<p>Add a <code>mock_method</code> file for the new method to <code>tests/fixtures/tools</code>, following the pattern in that directory.</p>
+<p>Add suitable <code>test_fake_method()</code> and <code>test_find_method()</code> tests to <code>tests/test_tools.py</code>, following the existing examples.</p>
 </section>
 <section id="generate-test-target-fixtures" class="level3">
 <h3 class="anchored" data-anchor-id="generate-test-target-fixtures">Generate test target fixtures</h3>
-<p>Add a new file to the <code>tests/generate_fixtures</code> directory with an appropriate filename, following the pattern of <code>generate_target_anim_files.py</code>. This file should provide a script that uses the existing test fixture sequence files to generate appropriate output in a corresponding test fixture</p>
+<p>Add a new file to the <code>tests/generate_fixtures</code> directory with an appropriate filename, following the pattern of <code>generate_target_&lt;METHOD&gt;_files.py</code>. This file should provide a script that uses the existing test fixture sequence files to generate output from the relevant comparison tool as a corresponding test fixture.</p>
 <p>Update the <code>Makefile</code> <code>fixtures</code> directive to include the appropriate call to the new target generation script.</p>
 </section>
 <section id="add-fixtures" class="level3">
@@ -457,8 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="add-a-function-in-private_cli.py-to-run-the-tool" class="level3">
 <h3 class="anchored" data-anchor-id="add-a-function-in-private_cli.py-to-run-the-tool">Add a function in <code>private_cli.py</code> to run the tool</h3>
-<p>Add a function prefixed with <code>compute</code> (e.g.&nbsp;<code>compute_skani</code>) to <code>private_cli.py</code>. This should calculate running the tool for a query sequence against multiple subject sequences, logging the output to JSON. Use one of the other <code>compute_*</code> functions as a template.</p>
-<p>Be sure to add the method to <code>compute_column</code></p>
+<p>Add a function prefixed with <code>compute</code> (e.g.&nbsp;<code>compute_skani</code>) to <code>private_cli.py</code>. This should run the tool for a query sequence against multiple subject sequences, logging the tool’s output to JSON. Use one of the other <code>compute_*</code> functions as a template.</p>
+<p>Be sure also to add the method to <code>compute_column</code></p>
 </section>
 <section id="write-a-test-for-running-the-tool" class="level3">
 <h3 class="anchored" data-anchor-id="write-a-test-for-running-the-tool">Write a test for running the tool</h3>
