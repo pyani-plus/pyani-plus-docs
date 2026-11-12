@@ -352,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#archie-west" id="toc-archie-west" class="nav-link" data-scroll-target="#archie-west">ARCHIE-WeSt</a></li>
   <li><a href="#crop-diversity" id="toc-crop-diversity" class="nav-link" data-scroll-target="#crop-diversity">Crop Diversity</a></li>
   </ul></li>
-  <li><a href="#cluster-troubleshooting" id="toc-cluster-troubleshooting" class="nav-link" data-scroll-target="#cluster-troubleshooting">Cluster Troubleshooting</a></li>
+  <li><a href="#cluster-troubleshooting-tips" id="toc-cluster-troubleshooting-tips" class="nav-link" data-scroll-target="#cluster-troubleshooting-tips">Cluster Troubleshooting Tips</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/pyani-plus/pyani-plus-docs/edit/main/cluster.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/pyani-plus/pyani-plus-docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -378,23 +378,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You can run <code>pyANI-plus</code> on a High Performance Compute (HPC) cluster, and for larger datasets this is generally expected. In the original tool <code>pyANI</code> we worked directly with SGE, which became a problem when our local cluster switched the SLURM instead. For <code>pyANI-plus</code> we instead use <code>snakemake</code> internally to handle our worker jobs. This gives us a uniform platform for running jobs locally (on the same machine – the default), or using one of the <a href="https://snakemake.github.io/snakemake-plugin-catalog/">Snakemake exectutor plugins</a>.</p>
-<p>To enable this all the ANI compute commands have an optional <code>--executor</code> option defaulting to <code>local</code>. The analysis and plotting commands are only ever run locally.</p>
+<p><code>pyANI-plus</code> can take advantage of scheduling on High Performance Computing (HPC) clusters, enabling analysis of large datasets. <code>snakemake</code> is used to handle and distributed worker jobs providing a uniform framework for running jobs locally (e.g.&nbsp;on your desktop – the default), or using one of the <a href="https://snakemake.github.io/snakemake-plugin-catalog/">Snakemake executor plugins</a>.</p>
+<p>To facilitate this, all ANI compute commands have the <code>--executor</code> option (default us <code>local</code>)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Database analysis and plotting commands are only ever run locally.</p>
+</div>
+</div>
 <section id="slurm" class="level2">
 <h2 class="anchored" data-anchor-id="slurm">SLURM</h2>
-<p>This in the recommend parrallel executor for <code>pyANI-plus</code>, which was developed and tested on two different SLURM clusters (<a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> and the <a href="https://cropdiversity.ac.uk/">UK Crop Diversity Bioinformatics HPC Resource</a>).</p>
-<p>You need to prepare a Snakemake configuration (as a directory containing a <code>config.yaml</code> file), set an environment variable to point at your configuration (the path of that directory), and add <code>--executor slurm</code> to your <code>pyani-plus</code> command.</p>
+<p>Slurm is the recommended parallel/HPC executor for <code>pyANI-plus</code>. <code>pyANI-plus</code> was developed and tested on two SLURM clusters (<a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> and the <a href="https://cropdiversity.ac.uk/">UK Crop Diversity Bioinformatics HPC Resource</a>).</p>
+<p>To use the <code>slurm</code> executor option, a Snakemake configuration file is required. Create a directory containing this <code>config.yaml</code> file, and set the <code>SNAKEMAKE_PROFILE</code> environment variable to point at that directory. Then, when running <code>pyANI-plus</code>, add the <code>--executor slurm</code> option, as below.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> snakemake-profile-name/</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">emacs</span> snakemake-profile-name/config.yaml  <span class="co"># see examples below</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SNAKEMAKE_PROFILE</span><span class="op">=</span><span class="va">$PWD</span>/snakemake-profile-name</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pyani-plus</span> ... <span class="at">--executor</span> slurm ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you are using version control for your analysis scripts, you should also check-in the <code>config.yaml</code> file too.</p>
-<p>While some of the underlying tools can be run with multiple cores, we expect you to ask the cluster for lots of single-core jobs (each of which has modest memory (RAM) needs). The exception is Sourmash, which is memory demanding but very quick - this we run on a single machine (even a desktop) with the default local executor.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are using version control for your analysis scripts and/or reproducibility, you should also check-in the <code>config.yaml</code> file.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some of the underlying ANI tools can be run with multiple cores, but it is best practice to ask the cluster for single-core jobs (each of which has modest memory (RAM) needs).</p>
+<p>The exceptions to this would be <code>LZ-ANI</code> and <code>sourmash</code>, which are memory demanding but very fast. We run these locally on a single machine (even a desktop) with the default local executor.</p>
+</div>
+</div>
 <section id="archie-west" class="level3">
 <h3 class="anchored" data-anchor-id="archie-west">ARCHIE-WeSt</h3>
-<p>This is a real configuration used on <a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> in 2025 while developing the tool.</p>
-<p>On this cluster we were limited to at most 400 CPUs, which we tell Snakemake to use as (up to) 400 single-core jobs.</p>
-<p>The <code>precommand</code> is used to make sure the <code>pyani-plus</code> command is available and on the <code>$PATH</code>. This cluster used the module system for dependencies, specifically we used a conda-based module, and within that a conda environment called <code>pyani-plus_py312</code> which had Python 3.12 and the tool and dependencies installed.</p>
+<p>The example below is a configuration used on <a href="https://www.archie-west.ac.uk/">ARCHIE-WeSt</a> in 2025 while developing the tool.</p>
+<p>On this cluster we were limited to at most 400 CPUs. The configuration asks Snakemake to use up to 400 single-core jobs.</p>
+<p>The <code>precommand</code> is used to make sure the <code>pyani-plus</code> command is available and on the <code>$PATH</code>. This cluster uses the <code>module</code> system for dependencies and to ensure a consistent environment on each node. We used this to make a conda-based package manager available and, within this, we activated a conda environment called <code>pyani-plus_py312</code>, which had Python 3.12, <code>pyani-plus</code>, and dependencies installed.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">400</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
@@ -402,40 +440,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> dev</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> pritchard-grxiv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This cluster has a billing system and required explicitly setting the partition (queue) and account. Here the RAM limit is implicit (set by the cluster administrators as a multiple of the cores for billing purposes).</p>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> &lt;ACCOUNTNAME&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This cluster has a billing system and required explicitly declaration of the partition (queue) and account (here masked as <code>ACCOUNTNAME</code>. The RAM limit is implicit (set by the cluster administrators as a multiple of the cores for billing purposes, on this system).</p>
 </section>
 <section id="crop-diversity" class="level3">
 <h3 class="anchored" data-anchor-id="crop-diversity">Crop Diversity</h3>
-<p>This configuration was used on the <a href="https://cropdiversity.ac.uk">Crop Diversity Cluster</a> in 2025 and 2026 for large sets of bacterial genomes. It targetted the “hicpu” queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM upper limits. Here we could run 1000 jobs at once.</p>
+<p>This configuration was used on the <a href="https://cropdiversity.ac.uk">Crop Diversity Cluster</a> in 2025 and 2026 for large sets of bacterial genomes. It targeted the <code>hicpu</code> queue for low-memory CPU limited jobs, which at the time was setup with older compute nodes with 6 hour runtime and 2GB RAM upper limits. On this HPC we were permitted to run 1000 jobs simultaneously.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> hicpu</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> cropdiv-acc</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> &lt;ACCOUNTNAME&gt;</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Snakemake would give distracting warnings if the account or runtime was ommitted, although this cluster had default values setup in SLURM.</p>
+<p>Snakemake would give distracting warnings if the account or runtime was omitted, even though this cluster had default values setup in SLURM.</p>
 <p>By default the cluster applied a 1GB memory limit, which was ample for bacteria. Adding <code>memory: 2G</code> or <code>mem_mb: 2048</code> under the <code>default-resources</code> section would have used the full 2G RAM limit on this queue to handle <em>slightly</em> larger genomes.</p>
-<p>The following configuration was used in 2026 for a set of 100 fungal genomes around 40Mbp (taking less than a day). Here individual comparisons naturally take longer than with bacteria, so a queue with a longer run-time limit had to be used (24 hour, or 1440 mins). While most of the comparisons worked with 4GB of RAM, a few needed more, so about 5GB was used:</p>
+<p>The following configuration was used in 2026 for a set of 100 fungal genomes of around 40Mbp (the total run taking less than a day). Here individual comparisons naturally take longer than with bacteria, so a queue with a longer run-time limit had to be used (24 hour, or 1440 mins).</p>
+<p>While most of the comparisons worked with 4GB of RAM, a few needed more, so about 5GB was requested:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">executor</span><span class="kw">:</span><span class="at"> slurm</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cores</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">default-resources</span><span class="kw">:</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_partition</span><span class="kw">:</span><span class="at"> medium</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> cropdiv-acc</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slurm_account</span><span class="kw">:</span><span class="at"> &lt;ACCOUNTNAME&gt;</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runtime</span><span class="kw">:</span><span class="at"> </span><span class="dv">1440</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mem_mb</span><span class="kw">:</span><span class="at"> </span><span class="dv">5000</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="cluster-troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="cluster-troubleshooting">Cluster Troubleshooting</h2>
-<p>Start with a small example first, like the walkthough, to make sure the cluster intergration is working. Check the stdout/stderr logs if possible. Use the logging and debug options within the tool (to keep the intermediate files and logs).</p>
-<p>If you suspect specfic genomes or genome pairs to be a problem, try reducing the number of genomes to work out which.</p>
-<p>If you are getting out of memory (OOM) failures, this could be from larger or more complex genomes - in which case try increasing the RAM limit. However, pathological data like genomes which have not been quality controlled can cause problems in some methods (eg excessive runs of N). On SLURM the <code>sacct</code> command or similar will show when a job failed with <code>OUT_OF_MEMORY</code>. In this case, adjust your Snakemake <code>config.yaml</code> and retry (see example above).</p>
+<section id="cluster-troubleshooting-tips" class="level2">
+<h2 class="anchored" data-anchor-id="cluster-troubleshooting-tips">Cluster Troubleshooting Tips</h2>
+<ul>
+<li><p>Start with a small example first, like the walkthough, to make sure the cluster intergration is working.</p></li>
+<li><p>Check the stdout/stderr logs if possible.</p></li>
+<li><p>Use the logging and debug options within the tool (to keep the intermediate files and logs).</p></li>
+<li><p>If you suspect specfic genomes or genome pairs to be a problem, try reducing the number of genomes to work out which.</p></li>
+<li><p>If you are getting out of memory (OOM) failures, this could be due to larger or more complex genomes - in which case try increasing the RAM limit.</p></li>
+<li><p>Pathological data, such as genomes that have not been quality controlled, can cause problems in some methods (eg excessive runs of N).</p></li>
+<li><p>On SLURM the <code>sacct</code> command or similar will show when a job failed with <code>OUT_OF_MEMORY</code>. In these cases, adjust your Snakemake <code>config.yaml</code> and retry (see example above).</p></li>
+</ul>
 
 
 </section>
