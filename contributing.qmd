@@ -1,10 +1,11 @@
 # Contributing to `pyANI-plus` {#sec-contributing .unnumbered}
 
 ## Reporting bugs and errors
+
 If you find a bug, or an error in the code or documentation, please report this by raising an issue at the [GitHub issue page](https://github.com/pyani-plus/pyani-plus/issues) for `pyANI-plus`. 
 
-
 ## Contributing code or documentation
+
 We welcome contributions of all kinds! Check out the GitHub contributors link for a list of those who have helped shape the project.
 
 Whether you’d like to develop `pyANI-plus`, fix a bug, or improve documentation, your help is appreciated! To help maintain an efficient workflow, please adhere to the developer guidelines below:
