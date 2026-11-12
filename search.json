@@ -244,7 +244,7 @@
     "href": "subcommands/subcommands.html",
     "title": "pyANI-plus subcommands",
     "section": "",
-    "text": "pyANI-plus follows a subcommand-based approach, where the primary command is followed by a subcommand that defines the operation to be performed. The format is: pyani-plus &lt;subcommand&gt;. For example, to obtain the list of runs in a give pyANI-plus SQLite3 database, you would use list-runs subcommand:\npyani-plus list-runs &lt;path_to_database&gt;\nThis section lists all available subcommands for pyANI-plus, describing their usage and functionality within the software.",
+    "text": "pyANI-plus follows a subcommand-based approach, where the primary command is followed by a subcommand that defines the operation to be performed, in the format: pyani-plus &lt;subcommand&gt;.\nFor example, to obtain the list of runs in a give pyANI-plus SQLite3 database, you would use the list-runs subcommand:\npyani-plus list-runs -d &lt;path_to_database&gt;\nThis section lists all available subcommands for pyANI-plus, describing their usage and functionality within the software.",
     "crumbs": [
       "pyANI-plus subcommands"
     ]
@@ -254,7 +254,7 @@
     "href": "subcommands/anib.html",
     "title": "anib",
     "section": "",
-    "text": "Arguments\nThe anib subcommand processes genome files from the indir directory to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe anib subcommand processes genome files from an input directory (FASTADIR) to perform ANIb analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`anib`"
@@ -298,7 +298,7 @@
     "href": "subcommands/anim.html",
     "title": "anim",
     "section": "",
-    "text": "Arguments\nThe anim subcommand processes genome files from the indir directory to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe anim subcommand processes genome files from an input directory (FASTADIR) to perform ANIm analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`anim`"
@@ -342,7 +342,7 @@
     "href": "subcommands/animinimap.html",
     "title": "animinimap2",
     "section": "",
-    "text": "Arguments\nThe animinimap2 subcommand processes genome files from the indir directory to perform animinimap2 analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe animinimap2 subcommand processes genome files from an input directory (FASTADIR) to perform animinimap2 analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`animinimap2`"
@@ -386,7 +386,7 @@
     "href": "subcommands/dnadiff.html",
     "title": "dnadiff",
     "section": "",
-    "text": "Arguments\nThe dnadiff subcommand processes genome files from the indir directory to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe dnadiff subcommand processes genome files from an input directory (FASTADIR) to perform dnadiff analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`dnadiff`"
@@ -463,7 +463,7 @@
     "href": "subcommands/fastani.html",
     "title": "fastani",
     "section": "",
-    "text": "Arguments\nThe fastani subcommand processes genome files from the indir directory to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe fastani subcommand processes genome files from an input directory (FASTADIR) to perform fastANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`fastani`"
@@ -507,7 +507,7 @@
     "href": "subcommands/lzani.html",
     "title": "LZ-ANI",
     "section": "",
-    "text": "Arguments\nThe LZ-ANI subcommand processes genome files from the indir directory to perform LZ-ANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe LZ-ANI subcommand processes genome files from an input directory (FASTADIR) to perform LZ-ANI analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`LZ-ANI`"
@@ -540,7 +540,7 @@
     "href": "subcommands/skani.html",
     "title": "skani",
     "section": "",
-    "text": "Arguments\nThe skani subcommand processes genome files from the indir directory to perform skani analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe skani subcommand processes genome files from an input directory (FASTADIR) to perform skani analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`skani`"
@@ -584,7 +584,7 @@
     "href": "subcommands/sourmash.html",
     "title": "sourmash",
     "section": "",
-    "text": "Arguments\nThe sourmash subcommand processes genome files from the indir directory to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
+    "text": "Arguments\nThe sourmash subcommand processes genome files from an input directory (FASTADIR) to perform sourmash analysis, and logs comparison and run data in a local SQLite3 database.\nfasta: Directory of FASTA files (extensions .fas, .fasta, .fna). (PATH) [REQUIRED]",
     "crumbs": [
       "pyANI-plus subcommands",
       "`sourmash`"
