@@ -1,6 +1,6 @@
 # `delete-run` {#delete-run-subcommand .unnumbered}
 
-The `delete-run` subcommand deletes any single run stored in the database. This will prompt the user for confirmation if the run has comparisons, or if the run status is "Running", but that can be overridden.
+The `delete-run` subcommand deletes a single run stored in the database. This will prompt the user for confirmation if the database contains comparisons, or if the run status is `Running`.
 
 
 ::: { .callout-important}

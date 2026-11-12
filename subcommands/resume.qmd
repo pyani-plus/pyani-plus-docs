@@ -1,6 +1,6 @@
 # `resume` {#resume .unnumbered}
 
-The `resume` subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed, and the the old run will be marked as complete. This should have no effect on completed comparisons.
+The `resume` subcommand restarts any partially completed run stored in the database if it was interrupted or canceled, ensuring it continues from where it left off. Any missing pairwise comparisons will be computed. This should not recalculate completed comparisons.
 
 ::: { .callout-important}
  The output directory must already exist. The scatter plots will be named `<method>_<property>_<run-id>_vs_*.<extension>` and any pre-existing files will be overwritten.
