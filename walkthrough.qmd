@@ -393,38 +393,24 @@ Optionally, genomes can be labelled using either `md5` or `filename` using the `
 
 ## Plotting comparisons between runs
 
-ANI results can vary depending on the method used. `pyANI-plus` allows you to compare the ANI results from multiple runs. In this example, we show how to use the `pyani-plus plot-run-comp` subcommand to visualise and compare these results. Running `pyani-plus plot-run-comp` requires specifying the output directory (e.g., `walkthrough_output/`), the path to the pyANI-plus SQLite3 database (`walkthrough.db` for this walkthrough), and a comma-separated list of run IDs for comparison.
+ANI results vary for the same pairwise comparison, depending on the method used. `pyANI-plus` allows you to compare ANI results across multiple methods. In example below we use the `pyani-plus plot-run-comp` subcommand to visualise and compare more than one analysis.
 
 ::: { .callout-important}
-The first run ID will be treated as the reference, and all subsequent runs will be compared to it.
-
-In this example, we use ANIb as the reference method, with other methods compared against it.
+The first run ID provided will be treated as the reference, against which all subsequent runs are compared.
 :::
 
 ```bash
-pyani-plus plot-run-comp --database walkthrough.db --outdir walkthrough_output/ --run-ids 1,2,3,4,5
+pyani-plus plot-run-comp --database walkthrough.db --outdir walkthrough_output/ --run-ids 1,2,3
 ```
 
-This command generates the following outputs:
+This command generates the following scatterplots where _x_-axis represents reference method results, and the _y_-axis represents results reported by other methods:
 
-- A set of scatterplots where the X-axis represents genome identity from the reference method (here, ANIb), and the Y-axis represents genome identity from the compared methods/runs (`<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>`).
+- ANI scatterplots: `<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>` (@fig-comparison-ani-scatter)
+- scatterplots of ANI deviation from the reference method: `<reference_method>_identity_<run_ID>_scatter_vs_others.<extension>` (@fig-deviation-ani-scatter)
 
+![Scatterplot output for `pyani-plus plot-run-comp` subcommand. The red diagonal line serves as a reference (_x_-axis values equal _y_-axis values), indicating where data points would lie on the scatterplot if the methods being compared gave identical results. Marginal histograms represent ANI distribution for each method. Here fastANI underestimates, and sourmash overestimates, ANI with respect to ANIm.](walkthrough_plots/ANIm_identity_1_scatter_vs_others.png){#fig-comparison-ani-scatter .lightbox width=80%}
 
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_scatter_vs_others.png)
+![Scatterplot showing ANI deviation from a reference method. The red horizontal line indicates no deviation from (i.e. agreement with) the reference. Here, fastani is seen to underestimate, and sourmash to overestimate ANI with respect to ANIm. ](walkthrough_plots/ANIm_identity_1_diff_vs_others.png){#fig-deviation-ani-scatter .lightbox width=80%}
 
-
-::: { .callout-tip}
-The red diagonal line serves as a reference (_x_-axis values equal _y_-axis values), indicating where data points would align on the scatterplot if the methods being compared give the same values.
-:::
-
-
-- A set of scatterplots showing absolute differences between pairwise comparisons, with the X-axis representing genome identity from the reference method (here, ANIb) and the Y-axis showing the difference in genome identity for the compared methods/runs.
-
-![Scatterplot output for `pyani-plus plot-run-comp` subcommand](walkthrough_plots/ANIb_identity_1_diff_vs_others.png)
-
-::: { .callout-tip}
-The red horizontal line at 0 indicates no difference between the pairwise comparison results across methods.
-:::
-
-- Tabular summary of the comparison output (`<reference_method>_identity_<run_ID>_vs_<run_ID>.tsv`).
+The command also generates tabular summaries of individual method comparisons within files with the filename format `<reference_method>_identity_<run_ID>_vs_<run_ID>.tsv`.
 
